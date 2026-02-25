@@ -73,29 +73,126 @@
     return `${scaled.toFixed(scaled >= 100 ? 0 : 2)} ${units[unitIndex]}`;
   };
 
-  const parseJsonResponse = async (response) => {
+  const tryParseJson = (text) => {
+    try {
+      return JSON.parse(text);
+    } catch (_error) {
+      return null;
+    }
+  };
+
+  const extractJsonObject = (text) => {
+    const first = text.indexOf('{');
+    const last = text.lastIndexOf('}');
+    if (first === -1 || last === -1 || last <= first) return null;
+    return tryParseJson(text.slice(first, last + 1));
+  };
+
+  const fetchText = async (url) => {
+    const response = await fetch(url, {
+      method: 'GET',
+      cache: 'no-store'
+    });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
-
-    const text = await response.text();
-    return JSON.parse(text);
+    return response.text();
   };
 
-  const fetchJsonWithFallback = async (urls) => {
-    for (const url of urls) {
+  const isValidSummary = (summary) => {
+    if (!summary || typeof summary !== 'object') return false;
+    return summary.blockcount !== undefined && summary.difficulty !== undefined;
+  };
+
+  const fetchExplorerSummary = async () => {
+    const summaryUrl = 'https://explorer.smartiecoin.com/ext/getsummary';
+    const allOriginsRaw = `https://api.allorigins.win/raw?url=${encodeURIComponent(summaryUrl)}`;
+    const allOriginsGet = `https://api.allorigins.win/get?url=${encodeURIComponent(summaryUrl)}`;
+    const jinaMirror = 'https://r.jina.ai/http://explorer.smartiecoin.com/ext/getsummary';
+
+    const sources = [
+      { name: 'explorer', url: summaryUrl, parser: 'json' },
+      { name: 'allorigins raw', url: allOriginsRaw, parser: 'json' },
+      { name: 'allorigins get', url: allOriginsGet, parser: 'allorigins' },
+      { name: 'jina mirror', url: jinaMirror, parser: 'jina' }
+    ];
+
+    for (const source of sources) {
       try {
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: { Accept: 'application/json' }
-        });
-        return await parseJsonResponse(response);
+        const text = await fetchText(source.url);
+        let parsed = null;
+
+        if (source.parser === 'json') {
+          parsed = tryParseJson(text);
+        } else if (source.parser === 'allorigins') {
+          const wrapped = tryParseJson(text);
+          parsed = wrapped?.contents ? tryParseJson(wrapped.contents) : null;
+        } else if (source.parser === 'jina') {
+          parsed = extractJsonObject(text);
+        }
+
+        if (isValidSummary(parsed)) {
+          return { summary: parsed, source: source.name };
+        }
       } catch (_error) {
-        // try next endpoint
+        // continue to next source
       }
     }
 
-    throw new Error('All endpoints failed');
+    throw new Error('Could not load summary from any source');
+  };
+
+  const fetchMetricViaAllOrigins = async (path) => {
+    const target = `https://explorer.smartiecoin.com${path}`;
+    const url = `https://api.allorigins.win/get?url=${encodeURIComponent(target)}`;
+    const text = await fetchText(url);
+    const wrapped = tryParseJson(text);
+    if (!wrapped || typeof wrapped.contents !== 'string') {
+      throw new Error('Invalid wrapped response');
+    }
+    return wrapped.contents.trim();
+  };
+
+  const fetchFallbackSummary = async () => {
+    const fields = {
+      blockcount: null,
+      difficulty: null,
+      hashrate: null,
+      supply: null,
+      connections: null
+    };
+
+    const jobs = [
+      ['blockcount', '/api/getblockcount'],
+      ['difficulty', '/api/getdifficulty'],
+      ['hashrate', '/api/getnetworkhashps'],
+      ['supply', '/ext/getmoneysupply'],
+      ['connections', '/api/getconnectioncount']
+    ];
+
+    await Promise.all(jobs.map(async ([field, path]) => {
+      try {
+        const rawValue = await fetchMetricViaAllOrigins(path);
+        const numeric = Number(rawValue);
+        fields[field] = Number.isFinite(numeric) ? numeric : null;
+      } catch (_error) {
+        fields[field] = null;
+      }
+    }));
+
+    if (Object.values(fields).every((value) => value === null)) {
+      throw new Error('Fallback metrics unavailable');
+    }
+
+    return {
+      blockcount: fields.blockcount,
+      difficulty: fields.difficulty,
+      hashrate: fields.hashrate,
+      supply: fields.supply,
+      connections: fields.connections,
+      masternodeCountOnline: '-',
+      masternodeCountOffline: '-'
+    };
   };
 
   const updateReleaseData = async () => {
@@ -137,32 +234,39 @@
   };
 
   const updateExplorerStats = async () => {
-    const primary = 'https://explorer.smartiecoin.com/ext/getsummary';
-    const fallback = `https://api.allorigins.win/raw?url=${encodeURIComponent(primary)}`;
-
     const statusEl = document.querySelector('#stats-status');
     const updatedEl = document.querySelector('#stats-updated');
 
     try {
-      const summary = await fetchJsonWithFallback([primary, fallback]);
+      let summaryData = null;
+      let sourceName = '';
+
+      try {
+        const result = await fetchExplorerSummary();
+        summaryData = result.summary;
+        sourceName = result.source;
+      } catch (_error) {
+        summaryData = await fetchFallbackSummary();
+        sourceName = 'allorigins fallback';
+      }
 
       const masternodes = (() => {
-        const online = summary.masternodeCountOnline;
-        const offline = summary.masternodeCountOffline;
+        const online = summaryData.masternodeCountOnline;
+        const offline = summaryData.masternodeCountOffline;
         if (online === undefined || offline === undefined) return '--';
         if (String(online) === '-' || String(offline) === '-') return 'N/A';
         return `${online}/${offline}`;
       })();
 
-      setText('[data-stat="blockcount"]', formatNumber(summary.blockcount));
-      setText('[data-stat="difficulty"]', formatDifficulty(summary.difficulty));
-      setText('[data-stat="hashrate"]', formatHashrate(summary.hashrate));
-      setText('[data-stat="supply"]', `${formatNumber(summary.supply, 2)} SMT`);
-      setText('[data-stat="connections"]', formatNumber(summary.connections));
+      setText('[data-stat="blockcount"]', formatNumber(summaryData.blockcount));
+      setText('[data-stat="difficulty"]', formatDifficulty(summaryData.difficulty));
+      setText('[data-stat="hashrate"]', formatHashrate(summaryData.hashrate));
+      setText('[data-stat="supply"]', `${formatNumber(summaryData.supply, 2)} SMT`);
+      setText('[data-stat="connections"]', formatNumber(summaryData.connections));
       setText('[data-stat="masternodes"]', masternodes);
 
       if (updatedEl) {
-        updatedEl.textContent = `(updated ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })})`;
+        updatedEl.textContent = `(updated ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} via ${sourceName})`;
       }
 
       if (statusEl) {
