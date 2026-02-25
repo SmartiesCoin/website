@@ -137,6 +137,11 @@ a {
   letter-spacing: 0.02em;
 }
 
+.brand-logo {
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(26, 17, 8, 0.15);
+}
+
 .brand strong {
   color: var(--orange-deep);
   background: #ffe5c0;
@@ -273,7 +278,8 @@ h1 {
 
 .hero-logo {
   margin-inline: auto;
-  width: min(100%, 350px);
+  width: min(100%, 220px);
+  filter: drop-shadow(0 10px 24px rgba(43, 25, 8, 0.2));
 }
 
 .mini-grid {
