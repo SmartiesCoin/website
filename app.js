@@ -99,6 +99,17 @@
     return response.text();
   };
 
+  const loadLocalLiveData = async () => {
+    const response = await fetch(`assets/live-data.json?t=${Date.now()}`, {
+      method: 'GET',
+      cache: 'no-store'
+    });
+    if (!response.ok) {
+      throw new Error(`Local data error ${response.status}`);
+    }
+    return response.json();
+  };
+
   const isValidSummary = (summary) => {
     if (!summary || typeof summary !== 'object') return false;
     return summary.blockcount !== undefined && summary.difficulty !== undefined;
@@ -196,8 +207,36 @@
   };
 
   const updateReleaseData = async () => {
-    const endpoint = 'https://api.github.com/repos/SmartiesCoin/Smartiecoin/releases/latest';
+    try {
+      const localData = await loadLocalLiveData();
+      const localRelease = localData?.release;
 
+      if (localRelease && (localRelease.tag_name || localRelease.name)) {
+        const version = localRelease.tag_name || localRelease.name || 'Unknown';
+        const publishedDate = localRelease.published_at
+          ? new Date(localRelease.published_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' })
+          : '--';
+
+        setText('[data-release-version]', version);
+        setText('[data-release-date]', publishedDate);
+
+        const releaseLink = document.querySelector('#latest-release-link');
+        const releaseLinkText = document.querySelector('#latest-release-link-text');
+
+        if (releaseLink && localRelease.html_url) {
+          releaseLink.href = localRelease.html_url;
+        }
+
+        if (releaseLinkText) {
+          releaseLinkText.textContent = `${version} published ${publishedDate}. Open details on GitHub.`;
+        }
+        return;
+      }
+    } catch (_error) {
+      // fallback to GitHub API below
+    }
+
+    const endpoint = 'https://api.github.com/repos/SmartiesCoin/Smartiecoin/releases/latest';
     try {
       const response = await fetch(endpoint, {
         method: 'GET',
@@ -242,12 +281,24 @@
       let sourceName = '';
 
       try {
-        const result = await fetchExplorerSummary();
-        summaryData = result.summary;
-        sourceName = result.source;
+        const localData = await loadLocalLiveData();
+        if (isValidSummary(localData?.summary)) {
+          summaryData = localData.summary;
+          sourceName = 'local cache';
+        }
       } catch (_error) {
-        summaryData = await fetchFallbackSummary();
-        sourceName = 'allorigins fallback';
+        // fallback below
+      }
+
+      if (!summaryData) {
+        try {
+          const result = await fetchExplorerSummary();
+          summaryData = result.summary;
+          sourceName = result.source;
+        } catch (_error) {
+          summaryData = await fetchFallbackSummary();
+          sourceName = 'allorigins fallback';
+        }
       }
 
       const masternodes = (() => {
@@ -266,7 +317,7 @@
       setText('[data-stat="masternodes"]', masternodes);
 
       if (updatedEl) {
-        updatedEl.textContent = `(updated ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })} via ${sourceName})`;
+        updatedEl.textContent = `(updated ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })})`;
       }
 
       if (statusEl) {

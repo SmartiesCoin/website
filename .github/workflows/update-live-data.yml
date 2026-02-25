@@ -1,0 +1,71 @@
+name: Update Live Data
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-live-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch Latest Summary And Release
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          summary_json="$(curl -fsSL https://explorer.smartiecoin.com/ext/getsummary)"
+          release_json="$(curl -fsSL -H 'Accept: application/vnd.github+json' https://api.github.com/repos/SmartiesCoin/Smartiecoin/releases/latest)"
+          fetched_at="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+
+          echo "$summary_json" | jq -e '.blockcount != null and .difficulty != null' >/dev/null
+          echo "$release_json" | jq -e '.tag_name != null' >/dev/null
+
+          jq -n \
+            --arg fetched_at "$fetched_at" \
+            --argjson summary "$summary_json" \
+            --argjson release "$release_json" \
+            '{
+              fetched_at: $fetched_at,
+              summary: {
+                difficulty: $summary.difficulty,
+                difficultyHybrid: $summary.difficultyHybrid,
+                supply: $summary.supply,
+                hashrate: $summary.hashrate,
+                lastPrice: $summary.lastPrice,
+                lastUSDPrice: $summary.lastUSDPrice,
+                connections: $summary.connections,
+                blockcount: $summary.blockcount,
+                masternodeCountOnline: $summary.masternodeCountOnline,
+                masternodeCountOffline: $summary.masternodeCountOffline
+              },
+              release: {
+                tag_name: $release.tag_name,
+                name: $release.name,
+                html_url: $release.html_url,
+                published_at: $release.published_at
+              }
+            }' > assets/live-data.json
+
+      - name: Commit Changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if git diff --quiet -- assets/live-data.json; then
+            echo "No changes in live data"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/live-data.json
+          git commit -m "Update live data cache"
+          git push
