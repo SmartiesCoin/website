@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Smartiecoin (SMT) | CPU Mining + Privacy + Masternodes</title>
   <meta name="description" content="Smartiecoin (SMT) is a secondary coin in the Ethernova ecosystem, focused on CPU mining, privacy through CoinJoin/Tor, and deterministic masternodes.">
-  <meta name="theme-color" content="#fff6ea">
+  <meta name="theme-color" content="#0b1020">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Smartiecoin (SMT)">
   <meta property="og:description" content="A secondary Ethernova ecosystem coin focused on CPU mining, privacy, and masternodes.">
@@ -29,7 +29,7 @@
   <header class="site-header">
     <div class="container header-row">
       <a class="brand" href="#top">
-        <img class="brand-logo" src="assets/logo-horizontal.png" alt="Smarties logo" width="46" height="46">
+        <img class="brand-logo" src="assets/logo-horizontal.png" alt="Smarties logo" width="34" height="34">
         <span>SMARTIECOIN</span>
         <strong>SMT</strong>
       </a>
@@ -38,6 +38,7 @@
 
       <nav id="primary-nav" class="nav-links" aria-label="Primary">
         <a href="#snapshot">Snapshot</a>
+        <a href="#live">Live Stats</a>
         <a href="#tech">Technology</a>
         <a href="#status">Status</a>
         <a href="#links">Links</a>
@@ -63,23 +64,22 @@
         </div>
 
         <aside class="hero-card" data-reveal>
-          <img class="hero-logo" src="assets/logo-horizontal.png" alt="Smarties logo">
           <div class="mini-grid">
             <div>
               <span>Ticker</span>
               <strong>SMT</strong>
             </div>
             <div>
-              <span>Core</span>
-              <strong>v0.0.6</strong>
+              <span>Latest Release</span>
+              <strong data-release-version>Loading...</strong>
+            </div>
+            <div>
+              <span>Published</span>
+              <strong data-release-date>Loading...</strong>
             </div>
             <div>
               <span>Target Block</span>
               <strong>2.5 min</strong>
-            </div>
-            <div>
-              <span>License</span>
-              <strong>MIT</strong>
             </div>
           </div>
         </aside>
@@ -112,17 +112,54 @@
           </article>
           <article class="card" data-reveal>
             <h3>Active Release</h3>
-            <p>Current repo tag: <strong>v0.0.6</strong> (2026-02-25), focused on stability and startup fixes.</p>
-          </article>
-          <article class="card warning" data-reveal>
-            <h3>Whitepaper / Roadmap</h3>
-            <p>There is no public whitepaper or roadmap yet. This page reflects the current live state.</p>
+            <p>Current repo tag: <strong data-release-version>Loading...</strong> (<span data-release-date>Loading...</span>).</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="tech" class="section section-alt">
+    <section id="live" class="section section-alt">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2>Live Explorer Stats</h2>
+          <p>Auto-updated from Smartiecoin explorer API endpoints.</p>
+        </div>
+
+        <div class="cards cards-3 stats-grid" data-reveal>
+          <article class="card stat-card">
+            <span>Block Height</span>
+            <strong data-stat="blockcount">--</strong>
+          </article>
+          <article class="card stat-card">
+            <span>Difficulty</span>
+            <strong data-stat="difficulty">--</strong>
+          </article>
+          <article class="card stat-card">
+            <span>Network Hashrate</span>
+            <strong data-stat="hashrate">--</strong>
+          </article>
+          <article class="card stat-card">
+            <span>Circulating Supply</span>
+            <strong data-stat="supply">--</strong>
+          </article>
+          <article class="card stat-card">
+            <span>Connections</span>
+            <strong data-stat="connections">--</strong>
+          </article>
+          <article class="card stat-card">
+            <span>Masternodes (On/Off)</span>
+            <strong data-stat="masternodes">--</strong>
+          </article>
+        </div>
+
+        <p class="stats-note" id="stats-status" data-reveal>
+          Source: <a href="https://explorer.smartiecoin.com/info" target="_blank" rel="noopener">explorer.smartiecoin.com</a>
+          <span id="stats-updated">(waiting for first update)</span>
+        </p>
+      </div>
+    </section>
+
+    <section id="tech" class="section">
       <div class="container">
         <div class="section-head" data-reveal>
           <h2>SMT Architecture</h2>
@@ -157,9 +194,8 @@
         </div>
         <ul class="status-list">
           <li><span></span> Official baseline website launched</li>
-          <li><span></span> Core running on release v0.0.6</li>
+          <li><span></span> Core running on release <span data-release-version>Loading...</span></li>
           <li><span></span> Current focus: early adoption and utilities</li>
-          <li><span></span> Whitepaper and roadmap: pending publication</li>
         </ul>
       </div>
     </section>
@@ -188,9 +224,9 @@
             <h3>Tor Support (SMT Core)</h3>
             <p>Official guide to run SMT nodes through Tor v3.</p>
           </a>
-          <a class="card link-card" data-reveal href="https://github.com/SmartiesCoin/Smartiecoin/blob/main/doc/release-notes/smartiecoin/release-notes-0.0.6.md" target="_blank" rel="noopener">
-            <h3>Release Notes v0.0.6</h3>
-            <p>Technical summary of the current core version.</p>
+          <a class="card link-card" id="latest-release-link" data-reveal href="https://github.com/SmartiesCoin/Smartiecoin/releases/latest" target="_blank" rel="noopener">
+            <h3>Latest Release Notes</h3>
+            <p id="latest-release-link-text">Open the latest Smartiecoin release on GitHub.</p>
           </a>
           <a class="card link-card" data-reveal href="https://ethnova.net/" target="_blank" rel="noopener">
             <h3>Ethernova</h3>
