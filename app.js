@@ -73,6 +73,16 @@
     return `${scaled.toFixed(scaled >= 100 ? 0 : 2)} ${units[unitIndex]}`;
   };
 
+  const formatUsd = (value, maxFractionDigits = 6) => {
+    const numeric = Number(value);
+    if (!Number.isFinite(numeric)) return '--';
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: maxFractionDigits
+    }).format(numeric);
+  };
+
   const tryParseJson = (text) => {
     try {
       return JSON.parse(text);
@@ -170,7 +180,8 @@
       difficulty: null,
       hashrate: null,
       supply: null,
-      connections: null
+      connections: null,
+      lastUSDPrice: null
     };
 
     const jobs = [
@@ -191,6 +202,15 @@
       }
     }));
 
+    try {
+      const rawPriceJson = await fetchMetricViaAllOrigins('/ext/getcurrentprice');
+      const parsedPrice = tryParseJson(rawPriceJson);
+      const priceUsd = Number(parsedPrice?.last_price_usd);
+      fields.lastUSDPrice = Number.isFinite(priceUsd) ? priceUsd : null;
+    } catch (_error) {
+      fields.lastUSDPrice = null;
+    }
+
     if (Object.values(fields).every((value) => value === null)) {
       throw new Error('Fallback metrics unavailable');
     }
@@ -201,6 +221,7 @@
       hashrate: fields.hashrate,
       supply: fields.supply,
       connections: fields.connections,
+      lastUSDPrice: fields.lastUSDPrice,
       masternodeCountOnline: '-',
       masternodeCountOffline: '-'
     };
@@ -278,12 +299,15 @@
 
     try {
       let summaryData = null;
+      let localPriceUsd = null;
       let sourceName = '';
 
       try {
         const localData = await loadLocalLiveData();
         if (isValidSummary(localData?.summary)) {
           summaryData = localData.summary;
+          const parsedLocalPrice = Number(localData?.current_price?.last_price_usd);
+          localPriceUsd = Number.isFinite(parsedLocalPrice) ? parsedLocalPrice : null;
           sourceName = 'local cache';
         }
       } catch (_error) {
@@ -309,11 +333,28 @@
         return `${online}/${offline}`;
       })();
 
+      const priceUsd = (() => {
+        const candidate = [
+          localPriceUsd,
+          summaryData.lastUSDPrice,
+          summaryData.last_price_usd,
+          summaryData.price_usd
+        ].map((v) => Number(v)).find((v) => Number.isFinite(v));
+        return Number.isFinite(candidate) ? candidate : null;
+      })();
+
+      const marketCapUsd = (() => {
+        const supply = Number(summaryData.supply);
+        if (!Number.isFinite(priceUsd) || !Number.isFinite(supply)) return null;
+        return supply * priceUsd;
+      })();
+
       setText('[data-stat="blockcount"]', formatNumber(summaryData.blockcount));
       setText('[data-stat="difficulty"]', formatDifficulty(summaryData.difficulty));
       setText('[data-stat="hashrate"]', formatHashrate(summaryData.hashrate));
       setText('[data-stat="supply"]', `${formatNumber(summaryData.supply, 2)} SMT`);
-      setText('[data-stat="connections"]', formatNumber(summaryData.connections));
+      setText('[data-stat="price"]', formatUsd(priceUsd));
+      setText('[data-stat="marketcap"]', formatUsd(marketCapUsd, 2));
       setText('[data-stat="masternodes"]', masternodes);
 
       if (updatedEl) {
@@ -328,7 +369,8 @@
       setText('[data-stat="difficulty"]', '--');
       setText('[data-stat="hashrate"]', '--');
       setText('[data-stat="supply"]', '--');
-      setText('[data-stat="connections"]', '--');
+      setText('[data-stat="price"]', '--');
+      setText('[data-stat="marketcap"]', '--');
       setText('[data-stat="masternodes"]', '--');
 
       if (updatedEl) {
