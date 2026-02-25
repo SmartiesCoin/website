@@ -349,8 +349,8 @@ h1 {
   pointer-events: none;
 }
 
-.stats-grid .stat-card:last-child {
-  grid-column: 2;
+.stats-grid .stat-card-center {
+  grid-column: 2 / 3;
 }
 
 .stat-card span {
@@ -489,7 +489,7 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .stats-grid .stat-card:last-child {
+  .stats-grid .stat-card-center {
     grid-column: auto;
   }
 }
