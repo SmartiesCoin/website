@@ -349,6 +349,10 @@ h1 {
   pointer-events: none;
 }
 
+.stats-grid .stat-card:last-child {
+  grid-column: 2;
+}
+
 .stat-card span {
   position: relative;
   z-index: 1;
@@ -420,12 +424,17 @@ h1 {
   padding: 0.58rem 0.7rem;
 }
 
-.status-list span {
+.status-list .status-dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: linear-gradient(180deg, var(--mint), #1fae9d);
   flex-shrink: 0;
+}
+
+.status-list .release-inline {
+  font-weight: 700;
+  color: #f7fbff;
 }
 
 .link-card {
@@ -478,6 +487,10 @@ h1 {
   .cards-3,
   .cards-2 {
     grid-template-columns: 1fr;
+  }
+
+  .stats-grid .stat-card:last-child {
+    grid-column: auto;
   }
 }
 
