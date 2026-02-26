@@ -38,6 +38,7 @@
 
       <nav id="primary-nav" class="nav-links" aria-label="Primary">
         <a href="#snapshot">Snapshot</a>
+        <a href="#tokenomics">Tokenomics</a>
         <a href="#live">Live Stats</a>
         <a href="#tech">Technology</a>
         <a href="#status">Status</a>
@@ -68,7 +69,7 @@
     <section id="snapshot" class="section">
       <div class="container">
         <div class="section-head" data-reveal>
-          <h2>Tokenomic Snapshot</h2>
+          <h2>Project Snapshot</h2>
           <p>Core project facts taken from the SMT repository and docs.</p>
         </div>
 
@@ -94,6 +95,100 @@
             <p>Current repo tag: <strong data-release-version>Loading...</strong> (<span data-release-date>Loading...</span>).</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="tokenomics" class="section section-alt">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2>Tokenomics Explained</h2>
+          <p>How SMT emissions and masternode rewards work on mainnet.</p>
+        </div>
+
+        <div class="tokenomics-grid">
+          <article class="card tokenomics-card" data-reveal>
+            <h3>Core Parameters</h3>
+            <ul class="tokenomics-list">
+              <li><strong>Max supply:</strong> 100,000,000 SMT</li>
+              <li><strong>Base block subsidy:</strong> 50 SMT</li>
+              <li><strong>Halving interval:</strong> 1,030,596 blocks</li>
+              <li><strong>Target block time:</strong> 60 seconds</li>
+              <li><strong>Approx. halving cadence:</strong> ~715.7 days</li>
+            </ul>
+            <p class="tokenomics-note">
+              Emission decreases through halvings. The percentage paid to masternodes follows a separate height-based schedule.
+            </p>
+          </article>
+
+          <article class="card tokenomics-card" data-reveal>
+            <h3>Reward Formula</h3>
+            <p class="tokenomics-formula">MN reward = (block subsidy + fees) x MN share</p>
+            <p class="tokenomics-formula">Miner reward = (block subsidy + fees) - MN reward</p>
+            <p class="tokenomics-note">
+              Because fees are included, real payouts can vary slightly from clean round values.
+            </p>
+          </article>
+        </div>
+
+        <article class="card tokenomics-card tokenomics-table-card" data-reveal>
+          <h3>Masternode Share Schedule (Mainnet)</h3>
+          <div class="tokenomics-table-wrap">
+            <table class="tokenomics-table" aria-label="Masternode share schedule">
+              <thead>
+                <tr>
+                  <th>Block Height Range</th>
+                  <th>MN Share</th>
+                  <th>Miner Share</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>0 - 101</td><td>20%</td><td>80%</td></tr>
+                <tr><td>102 - 262,901</td><td>25%</td><td>75%</td></tr>
+                <tr><td>262,902 - 525,701</td><td>30%</td><td>70%</td></tr>
+                <tr><td>525,702 - 788,501</td><td>35%</td><td>65%</td></tr>
+                <tr><td>788,502 - 1,051,301</td><td>37.5%</td><td>62.5%</td></tr>
+                <tr><td>1,051,302 - 1,314,101</td><td>40%</td><td>60%</td></tr>
+                <tr><td>1,314,102 - 1,576,901</td><td>42.5%</td><td>57.5%</td></tr>
+                <tr><td>1,576,902 - 1,839,701</td><td>45%</td><td>55%</td></tr>
+                <tr><td>1,839,702 - 2,365,301</td><td>47.5%</td><td>52.5%</td></tr>
+                <tr><td>2,365,302+</td><td>50%</td><td>50%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <div class="tokenomics-grid tokenomics-grid-bottom">
+          <article class="card tokenomics-card" data-reveal>
+            <h3>Why Rewards Can Go Up and Down</h3>
+            <p>SMT uses two independent timing layers:</p>
+            <ul class="tokenomics-list">
+              <li><strong>Halving clock:</strong> reduces subsidy every 1,030,596 blocks.</li>
+              <li><strong>MN share clock:</strong> increases MN percentage by schedule above.</li>
+            </ul>
+            <p class="tokenomics-note">
+              Result: the MN percentage can increase while the absolute MN payout per block can still drop after a halving.
+            </p>
+          </article>
+
+          <article class="card tokenomics-card" data-reveal>
+            <h3>Concrete Examples</h3>
+            <ul class="tokenomics-list">
+              <li><strong>Current early era:</strong> 50 subsidy x 25% = 12.5 MN</li>
+              <li><strong>After 1st halving:</strong> 25 subsidy x 37.5% = 9.375 MN</li>
+              <li><strong>At 50/50 activation:</strong> 12.5 subsidy x 50% = 6.25 MN</li>
+            </ul>
+            <p class="tokenomics-note">
+              These are base examples without fee variation.
+            </p>
+          </article>
+        </div>
+
+        <p class="tokenomics-source" data-reveal>
+          Source references:
+          <a href="https://github.com/SmartiesCoin/Smartiecoin/blob/main/src/validation.cpp" target="_blank" rel="noopener">validation.cpp</a>,
+          <a href="https://github.com/SmartiesCoin/Smartiecoin/blob/main/src/chainparams.cpp" target="_blank" rel="noopener">chainparams.cpp</a>,
+          <a href="https://github.com/SmartiesCoin/Smartiecoin/blob/main/src/test/subsidy_tests.cpp" target="_blank" rel="noopener">subsidy_tests.cpp</a>
+        </p>
       </div>
     </section>
 
@@ -152,7 +247,7 @@
         <div class="cards cards-3">
           <article class="card feature" data-reveal>
             <h3>1. PoW Layer</h3>
-            <p>Block validation with a target of roughly 2.5 minutes per block in network parameters.</p>
+            <p>Mainnet block validation currently targets roughly 60 seconds per block.</p>
           </article>
           <article class="card feature" data-reveal>
             <h3>2. Service Layer</h3>
