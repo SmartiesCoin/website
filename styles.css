@@ -349,10 +349,6 @@ h1 {
   pointer-events: none;
 }
 
-.stats-grid .stat-card-center {
-  grid-column: 2 / 3;
-}
-
 .stat-card span {
   position: relative;
   z-index: 1;
@@ -592,9 +588,6 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .stats-grid .stat-card-center {
-    grid-column: auto;
-  }
 }
 
 @media (max-width: 820px) {
