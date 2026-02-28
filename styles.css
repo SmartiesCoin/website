@@ -317,8 +317,15 @@ h1 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.cards-3 .card-last-center {
-  grid-column: 2 / 3;
+.snapshot-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.snapshot-grid > .card {
+  flex: 0 1 calc((100% - 2rem) / 3);
 }
 
 .card {
@@ -608,8 +615,8 @@ h1 {
     width: auto;
   }
 
-  .cards-3 .card-last-center {
-    grid-column: auto;
+  .snapshot-grid > .card {
+    flex-basis: 100%;
   }
 
   .stats-grid .stat-card-last-center {
