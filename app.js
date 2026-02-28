@@ -364,25 +364,28 @@
       let summaryData = null;
       let localPriceUsd = null;
       let sourceName = '';
+      let localSummaryCandidate = null;
 
       try {
         const localData = await loadLocalLiveData();
         if (isValidSummary(localData?.summary)) {
-          summaryData = localData.summary;
+          localSummaryCandidate = localData.summary;
           const parsedLocalPrice = Number(localData?.current_price?.last_price_usd);
           localPriceUsd = Number.isFinite(parsedLocalPrice) ? parsedLocalPrice : null;
-          sourceName = 'local cache';
         }
       } catch (_error) {
-        // fallback below
+        localSummaryCandidate = null;
       }
 
-      if (!summaryData) {
-        try {
-          const result = await fetchExplorerSummary();
-          summaryData = result.summary;
-          sourceName = result.source;
-        } catch (_error) {
+      try {
+        const result = await fetchExplorerSummary();
+        summaryData = result.summary;
+        sourceName = result.source;
+      } catch (_error) {
+        if (isValidSummary(localSummaryCandidate)) {
+          summaryData = localSummaryCandidate;
+          sourceName = 'local cache';
+        } else {
           summaryData = await fetchFallbackSummary();
           sourceName = 'allorigins fallback';
         }
