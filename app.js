@@ -125,6 +125,69 @@
     return summary.blockcount !== undefined && summary.difficulty !== undefined;
   };
 
+  const parseTickerRows = (payload) => {
+    if (Array.isArray(payload)) return payload;
+    if (Array.isArray(payload?.data)) return payload.data;
+    if (Array.isArray(payload?.result)) return payload.result;
+    return [];
+  };
+
+  const extractKlingexSmtPrice = (payload) => {
+    const rows = parseTickerRows(payload);
+    if (!rows.length) return null;
+
+    const smtTicker = rows.find((row) => {
+      const tickerId = String(row?.ticker_id ?? '').toUpperCase();
+      const baseCurrency = String(row?.base_currency ?? row?.base_asset_symbol ?? '').toUpperCase();
+      const quoteCurrency = String(row?.target_currency ?? row?.quote_currency ?? row?.quote_asset_symbol ?? '').toUpperCase();
+      return tickerId === 'SMT_USDT' || (baseCurrency === 'SMT' && quoteCurrency === 'USDT');
+    });
+
+    if (!smtTicker) return null;
+
+    const lastPrice = Number(smtTicker.last_price ?? smtTicker.price ?? smtTicker.last);
+    if (!Number.isFinite(lastPrice) || lastPrice <= 0) return null;
+    return lastPrice;
+  };
+
+  const fetchKlingexSmtTicker = async () => {
+    const tickersUrl = 'https://api.klingex.io/api/tickers';
+    const allOriginsRaw = `https://api.allorigins.win/raw?url=${encodeURIComponent(tickersUrl)}`;
+    const allOriginsGet = `https://api.allorigins.win/get?url=${encodeURIComponent(tickersUrl)}`;
+
+    const sources = [
+      { name: 'klingex direct', url: tickersUrl, parser: 'json' },
+      { name: 'klingex via allorigins raw', url: allOriginsRaw, parser: 'json' },
+      { name: 'klingex via allorigins get', url: allOriginsGet, parser: 'allorigins' }
+    ];
+
+    for (const source of sources) {
+      try {
+        const text = await fetchText(source.url);
+        let payload = null;
+
+        if (source.parser === 'json') {
+          payload = tryParseJson(text);
+        } else if (source.parser === 'allorigins') {
+          const wrapped = tryParseJson(text);
+          payload = wrapped?.contents ? tryParseJson(wrapped.contents) : null;
+        }
+
+        const priceUsd = extractKlingexSmtPrice(payload);
+        if (Number.isFinite(priceUsd)) {
+          return {
+            priceUsd,
+            source: source.name
+          };
+        }
+      } catch (_error) {
+        // continue to next source
+      }
+    }
+
+    throw new Error('Could not load SMT ticker from Klingex');
+  };
+
   const fetchExplorerSummary = async () => {
     const summaryUrl = 'https://explorer.smartiecoin.com/ext/getsummary';
     const allOriginsRaw = `https://api.allorigins.win/raw?url=${encodeURIComponent(summaryUrl)}`;
@@ -325,6 +388,17 @@
         }
       }
 
+      let exchangePriceUsd = null;
+      let exchangeSource = '';
+      try {
+        const exchangeTicker = await fetchKlingexSmtTicker();
+        exchangePriceUsd = Number(exchangeTicker?.priceUsd);
+        exchangeSource = String(exchangeTicker?.source || 'klingex');
+      } catch (_error) {
+        exchangePriceUsd = null;
+        exchangeSource = '';
+      }
+
       const masternodes = (() => {
         const online = summaryData.masternodeCountOnline;
         const offline = summaryData.masternodeCountOffline;
@@ -335,6 +409,7 @@
 
       const priceUsd = (() => {
         const candidate = [
+          exchangePriceUsd,
           localPriceUsd,
           summaryData.lastUSDPrice,
           summaryData.last_price_usd,
@@ -358,7 +433,9 @@
       setText('[data-stat="masternodes"]', masternodes);
 
       if (updatedEl) {
-        updatedEl.textContent = `(updated ${new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })})`;
+        const updateTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        const priceSource = (Number.isFinite(exchangePriceUsd) ? exchangeSource : sourceName);
+        updatedEl.textContent = `(updated ${updateTime}; stats: ${sourceName}; price: ${priceSource})`;
       }
 
       if (statusEl) {
