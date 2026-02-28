@@ -125,6 +125,11 @@
     return summary.blockcount !== undefined && summary.difficulty !== undefined;
   };
 
+  const isValidMasternodeStats = (stats) => {
+    if (!stats || typeof stats !== 'object') return false;
+    return stats.counts !== undefined || stats.locked !== undefined || stats.roi !== undefined;
+  };
+
   const parseTickerRows = (payload) => {
     if (Array.isArray(payload)) return payload;
     if (Array.isArray(payload?.data)) return payload.data;
@@ -224,6 +229,44 @@
     }
 
     throw new Error('Could not load summary from any source');
+  };
+
+  const fetchExplorerMasternodeStats = async () => {
+    const statsUrl = 'https://explorer.smartiecoin.com/ext/getmasternodestats';
+    const allOriginsRaw = `https://api.allorigins.win/raw?url=${encodeURIComponent(statsUrl)}`;
+    const allOriginsGet = `https://api.allorigins.win/get?url=${encodeURIComponent(statsUrl)}`;
+    const jinaMirror = 'https://r.jina.ai/http://explorer.smartiecoin.com/ext/getmasternodestats';
+
+    const sources = [
+      { name: 'explorer', url: statsUrl, parser: 'json' },
+      { name: 'allorigins raw', url: allOriginsRaw, parser: 'json' },
+      { name: 'allorigins get', url: allOriginsGet, parser: 'allorigins' },
+      { name: 'jina mirror', url: jinaMirror, parser: 'jina' }
+    ];
+
+    for (const source of sources) {
+      try {
+        const text = await fetchText(source.url);
+        let parsed = null;
+
+        if (source.parser === 'json') {
+          parsed = tryParseJson(text);
+        } else if (source.parser === 'allorigins') {
+          const wrapped = tryParseJson(text);
+          parsed = wrapped?.contents ? tryParseJson(wrapped.contents) : null;
+        } else if (source.parser === 'jina') {
+          parsed = extractJsonObject(text);
+        }
+
+        if (isValidMasternodeStats(parsed)) {
+          return { stats: parsed, source: source.name };
+        }
+      } catch (_error) {
+        // continue to next source
+      }
+    }
+
+    throw new Error('Could not load masternode stats from any source');
   };
 
   const fetchMetricViaAllOrigins = async (path) => {
@@ -362,8 +405,10 @@
 
     try {
       let summaryData = null;
+      let masternodeStatsData = null;
       let localPriceUsd = null;
       let sourceName = '';
+      let masternodeSourceName = '';
       let localSummaryCandidate = null;
 
       try {
@@ -402,6 +447,15 @@
         exchangeSource = '';
       }
 
+      try {
+        const mnResult = await fetchExplorerMasternodeStats();
+        masternodeStatsData = mnResult.stats;
+        masternodeSourceName = mnResult.source;
+      } catch (_error) {
+        masternodeStatsData = null;
+        masternodeSourceName = '';
+      }
+
       const masternodes = (() => {
         const online = summaryData.masternodeCountOnline;
         const offline = summaryData.masternodeCountOffline;
@@ -427,6 +481,10 @@
         return supply * priceUsd;
       })();
 
+      const mnLocked = Number(masternodeStatsData?.locked?.total_smt);
+      const roi15k = Number(masternodeStatsData?.roi?.regular_annual_percent);
+      const roi75k = Number(masternodeStatsData?.roi?.evo_annual_percent);
+
       setText('[data-stat="blockcount"]', formatNumber(summaryData.blockcount));
       setText('[data-stat="difficulty"]', formatDifficulty(summaryData.difficulty));
       setText('[data-stat="hashrate"]', formatHashrate(summaryData.hashrate));
@@ -434,11 +492,15 @@
       setText('[data-stat="price"]', formatUsd(priceUsd));
       setText('[data-stat="marketcap"]', formatUsd(marketCapUsd, 2));
       setText('[data-stat="masternodes"]', masternodes);
+      setText('[data-stat="mnlocked"]', Number.isFinite(mnLocked) ? `${formatNumber(mnLocked, 2)} SMT` : '--');
+      setText('[data-stat="roi15k"]', Number.isFinite(roi15k) ? `${formatNumber(roi15k, 2)}%` : '--');
+      setText('[data-stat="roi75k"]', Number.isFinite(roi75k) ? `${formatNumber(roi75k, 2)}%` : '--');
 
       if (updatedEl) {
         const updateTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
         const priceSource = (Number.isFinite(exchangePriceUsd) ? exchangeSource : sourceName);
-        updatedEl.textContent = `(updated ${updateTime}; stats: ${sourceName}; price: ${priceSource})`;
+        const mnSource = (masternodeSourceName || sourceName);
+        updatedEl.textContent = `(updated ${updateTime}; stats: ${sourceName}; mn: ${mnSource}; price: ${priceSource})`;
       }
 
       if (statusEl) {
@@ -452,6 +514,9 @@
       setText('[data-stat="price"]', '--');
       setText('[data-stat="marketcap"]', '--');
       setText('[data-stat="masternodes"]', '--');
+      setText('[data-stat="mnlocked"]', '--');
+      setText('[data-stat="roi15k"]', '--');
+      setText('[data-stat="roi75k"]', '--');
 
       if (updatedEl) {
         updatedEl.textContent = '(could not load explorer stats right now)';
