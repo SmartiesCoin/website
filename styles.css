@@ -549,6 +549,12 @@ h1 {
   border-color: #4862ab;
 }
 
+.cards-2 .link-card-last-center {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: min(100%, calc((100% - 1rem) / 2));
+}
+
 .site-footer {
   padding: 1.1rem 0 1.4rem;
   border-top: 1px solid #27335a;
@@ -590,6 +596,12 @@ h1 {
   .cards-3,
   .cards-2 {
     grid-template-columns: 1fr;
+  }
+
+  .cards-2 .link-card-last-center {
+    grid-column: auto;
+    justify-self: stretch;
+    width: auto;
   }
 
   .stats-grid .stat-card-last-center {
