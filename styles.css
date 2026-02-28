@@ -317,6 +317,10 @@ h1 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.cards-3 .card-last-center {
+  grid-column: 2 / 3;
+}
+
 .card {
   padding: 1rem;
 }
@@ -602,6 +606,10 @@ h1 {
     grid-column: auto;
     justify-self: stretch;
     width: auto;
+  }
+
+  .cards-3 .card-last-center {
+    grid-column: auto;
   }
 
   .stats-grid .stat-card-last-center {
