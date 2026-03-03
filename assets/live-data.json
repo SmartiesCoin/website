@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-03-03T22:39:34Z",
+  "fetched_at": "2026-03-03T22:58:47Z",
   "summary": {
-    "difficulty": 0.003198551805460111,
+    "difficulty": 0.002741855640704325,
     "difficultyHybrid": "",
-    "supply": 489900,
-    "hashrate": "212616.2999",
+    "supply": 490800,
+    "hashrate": "210999.8668",
     "lastPrice": 0.00492177,
     "lastUSDPrice": 0.00492177,
-    "connections": 46,
-    "blockcount": 9800,
+    "connections": 45,
+    "blockcount": 9818,
     "masternodeCountOnline": 16,
     "masternodeCountOffline": 0
   },
