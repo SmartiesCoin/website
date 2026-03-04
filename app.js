@@ -333,6 +333,91 @@
     };
   };
 
+  /* ── Instant-render helpers ─────────────────────────────────────── */
+
+  const CACHE_KEY = 'smt_live_stats';
+
+  const saveToLocalStorage = (data) => {
+    try {
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ ...data, _ts: Date.now() }));
+    } catch (_e) { /* quota / private mode – ignore */ }
+  };
+
+  const loadFromLocalStorage = () => {
+    try {
+      const raw = localStorage.getItem(CACHE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (_e) { return null; }
+  };
+
+  const renderStats = (summaryData, priceUsd, marketCapUsd, masternodes, mnLocked, roi15k, roi75k) => {
+    setText('[data-stat="blockcount"]', formatNumber(summaryData.blockcount));
+    setText('[data-stat="difficulty"]', formatDifficulty(summaryData.difficulty));
+    setText('[data-stat="hashrate"]', formatHashrate(summaryData.hashrate));
+    setText('[data-stat="supply"]', `${formatNumber(summaryData.supply, 2)} SMT`);
+    setText('[data-stat="price"]', formatUsd(priceUsd));
+    setText('[data-stat="marketcap"]', formatUsd(marketCapUsd, 2));
+    setText('[data-stat="masternodes"]', masternodes);
+    setText('[data-stat="mnlocked"]', Number.isFinite(mnLocked) ? `${formatNumber(mnLocked, 2)} SMT` : '--');
+    setText('[data-stat="roi15k"]', Number.isFinite(roi15k) ? `${formatNumber(roi15k, 2)}%` : '--');
+    setText('[data-stat="roi75k"]', Number.isFinite(roi75k) ? `${formatNumber(roi75k, 2)}%` : '--');
+  };
+
+  const computeDerivedStats = (summaryData, priceUsd, masternodeStatsData) => {
+    const masternodes = (() => {
+      const online = summaryData.masternodeCountOnline;
+      const offline = summaryData.masternodeCountOffline;
+      if (online === undefined || offline === undefined) return '--';
+      if (String(online) === '-' || String(offline) === '-') return 'N/A';
+      return `${online}/${offline}`;
+    })();
+
+    const marketCapUsd = (() => {
+      const supply = Number(summaryData.supply);
+      if (!Number.isFinite(priceUsd) || !Number.isFinite(supply)) return null;
+      return supply * priceUsd;
+    })();
+
+    const mnLocked = Number(masternodeStatsData?.locked?.total_smt);
+    const roi15k = Number(masternodeStatsData?.roi?.regular_annual_percent);
+    const roi75k = Number(masternodeStatsData?.roi?.evo_annual_percent);
+
+    return { masternodes, marketCapUsd, mnLocked, roi15k, roi75k };
+  };
+
+  /** Show cached stats instantly so the user never sees bare "--" placeholders. */
+  const renderCachedStats = async () => {
+    const updatedEl = document.querySelector('#stats-updated');
+
+    // Try localStorage first (has the freshest cached data from a previous visit)
+    const lsData = loadFromLocalStorage();
+    if (lsData && isValidSummary(lsData.summary)) {
+      const priceUsd = Number(lsData.priceUsd);
+      const price = Number.isFinite(priceUsd) ? priceUsd : null;
+      const derived = computeDerivedStats(lsData.summary, price, lsData.masternodeStats);
+      renderStats(lsData.summary, price, derived.marketCapUsd, derived.masternodes, derived.mnLocked, derived.roi15k, derived.roi75k);
+      if (updatedEl) updatedEl.textContent = '(cached – refreshing\u2026)';
+      return true;
+    }
+
+    // Fall back to the static live-data.json bundled with the site
+    try {
+      const localData = await loadLocalLiveData();
+      if (isValidSummary(localData?.summary)) {
+        const parsedPrice = Number(localData?.current_price?.last_price_usd);
+        const price = Number.isFinite(parsedPrice) ? parsedPrice : null;
+        const derived = computeDerivedStats(localData.summary, price, null);
+        renderStats(localData.summary, price, derived.marketCapUsd, derived.masternodes, derived.mnLocked, derived.roi15k, derived.roi75k);
+        if (updatedEl) updatedEl.textContent = '(cached – refreshing\u2026)';
+        return true;
+      }
+    } catch (_e) { /* file missing – ignore */ }
+
+    return false;
+  };
+
+  /* ── End instant-render helpers ──────────────────────────────────── */
+
   const updateReleaseData = async () => {
     try {
       const localData = await loadLocalLiveData();
@@ -404,11 +489,7 @@
     const updatedEl = document.querySelector('#stats-updated');
 
     try {
-      let summaryData = null;
-      let masternodeStatsData = null;
       let localPriceUsd = null;
-      let sourceName = '';
-      let masternodeSourceName = '';
       let localSummaryCandidate = null;
 
       try {
@@ -422,47 +503,42 @@
         localSummaryCandidate = null;
       }
 
-      try {
-        const result = await fetchExplorerSummary();
-        summaryData = result.summary;
-        sourceName = result.source;
-      } catch (_error) {
-        if (isValidSummary(localSummaryCandidate)) {
-          summaryData = localSummaryCandidate;
-          sourceName = 'local cache';
-        } else {
-          summaryData = await fetchFallbackSummary();
-          sourceName = 'allorigins fallback';
-        }
+      // Fetch all three data sources in parallel instead of sequentially
+      const [summaryResult, exchangeResult, mnResult] = await Promise.allSettled([
+        fetchExplorerSummary(),
+        fetchKlingexSmtTicker(),
+        fetchExplorerMasternodeStats()
+      ]);
+
+      // Resolve summary
+      let summaryData;
+      let sourceName;
+      if (summaryResult.status === 'fulfilled') {
+        summaryData = summaryResult.value.summary;
+        sourceName = summaryResult.value.source;
+      } else if (isValidSummary(localSummaryCandidate)) {
+        summaryData = localSummaryCandidate;
+        sourceName = 'local cache';
+      } else {
+        summaryData = await fetchFallbackSummary();
+        sourceName = 'allorigins fallback';
       }
 
+      // Resolve exchange price
       let exchangePriceUsd = null;
       let exchangeSource = '';
-      try {
-        const exchangeTicker = await fetchKlingexSmtTicker();
-        exchangePriceUsd = Number(exchangeTicker?.priceUsd);
-        exchangeSource = String(exchangeTicker?.source || 'klingex');
-      } catch (_error) {
-        exchangePriceUsd = null;
-        exchangeSource = '';
+      if (exchangeResult.status === 'fulfilled') {
+        exchangePriceUsd = Number(exchangeResult.value?.priceUsd);
+        exchangeSource = String(exchangeResult.value?.source || 'klingex');
       }
 
-      try {
-        const mnResult = await fetchExplorerMasternodeStats();
-        masternodeStatsData = mnResult.stats;
-        masternodeSourceName = mnResult.source;
-      } catch (_error) {
-        masternodeStatsData = null;
-        masternodeSourceName = '';
+      // Resolve masternode stats
+      let masternodeStatsData = null;
+      let masternodeSourceName = '';
+      if (mnResult.status === 'fulfilled') {
+        masternodeStatsData = mnResult.value.stats;
+        masternodeSourceName = mnResult.value.source;
       }
-
-      const masternodes = (() => {
-        const online = summaryData.masternodeCountOnline;
-        const offline = summaryData.masternodeCountOffline;
-        if (online === undefined || offline === undefined) return '--';
-        if (String(online) === '-' || String(offline) === '-') return 'N/A';
-        return `${online}/${offline}`;
-      })();
 
       const priceUsd = (() => {
         const candidate = [
@@ -475,26 +551,11 @@
         return Number.isFinite(candidate) ? candidate : null;
       })();
 
-      const marketCapUsd = (() => {
-        const supply = Number(summaryData.supply);
-        if (!Number.isFinite(priceUsd) || !Number.isFinite(supply)) return null;
-        return supply * priceUsd;
-      })();
+      const derived = computeDerivedStats(summaryData, priceUsd, masternodeStatsData);
+      renderStats(summaryData, priceUsd, derived.marketCapUsd, derived.masternodes, derived.mnLocked, derived.roi15k, derived.roi75k);
 
-      const mnLocked = Number(masternodeStatsData?.locked?.total_smt);
-      const roi15k = Number(masternodeStatsData?.roi?.regular_annual_percent);
-      const roi75k = Number(masternodeStatsData?.roi?.evo_annual_percent);
-
-      setText('[data-stat="blockcount"]', formatNumber(summaryData.blockcount));
-      setText('[data-stat="difficulty"]', formatDifficulty(summaryData.difficulty));
-      setText('[data-stat="hashrate"]', formatHashrate(summaryData.hashrate));
-      setText('[data-stat="supply"]', `${formatNumber(summaryData.supply, 2)} SMT`);
-      setText('[data-stat="price"]', formatUsd(priceUsd));
-      setText('[data-stat="marketcap"]', formatUsd(marketCapUsd, 2));
-      setText('[data-stat="masternodes"]', masternodes);
-      setText('[data-stat="mnlocked"]', Number.isFinite(mnLocked) ? `${formatNumber(mnLocked, 2)} SMT` : '--');
-      setText('[data-stat="roi15k"]', Number.isFinite(roi15k) ? `${formatNumber(roi15k, 2)}%` : '--');
-      setText('[data-stat="roi75k"]', Number.isFinite(roi75k) ? `${formatNumber(roi75k, 2)}%` : '--');
+      // Persist to localStorage so next visit renders instantly
+      saveToLocalStorage({ summary: summaryData, priceUsd, masternodeStats: masternodeStatsData });
 
       if (updatedEl) {
         const updateTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
@@ -528,6 +589,8 @@
     }
   };
 
+  // Show cached data instantly, then fetch fresh data in background
+  renderCachedStats();
   updateReleaseData();
   updateExplorerStats();
   setInterval(updateExplorerStats, 60000);
