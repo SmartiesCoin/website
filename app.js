@@ -598,7 +598,7 @@
           summaryData.lastUSDPrice,
           summaryData.last_price_usd,
           summaryData.price_usd
-        ].map((v) => Number(v)).find((v) => Number.isFinite(v));
+        ].map((v) => Number(v)).find((v) => Number.isFinite(v) && v > 0);
         return Number.isFinite(candidate) ? candidate : null;
       })();
 
