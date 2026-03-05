@@ -193,6 +193,52 @@
     throw new Error('Could not load SMT ticker from Klingex');
   };
 
+  const extractGateviaSmtPrice = (quotes) => {
+    if (!Array.isArray(quotes)) return null;
+    const smtQuote = quotes.find((q) => {
+      const symbol = String(q?.symbol ?? '').toUpperCase();
+      return symbol === 'SMT_USDT';
+    });
+    if (!smtQuote) return null;
+
+    const lastPrice = Number(smtQuote.last);
+    if (Number.isFinite(lastPrice) && lastPrice > 0) return lastPrice;
+
+    const bid = Number(smtQuote.bid);
+    const ask = Number(smtQuote.ask);
+    if (Number.isFinite(bid) && bid > 0 && Number.isFinite(ask) && ask > 0) {
+      return (bid + ask) / 2;
+    }
+    if (Number.isFinite(ask) && ask > 0) return ask;
+    if (Number.isFinite(bid) && bid > 0) return bid;
+    return null;
+  };
+
+  const fetchGateviaSmtTicker = async () => {
+    const quotesUrl = 'https://api.gatevia.io/public/markets/quotes';
+    const allOriginsRaw = `https://api.allorigins.win/raw?url=${encodeURIComponent(quotesUrl)}`;
+
+    const sources = [
+      { name: 'gatevia direct', url: quotesUrl, parser: 'json' },
+      { name: 'gatevia via allorigins raw', url: allOriginsRaw, parser: 'json' }
+    ];
+
+    for (const source of sources) {
+      try {
+        const text = await fetchText(source.url);
+        const payload = tryParseJson(text);
+        const priceUsd = extractGateviaSmtPrice(payload);
+        if (Number.isFinite(priceUsd)) {
+          return { priceUsd, source: source.name };
+        }
+      } catch (_error) {
+        // continue to next source
+      }
+    }
+
+    throw new Error('Could not load SMT ticker from Gatevia');
+  };
+
   const fetchExplorerSummary = async () => {
     const summaryUrl = 'https://explorer.smartiecoin.com/ext/getsummary';
     const allOriginsRaw = `https://api.allorigins.win/raw?url=${encodeURIComponent(summaryUrl)}`;
@@ -504,9 +550,10 @@
       }
 
       // Fetch all three data sources in parallel instead of sequentially
-      const [summaryResult, exchangeResult, mnResult] = await Promise.allSettled([
+      const [summaryResult, klingexResult, gateviaResult, mnResult] = await Promise.allSettled([
         fetchExplorerSummary(),
         fetchKlingexSmtTicker(),
+        fetchGateviaSmtTicker(),
         fetchExplorerMasternodeStats()
       ]);
 
@@ -524,12 +571,16 @@
         sourceName = 'allorigins fallback';
       }
 
-      // Resolve exchange price
+      // Resolve exchange price (prefer Klingex, fall back to Gatevia)
       let exchangePriceUsd = null;
       let exchangeSource = '';
-      if (exchangeResult.status === 'fulfilled') {
-        exchangePriceUsd = Number(exchangeResult.value?.priceUsd);
-        exchangeSource = String(exchangeResult.value?.source || 'klingex');
+      if (klingexResult.status === 'fulfilled') {
+        exchangePriceUsd = Number(klingexResult.value?.priceUsd);
+        exchangeSource = String(klingexResult.value?.source || 'klingex');
+      }
+      if (!Number.isFinite(exchangePriceUsd) && gateviaResult.status === 'fulfilled') {
+        exchangePriceUsd = Number(gateviaResult.value?.priceUsd);
+        exchangeSource = String(gateviaResult.value?.source || 'gatevia');
       }
 
       // Resolve masternode stats
