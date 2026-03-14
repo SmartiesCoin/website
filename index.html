@@ -122,10 +122,15 @@
 
           <article class="card tokenomics-card" data-reveal>
             <h3>Reward Formula</h3>
-            <p class="tokenomics-formula">MN reward = (block subsidy + fees) x MN share</p>
-            <p class="tokenomics-formula">Miner reward = (block subsidy + fees) - MN reward</p>
+            <p class="tokenomics-formula"><strong>Normal blocks:</strong></p>
+            <p class="tokenomics-formula">MN reward = block subsidy x MN share</p>
+            <p class="tokenomics-formula">Miner reward = block subsidy - MN reward</p>
+            <p class="tokenomics-formula" style="margin-top:.75em"><strong>Superblocks</strong> (every 21,600 blocks):</p>
+            <p class="tokenomics-formula">Treasury = block subsidy x 10%</p>
+            <p class="tokenomics-formula">MN reward = (block subsidy - treasury) x MN share</p>
+            <p class="tokenomics-formula">Miner reward = block subsidy - treasury - MN reward</p>
             <p class="tokenomics-note">
-              Because fees are included, real payouts can vary slightly from clean round values.
+              Fees are added on top and included in the miner payout. Real payouts can vary slightly from clean round values.
             </p>
           </article>
         </div>
@@ -157,28 +162,43 @@
           </div>
         </article>
 
+        <article class="card tokenomics-card tokenomics-table-card" data-reveal>
+          <h3>Treasury &amp; Governance (since v0.1.3)</h3>
+          <p>Every <strong>21,600 blocks</strong> (~15 days), a superblock allocates <strong>10%</strong> of the block reward to a decentralized treasury.</p>
+          <ul class="tokenomics-list">
+            <li><strong>Superblock cycle:</strong> 21,600 blocks (~15 days)</li>
+            <li><strong>Treasury share:</strong> 10% of block subsidy</li>
+            <li><strong>Proposal cost:</strong> 5 SMT (anti-spam)</li>
+          </ul>
+          <p class="tokenomics-note">
+            Anyone can submit a funding proposal. Masternode operators vote to approve or reject it. Approved proposals are paid automatically by the network in the next superblock. This enables decentralized funding for development, infrastructure, marketing, and community initiatives.
+          </p>
+        </article>
+
         <div class="tokenomics-grid tokenomics-grid-bottom">
           <article class="card tokenomics-card" data-reveal>
             <h3>Why Rewards Can Go Up and Down</h3>
-            <p>SMT uses two independent timing layers:</p>
+            <p>SMT uses three independent timing layers:</p>
             <ul class="tokenomics-list">
               <li><strong>Halving clock:</strong> reduces subsidy every 1,030,596 blocks.</li>
               <li><strong>MN share clock:</strong> increases MN percentage by schedule above.</li>
+              <li><strong>Superblock cycle:</strong> every 21,600 blocks, 10% goes to treasury.</li>
             </ul>
             <p class="tokenomics-note">
-              Result: the MN percentage can increase while the absolute MN payout per block can still drop after a halving.
+              Result: the MN percentage can increase while the absolute MN payout per block can still drop after a halving. On superblocks, treasury is deducted before the MN/miner split.
             </p>
           </article>
 
           <article class="card tokenomics-card" data-reveal>
             <h3>Concrete Examples</h3>
             <ul class="tokenomics-list">
-              <li><strong>Current early era:</strong> 50 subsidy x 25% = 12.5 MN</li>
-              <li><strong>After 1st halving:</strong> 25 subsidy x 37.5% = 9.375 MN</li>
-              <li><strong>At 50/50 activation:</strong> 12.5 subsidy x 50% = 6.25 MN</li>
+              <li><strong>Normal block (current):</strong> 50 x 25% = 12.50 MN / 37.50 miner</li>
+              <li><strong>Superblock (current):</strong> 5.00 treasury / 11.25 MN / 33.75 miner</li>
+              <li><strong>After 1st halving:</strong> 25 x 37.5% = 9.375 MN / 15.625 miner</li>
+              <li><strong>At 50/50 era:</strong> 12.5 x 50% = 6.25 MN / 6.25 miner</li>
             </ul>
             <p class="tokenomics-note">
-              These are base examples without fee variation.
+              These are base examples without fee variation. Superblock treasury applies only once every 21,600 blocks.
             </p>
           </article>
         </div>
