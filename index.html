@@ -116,19 +116,19 @@
               <li><strong>Approx. halving cadence:</strong> ~694 days</li>
             </ul>
             <p class="tokenomics-note">
-              Emission decreases through halvings. Since v0.1.4 (block 40,000), the reward split is fixed at 45% miner / 45% masternode / 10% treasury.
+              Emission decreases through halvings. Since v0.1.4 (block 40,000), the reward split is fixed at 45% miner / 45% masternode / 10% governance superblocks.
             </p>
           </article>
 
           <article class="card tokenomics-card" data-reveal>
             <h3>Reward Formula (since v0.1.4)</h3>
             <p class="tokenomics-formula"><strong>Every block (from block 40,000):</strong></p>
-            <p class="tokenomics-formula">Treasury reserve = block subsidy x 10%</p>
-            <p class="tokenomics-formula">Distributable = block subsidy - treasury reserve</p>
+            <p class="tokenomics-formula">Governance reserve = block subsidy x 10%</p>
+            <p class="tokenomics-formula">Distributable = block subsidy - governance reserve</p>
             <p class="tokenomics-formula">MN reward = distributable x 50% (fixed)</p>
             <p class="tokenomics-formula">Miner reward = distributable x 50% (fixed)</p>
             <p class="tokenomics-note">
-              The 10% treasury reserve is deducted from every block. It is only paid out in superblocks (every 21,600 blocks) if governance proposals are approved. If no proposals are approved, those coins are <strong>not created</strong>, reducing the effective supply. The 45/45/10 split is fixed and no longer changes with block height.
+              10% of the block subsidy is reserved for governance. This is <strong>not a dev fee</strong> — it is only paid out in superblocks (every 21,600 blocks) when the community approves funding proposals via masternode voting. If no proposals are approved, those coins are <strong>never created</strong>, reducing the effective supply. The 45/45/10 split is fixed and no longer changes with block height.
             </p>
           </article>
         </div>
@@ -142,7 +142,7 @@
                   <th>Block Height Range</th>
                   <th>Miner</th>
                   <th>Masternode</th>
-                  <th>Treasury</th>
+                  <th>Governance</th>
                 </tr>
               </thead>
               <tbody>
@@ -154,21 +154,21 @@
             </table>
           </div>
           <p class="tokenomics-note">
-            Since v0.1.4, the reward split is permanently fixed at 45/45/10. The treasury 10% is only minted when governance proposals are approved.
+            Since v0.1.4, the reward split is permanently fixed at 45/45/10. The 10% governance portion is only minted in superblocks when community proposals are approved — there is no dev fee.
           </p>
         </article>
 
         <article class="card tokenomics-card tokenomics-table-card" data-reveal>
-          <h3>Treasury &amp; Governance (since v0.1.3)</h3>
-          <p>10% of the block subsidy is reserved from <strong>every block</strong>. These reserved coins are only paid out in <strong>superblocks</strong> (every 21,600 blocks / ~15 days) when governance proposals are approved by masternode vote.</p>
+          <h3>Governance Superblocks (since v0.1.3)</h3>
+          <p>10% of the block subsidy is reserved for <strong>community governance</strong>. These coins are only created in <strong>superblocks</strong> (every 21,600 blocks / ~15 days) when funding proposals are approved by masternode vote. <strong>This is not a dev fee.</strong></p>
           <ul class="tokenomics-list">
-            <li><strong>Treasury reserve:</strong> 10% of every block subsidy</li>
+            <li><strong>Governance reserve:</strong> 10% of every block subsidy</li>
             <li><strong>Superblock cycle:</strong> 21,600 blocks (~15 days)</li>
             <li><strong>Proposal cost:</strong> 5 SMT (anti-spam)</li>
-            <li><strong>No approved proposals?</strong> Reserved coins are not created, reducing effective emission</li>
+            <li><strong>No approved proposals?</strong> Coins are never created, reducing effective emission</li>
           </ul>
           <p class="tokenomics-note">
-            Anyone can submit a funding proposal. Masternode operators vote to approve or reject it. Approved proposals are paid automatically by the network in the next superblock. If no proposals are approved, the treasury portion is never minted, resulting in a lower actual supply than the theoretical max.
+            Anyone can submit a funding proposal for development, infrastructure, marketing, or community initiatives. Masternode operators vote to approve or reject it. Approved proposals are paid automatically by the network in the next superblock. No individual or team has control over these funds — it is fully decentralized.
           </p>
         </article>
 
@@ -178,23 +178,23 @@
             <p>SMT uses two timing layers (since v0.1.4):</p>
             <ul class="tokenomics-list">
               <li><strong>Halving clock:</strong> reduces subsidy every 1,000,000 blocks (~694 days).</li>
-              <li><strong>Treasury reserve:</strong> 10% reserved every block; paid only if governance proposals pass.</li>
+              <li><strong>Governance superblocks:</strong> 10% reserved every block; only minted if community proposals pass.</li>
             </ul>
             <p class="tokenomics-note">
-              The 45/45/10 split is fixed. Only halvings change the absolute payout amounts. Without approved proposals, the treasury portion is never created.
+              The 45/45/10 split is fixed. Only halvings change the absolute payout amounts. Without approved proposals, the governance portion is never created.
             </p>
           </article>
 
           <article class="card tokenomics-card" data-reveal>
             <h3>Concrete Examples (v0.1.4)</h3>
             <ul class="tokenomics-list">
-              <li><strong>Normal block:</strong> 50 base - 5 treasury = 45 &rarr; 22.5 MN / 22.5 miner</li>
-              <li><strong>Superblock w/ proposal:</strong> 5 SMT paid to proposal + 22.5 MN / 22.5 miner</li>
+              <li><strong>Normal block:</strong> 50 base - 5 governance = 45 &rarr; 22.5 MN / 22.5 miner</li>
+              <li><strong>Superblock w/ proposal:</strong> 5 SMT paid to approved proposal + 22.5 MN / 22.5 miner</li>
               <li><strong>Superblock w/o proposal:</strong> 5 SMT not created &rarr; 22.5 MN / 22.5 miner</li>
-              <li><strong>After 1st halving:</strong> 25 base - 2.5 treasury = 22.5 &rarr; 11.25 MN / 11.25 miner</li>
+              <li><strong>After 1st halving:</strong> 25 base - 2.5 governance = 22.5 &rarr; 11.25 MN / 11.25 miner</li>
             </ul>
             <p class="tokenomics-note">
-              These are base examples without fee variation. The 10% treasury reserve applies to every block. Actual max supply depends on governance activity (~90M without proposals, up to 100M with full governance).
+              These are base examples without fee variation. The 10% governance reserve applies to every block. Actual max supply depends on governance activity (~90M without proposals, up to 100M with full governance). There is no dev fee — governance funds are controlled by masternode voting.
             </p>
           </article>
         </div>
