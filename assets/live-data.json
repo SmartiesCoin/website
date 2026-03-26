@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-03-26T11:35:49Z",
+  "fetched_at": "2026-03-26T12:38:45Z",
   "summary": {
-    "difficulty": 0.004138715260937046,
+    "difficulty": 0.004445843138361613,
     "difficultyHybrid": "",
-    "supply": 1957714,
-    "hashrate": "328575.4494",
+    "supply": 1960504,
+    "hashrate": "337172.3503",
     "lastPrice": 0.0028937125,
     "lastUSDPrice": 0.0028937125,
-    "connections": 53,
-    "blockcount": 40440,
+    "connections": 59,
+    "blockcount": 40502,
     "masternodeCountOnline": 40,
     "masternodeCountOffline": 0
   },
@@ -17,9 +17,9 @@
     "last_price_usd": 0.0028937125
   },
   "release": {
-    "tag_name": "v0.1.6",
-    "name": "Smartiecoin Core v0.1.6",
-    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.1.6",
-    "published_at": "2026-03-26T05:08:21Z"
+    "tag_name": "v0.1.7",
+    "name": "Smartiecoin Core v0.1.7",
+    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.1.7",
+    "published_at": "2026-03-26T12:18:26Z"
   }
 }
