@@ -212,7 +212,7 @@
       <div class="container">
         <div class="section-head" data-reveal>
           <h2>Live Stats</h2>
-          <p>Auto-updated every 60 seconds from Smartiecoin explorer + Klingex + Gatevia exchange APIs.</p>
+          <p>Auto-updated every 60 seconds from Smartiecoin explorer + Klingex + Gatevia + Nestex exchange APIs.</p>
         </div>
 
         <div class="cards cards-3 stats-grid" data-reveal>
@@ -262,6 +262,7 @@
           Source: <a href="https://explorer.smartiecoin.com/info" target="_blank" rel="noopener">explorer.smartiecoin.com</a>
           + <a href="https://klingex.io/trade/SMT-USDT" target="_blank" rel="noopener">klingex.io (SMT/USDT)</a>
           + <a href="https://gatevia.io/exchange/SMT_USDT" target="_blank" rel="noopener">gatevia.io (SMT/USDT)</a>
+          + <a href="https://nestex.io" target="_blank" rel="noopener">nestex.io (SMT)</a>
           <span id="stats-updated">(waiting for first update)</span>
         </p>
       </div>
@@ -271,21 +272,33 @@
       <div class="container">
         <div class="section-head" data-reveal>
           <h2>SMT Architecture</h2>
-          <p>Initial technical stack for the ecosystem rollout.</p>
+          <p>Full-featured blockchain with instant transactions, privacy, governance, and masternode infrastructure.</p>
         </div>
 
         <div class="cards cards-3">
           <article class="card feature" data-reveal>
-            <h3>1. PoW Layer</h3>
-            <p>Mainnet block validation currently targets roughly 60 seconds per block.</p>
+            <h3>1. PoW Layer (Yespower)</h3>
+            <p>CPU-only mining with 60-second blocks. No GPU, no ASIC — decentralized and accessible to everyone.</p>
           </article>
           <article class="card feature" data-reveal>
-            <h3>2. Service Layer</h3>
-            <p>Masternodes for advanced services, network coordination, and privacy-related tooling.</p>
+            <h3>2. InstantSend + ChainLocks</h3>
+            <p>Transactions locked in 2-3 seconds via LLMQ quorums. ChainLocks prevent 51% attacks and block reorganizations.</p>
           </article>
           <article class="card feature" data-reveal>
-            <h3>3. Privacy Layer</h3>
-            <p>Wallet-level CoinJoin plus optional Tor v3 operation for transport privacy.</p>
+            <h3>3. Masternodes (ProTx)</h3>
+            <p>Deterministic masternodes with BLS signatures, operator/owner separation, and automatic PoSe monitoring. Easy setup with Plug &amp; Play Wizard.</p>
+          </article>
+          <article class="card feature" data-reveal>
+            <h3>4. PrivateSend (CoinJoin)</h3>
+            <p>Wallet-level coin mixing through masternodes for on-chain privacy. Plus optional Tor v3 for transport-level anonymity.</p>
+          </article>
+          <article class="card feature" data-reveal>
+            <h3>5. On-Chain Governance</h3>
+            <p>Masternode operators vote on budget proposals. Approved proposals are funded automatically via superblock payouts every 21,600 blocks.</p>
+          </article>
+          <article class="card feature" data-reveal>
+            <h3>6. LLMQ Quorums</h3>
+            <p>Long-Living Masternode Quorums power InstantSend, ChainLocks, and governance. Currently using LLMQ_10_60 and LLMQ_10_75 (rotated).</p>
           </article>
         </div>
       </div>
@@ -296,14 +309,16 @@
         <div>
           <h2>Current Status</h2>
           <p>
-            SMT is positioned as a secondary coin integrated with the Ethernova ecosystem. The immediate
-            goal is a stable base for CPU mining, privacy, and masternode service operation.
+            SMT is a secondary coin integrated with the Ethernova ecosystem. The network is fully operational with
+            CPU mining, InstantSend, ChainLocks, PrivateSend, masternodes, and on-chain governance.
           </p>
         </div>
         <ul class="status-list">
-          <li><span class="status-dot"></span> Official baseline website launched</li>
           <li><span class="status-dot"></span> Core running on release <strong class="release-inline" data-release-version>Loading...</strong></li>
-          <li><span class="status-dot"></span> Current focus: early adoption and utilities</li>
+          <li><span class="status-dot"></span> InstantSend &amp; ChainLocks active via LLMQ quorums</li>
+          <li><span class="status-dot"></span> PrivateSend (CoinJoin) mixing available</li>
+          <li><span class="status-dot"></span> On-chain governance with treasury superblocks</li>
+          <li><span class="status-dot"></span> Listed on Klingex, Gatevia &amp; Nestex exchanges</li>
         </ul>
       </div>
     </section>
@@ -331,6 +346,10 @@
           <a class="card link-card" data-reveal href="https://gatevia.io/exchange/SMT_USDT" target="_blank" rel="noopener">
             <h3>SMT/USDT on Gatevia</h3>
             <p>Official trading pair on Gatevia exchange.</p>
+          </a>
+          <a class="card link-card" data-reveal href="https://nestex.io" target="_blank" rel="noopener">
+            <h3>SMT on Nestex</h3>
+            <p>Official trading pair on Nestex exchange.</p>
           </a>
           <a class="card link-card" data-reveal href="https://nodes24.online/supported-coins/SMT" target="_blank" rel="noopener">
             <h3>Masternode Hosting</h3>
