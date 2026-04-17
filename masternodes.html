@@ -127,19 +127,56 @@
       font-size: 1.4rem;
     }
     .mn-progress-track {
+      position: relative;
       width: 100%;
       height: 14px;
       border-radius: 999px;
       background: #0e1530;
       border: 1px solid var(--line);
-      overflow: hidden;
+      overflow: visible;
     }
     .mn-progress-bar {
       height: 100%;
       width: 0%;
       background: linear-gradient(90deg, var(--orange) 0%, var(--berry) 55%, var(--violet) 100%);
+      border-radius: 999px;
       transition: width 0.6s ease;
     }
+    .mn-milestones {
+      position: relative;
+      margin-top: 0.7rem;
+      height: 54px;
+    }
+    .mn-milestone {
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      text-align: center;
+      width: 120px;
+    }
+    .mn-milestone .tick {
+      width: 2px;
+      height: 10px;
+      margin: 0 auto 0.25rem;
+      background: var(--line);
+      border-radius: 1px;
+    }
+    .mn-milestone.reached .tick { background: var(--mint); }
+    .mn-milestone .num {
+      font-family: "Outfit", sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #d8e0ff;
+    }
+    .mn-milestone.reached .num { color: var(--mint); }
+    .mn-milestone .label {
+      font-size: 0.72rem;
+      color: #8896c5;
+      line-height: 1.25;
+      display: block;
+      margin-top: 0.1rem;
+    }
+    .mn-milestone.reached .label { color: #b5c8d6; }
     .mn-progress-foot {
       margin-top: 0.6rem;
       font-size: 0.88rem;
@@ -400,14 +437,15 @@
       <div class="container">
         <article class="card mn-progress-card">
           <div class="mn-progress-head">
-            <h3>Network Growth - Toward Full ChainLocks</h3>
-            <span class="pct"><span id="progress-pct" class="skeleton">--%</span></span>
+            <h3>Network Growth - Milestones</h3>
+            <span class="pct"><span id="progress-nodes" class="skeleton">--</span> nodes</span>
           </div>
           <div class="mn-progress-track">
             <div class="mn-progress-bar" id="progress-bar"></div>
           </div>
+          <div class="mn-milestones" id="progress-milestones"></div>
           <p class="mn-progress-foot">
-            <span id="progress-foot">Stronger LLMQs (LLMQ_400_60 ChainLocks, LLMQ_400_85 hard-fork signaling) form reliably as the masternode set grows. Both Regular (15k SMT) and Evo (75k SMT) nodes count equally toward these.</span>
+            <span id="progress-foot">Each milestone unlocks a stronger LLMQ. Regular (15k SMT) and Evo (75k SMT) nodes count equally toward all of them.</span>
           </p>
         </article>
       </div>
@@ -609,22 +647,46 @@
         subEl.textContent = 'worst bad: ' + bad + ' | commits: ' + commits;
       }
 
+      var MILESTONES = [
+        { nodes: 60,  label: 'InstantSend DIP0024 reliable (LLMQ_60_75)' },
+        { nodes: 100, label: 'Platform quorum possible (LLMQ_100_67, optional)' },
+        { nodes: 400, label: 'Full ChainLocks + MNHF (LLMQ_400)' }
+      ];
+      var MILESTONE_MAX = 400;
+
       function renderProgress(data) {
         var nodes = data.nodes || {};
-        // Target is the full ChainLocks quorum size (~400). Show progress toward that.
-        var target = nodes.target_for_chainlocks || nodes.target_for_llmq_100_67 || 400;
         var enabled = nodes.enabled || 0;
-        var pct = target > 0 ? Math.floor((enabled / target) * 100) : 0;
-        pct = Math.max(0, Math.min(100, pct));
-        setText('progress-pct', pct + '%');
-        $('progress-bar').style.width = pct + '%';
 
-        var remaining = Math.max(0, target - enabled);
+        var fillPct = Math.max(0, Math.min(100, (enabled / MILESTONE_MAX) * 100));
+        setText('progress-nodes', enabled.toString());
+        $('progress-bar').style.width = fillPct + '%';
+
+        var container = $('progress-milestones');
+        container.innerHTML = '';
+        MILESTONES.forEach(function (m) {
+          var left = (m.nodes / MILESTONE_MAX) * 100;
+          var reached = enabled >= m.nodes;
+          var el = document.createElement('div');
+          el.className = 'mn-milestone' + (reached ? ' reached' : '');
+          el.style.left = left + '%';
+          el.innerHTML =
+            '<div class="tick"></div>' +
+            '<div class="num">' + m.nodes + '</div>' +
+            '<span class="label">' + m.label + '</span>';
+          container.appendChild(el);
+        });
+
+        var next = null;
+        for (var i = 0; i < MILESTONES.length; i++) {
+          if (enabled < MILESTONES[i].nodes) { next = MILESTONES[i]; break; }
+        }
         var foot;
-        if (remaining > 0) {
-          foot = enabled + ' enabled nodes today. Roughly ' + remaining + ' more needed to form full LLMQ_400 quorums (ChainLocks + MNHF) reliably. Both Regular (15k SMT) and Evo (75k SMT) nodes contribute equally.';
+        if (!next) {
+          foot = 'All network growth milestones reached. The chain can form every LLMQ type reliably.';
         } else {
-          foot = 'Milestone reached. Full ChainLocks (LLMQ_400_60) and MNHF (LLMQ_400_85) have enough nodes to form reliably.';
+          var remaining = next.nodes - enabled;
+          foot = 'Next milestone: ' + next.nodes + ' nodes (' + remaining + ' more to go) - ' + next.label + '.';
         }
         $('progress-foot').textContent = foot;
       }
@@ -729,7 +791,7 @@
       }
 
       function renderError() {
-        ['stat-enabled','stat-evo','stat-regular','stat-dkg','progress-pct','dkg-sessions','dkg-bad','dkg-commits'].forEach(function (id) {
+        ['stat-enabled','stat-evo','stat-regular','stat-dkg','progress-nodes','dkg-sessions','dkg-bad','dkg-commits'].forEach(function (id) {
           var el = $(id);
           if (el) { el.textContent = '-'; clearSkeleton(el); }
         });
