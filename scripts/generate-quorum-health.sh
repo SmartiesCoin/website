@@ -13,7 +13,10 @@
 set -euo pipefail
 
 CLI="${CLI:-smartiecoin-cli}"
-TARGET_NODES="${TARGET_NODES:-100}"
+# Network-growth target shown on the dashboard. Set to ~400 for full LLMQ_400_60
+# (ChainLocks at scale) and LLMQ_400_85 (MNHF) — those are what we actually want
+# to grow toward, not Platform (LLMQ_100_67).
+TARGET_NODES="${TARGET_NODES:-400}"
 
 if ! command -v jq >/dev/null 2>&1; then
   echo "ERROR: jq is required" >&2
@@ -84,7 +87,7 @@ jq -n \
       enabled: $enabled,
       evo: $evo,
       regular: $regular,
-      target_for_llmq_100_67: $target,
+      target_for_chainlocks: $target,
       progress_pct: (if $target > 0 then (($enabled / $target) * 100 | floor) else 0 end)
     },
     quorums: $quorums,

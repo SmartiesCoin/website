@@ -6,8 +6,8 @@
     "enabled": 49,
     "evo": 31,
     "regular": 18,
-    "target_for_llmq_100_67": 100,
-    "progress_pct": 49
+    "target_for_chainlocks": 400,
+    "progress_pct": 12
   },
   "quorums": [
     { "type": "llmq_10_60", "active_count": 4, "latest": null },
