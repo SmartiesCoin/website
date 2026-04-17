@@ -518,13 +518,15 @@
       // Each LLMQ is described by what it does on the Smartiecoin network and
       // whether it's a current priority. "inactive" means the chain knows about
       // it but it's not part of the current activation roadmap.
+      // The "target" is signingActiveQuorumCount from src/llmq/params.h - the
+      // number of recent quorums of this type kept active for signing.
       var QUORUM_META = {
-        llmq_10_60:  { label: 'LLMQ_10_60',  target: 4, purpose: 'ChainLocks (small-network, 10 nodes)', status: 'active' },
-        llmq_10_75:  { label: 'LLMQ_10_75',  target: 4, purpose: 'InstantSend (small-network, 10 nodes)', status: 'active' },
-        llmq_60_75:  { label: 'LLMQ_60_75',  target: 4, purpose: 'InstantSend DIP0024 (60 nodes)', status: 'active' },
-        llmq_400_60: { label: 'LLMQ_400_60', target: 4, purpose: 'ChainLocks at scale (needs ~400 nodes)', status: 'pending' },
-        llmq_400_85: { label: 'LLMQ_400_85', target: 4, purpose: 'Hard-fork signaling / MNHF (needs ~400 nodes)', status: 'pending' },
-        llmq_100_67: { label: 'LLMQ_100_67', target: 4, purpose: 'Smartiecoin Platform - not a current priority', status: 'inactive' }
+        llmq_10_60:  { label: 'LLMQ_10_60',  target: 4,  purpose: 'ChainLocks - 10-member quorums for small networks',     status: 'active' },
+        llmq_10_75:  { label: 'LLMQ_10_75',  target: 2,  purpose: 'InstantSend - 10-member rotated quorums for small networks', status: 'active' },
+        llmq_60_75:  { label: 'LLMQ_60_75',  target: 32, purpose: 'InstantSend DIP0024 - 60-member rotated quorums',       status: 'active' },
+        llmq_400_60: { label: 'LLMQ_400_60', target: 4,  purpose: 'ChainLocks at scale - 400-member quorums',              status: 'pending' },
+        llmq_400_85: { label: 'LLMQ_400_85', target: 4,  purpose: 'Hard-fork signaling (MNHF) - 400-member quorums',       status: 'pending' },
+        llmq_100_67: { label: 'LLMQ_100_67', target: 24, purpose: 'Smartiecoin Platform - not a current priority',         status: 'inactive' }
       };
 
       var $ = function (id) { return document.getElementById(id); };
