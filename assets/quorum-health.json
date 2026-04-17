@@ -1,0 +1,29 @@
+{
+  "fetched_at": "2026-04-17T00:00:00Z",
+  "placeholder": true,
+  "nodes": {
+    "total": 49,
+    "enabled": 49,
+    "evo": 31,
+    "regular": 18,
+    "target_for_llmq_100_67": 100,
+    "progress_pct": 49
+  },
+  "quorums": [
+    { "type": "llmq_10_60", "active_count": 4, "latest": null },
+    { "type": "llmq_10_75", "active_count": 4, "latest": null },
+    { "type": "llmq_60_75", "active_count": 0, "latest": null },
+    { "type": "llmq_100_67", "active_count": 0, "latest": null },
+    { "type": "llmq_400_60", "active_count": 0, "latest": null },
+    { "type": "llmq_400_85", "active_count": 0, "latest": null }
+  ],
+  "dkg": {
+    "sessions_count": 2,
+    "worst_bad_members": 14,
+    "total_premature_commits": 0,
+    "sessions": [
+      { "llmqType": 5, "quorumIndex": 0, "phase": 6, "badMembers": 14, "receivedContributions": 35, "receivedComplaints": 0, "receivedPrematureCommitments": 0, "aborted": false },
+      { "llmqType": 5, "quorumIndex": 1, "phase": 6, "badMembers": 17, "receivedContributions": 32, "receivedComplaints": 0, "receivedPrematureCommitments": 0, "aborted": false }
+    ]
+  }
+}

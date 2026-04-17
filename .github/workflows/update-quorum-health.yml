@@ -1,0 +1,59 @@
+name: Update Quorum Health
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  # URL where the VPS publishes the JSON produced by scripts/generate-quorum-health.sh.
+  # Override via repo Variables (Settings > Secrets and variables > Actions > Variables).
+  QUORUM_HEALTH_URL: ${{ vars.QUORUM_HEALTH_URL || 'https://explorer.smartiecoin.com/quorum-health.json' }}
+
+jobs:
+  update-quorum-health:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch Quorum Health Snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          tmp="$(mktemp)"
+          http_code="$(curl -fsSL -w '%{http_code}' -o "$tmp" "$QUORUM_HEALTH_URL" || echo 000)"
+
+          if [ "$http_code" != "200" ]; then
+            echo "Source returned HTTP $http_code, skipping update."
+            exit 0
+          fi
+
+          if ! jq -e '.fetched_at and .nodes and .quorums and .dkg' "$tmp" >/dev/null; then
+            echo "Source JSON missing required fields, skipping update."
+            exit 0
+          fi
+
+          # Strip the placeholder flag if upstream forgot to remove it.
+          jq 'del(.placeholder)' "$tmp" > assets/quorum-health.json
+
+      - name: Commit Changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if git diff --quiet -- assets/quorum-health.json; then
+            echo "No changes in quorum health"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/quorum-health.json
+          git commit -m "Update quorum health snapshot"
+          git push

@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Masternode + Quorum Health | Smartiecoin (SMT)</title>
+  <meta name="description" content="Live masternode and LLMQ quorum health for the Smartiecoin (SMT) network: node counts, DKG sessions, active quorums, and progress toward 100-node milestones.">
+  <meta name="theme-color" content="#0b1020">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Smartiecoin Masternode + Quorum Health">
+  <meta property="og:description" content="Live masternode and LLMQ quorum health for the Smartiecoin network.">
+  <meta property="og:image" content="assets/logo-horizontal.png">
+  <meta property="og:url" content="https://smartiecoin.com/masternodes.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/logo-horizontal.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .mn-hero {
+      padding: 3.4rem 0 1.4rem;
+    }
+    .mn-hero h1 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+    }
+    .mn-hero p.lead {
+      margin: 1rem 0 0;
+      max-width: 70ch;
+      color: #b4bfdf;
+    }
+    .mn-meta {
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1.2rem;
+      align-items: center;
+    }
+    .mn-meta .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--mint);
+      box-shadow: 0 0 0 4px rgba(57, 214, 195, 0.18);
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+    .mn-meta .dot.stale {
+      background: var(--orange);
+      box-shadow: 0 0 0 4px rgba(255, 147, 40, 0.18);
+    }
+    .mn-meta .dot.down {
+      background: var(--berry);
+      box-shadow: 0 0 0 4px rgba(255, 79, 143, 0.18);
+    }
+
+    .mn-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .mn-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (max-width: 900px) {
+      .mn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .mn-grid-2 { grid-template-columns: 1fr; }
+    }
+
+    .mn-stat {
+      padding: 1.1rem 1.15rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .mn-stat::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 147, 40, 0.10) 0%, rgba(81, 168, 255, 0.06) 55%, rgba(127, 123, 255, 0.10) 100%);
+      pointer-events: none;
+    }
+    .mn-stat > * { position: relative; z-index: 1; }
+    .mn-stat .label {
+      color: #9fb0e3;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 800;
+    }
+    .mn-stat .value {
+      margin-top: 0.35rem;
+      font-family: "Outfit", sans-serif;
+      font-size: clamp(1.55rem, 2.6vw, 2.1rem);
+      color: #ffffff;
+      font-weight: 800;
+    }
+    .mn-stat .sub {
+      margin-top: 0.25rem;
+      color: #acb8dd;
+      font-size: 0.9rem;
+    }
+    .mn-stat.accent-orange { border-top: 3px solid var(--orange); }
+    .mn-stat.accent-mint   { border-top: 3px solid var(--mint); }
+    .mn-stat.accent-sky    { border-top: 3px solid var(--sky); }
+    .mn-stat.accent-violet { border-top: 3px solid var(--violet); }
+
+    .mn-progress-card {
+      padding: 1.3rem;
+    }
+    .mn-progress-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+    .mn-progress-head h3 {
+      font-size: 1.15rem;
+      color: #f3f7ff;
+    }
+    .mn-progress-head .pct {
+      font-family: "Outfit", sans-serif;
+      font-weight: 800;
+      color: var(--mint);
+      font-size: 1.4rem;
+    }
+    .mn-progress-track {
+      width: 100%;
+      height: 14px;
+      border-radius: 999px;
+      background: #0e1530;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .mn-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--orange) 0%, var(--berry) 55%, var(--violet) 100%);
+      transition: width 0.6s ease;
+    }
+    .mn-progress-foot {
+      margin-top: 0.6rem;
+      font-size: 0.88rem;
+      color: #93a6db;
+    }
+
+    .quorum-list {
+      padding: 1.1rem;
+    }
+    .quorum-list h3 {
+      font-size: 1.15rem;
+      color: #f3f7ff;
+      margin-bottom: 0.8rem;
+    }
+    .quorum-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) 80px 1fr auto;
+      gap: 0.8rem;
+      align-items: center;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #1c2647;
+    }
+    .quorum-row:last-child { border-bottom: none; }
+    .quorum-row .q-name {
+      font-family: "Outfit", sans-serif;
+      font-weight: 700;
+      color: #eaeeff;
+    }
+    .quorum-row .q-count {
+      font-variant-numeric: tabular-nums;
+      font-weight: 800;
+      color: #fff;
+      text-align: right;
+    }
+    .quorum-row .q-bar {
+      height: 8px;
+      border-radius: 999px;
+      background: #0e1530;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .quorum-row .q-bar > span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--sky), var(--mint));
+    }
+    .quorum-row.is-empty .q-bar > span { background: #3a4676; }
+    .quorum-row.is-empty .q-name { color: #b9c1de; }
+    .quorum-row .q-status {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .quorum-row .q-status.ok {
+      color: #0c2a24;
+      background: var(--mint);
+    }
+    .quorum-row .q-status.warn {
+      color: #3a2308;
+      background: var(--orange);
+    }
+    .quorum-row .q-status.off {
+      color: #fff;
+      background: #3a4676;
+      border-color: #4a557f;
+    }
+
+    .dkg-card { padding: 1.1rem; }
+    .dkg-card h3 { font-size: 1.15rem; color: #f3f7ff; margin-bottom: 0.4rem; }
+    .dkg-card p.sub { color: var(--ink-soft); margin: 0.2rem 0 0.8rem; font-size: 0.92rem; }
+    .dkg-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+    .dkg-metrics .m {
+      background: #111833;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 0.65rem 0.75rem;
+    }
+    .dkg-metrics .m .k {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #9fb0e3;
+      font-weight: 800;
+    }
+    .dkg-metrics .m .v {
+      font-family: "Outfit", sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #fff;
+      margin-top: 0.2rem;
+    }
+    .dkg-metrics .m.warn .v { color: var(--orange); }
+    .dkg-metrics .m.ok   .v { color: var(--mint); }
+    .dkg-sessions {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+    }
+    .dkg-sessions li {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 0.6rem;
+      background: #0f1630;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.9rem;
+      align-items: center;
+    }
+    .dkg-sessions li .phase {
+      font-variant-numeric: tabular-nums;
+      color: #d8e0ff;
+      font-weight: 700;
+    }
+    .dkg-sessions li .bad {
+      font-weight: 800;
+    }
+    .dkg-sessions li.is-bad .bad { color: var(--berry); }
+    .dkg-sessions li .q { font-family: "Outfit", sans-serif; color: #eaeeff; }
+
+    .mn-note {
+      margin-top: 1rem;
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px dashed #3a4a7e;
+      color: #b9c4e7;
+      font-size: 0.92rem;
+      background: rgba(19, 28, 52, 0.55);
+    }
+    .mn-error {
+      border-color: rgba(255, 79, 143, 0.5);
+      color: #ffbfd0;
+      background: rgba(255, 79, 143, 0.08);
+    }
+
+    .skeleton {
+      display: inline-block;
+      background: linear-gradient(90deg, #1a2242 0%, #273057 50%, #1a2242 100%);
+      background-size: 200% 100%;
+      animation: skel 1.4s linear infinite;
+      color: transparent !important;
+      border-radius: 6px;
+    }
+    @keyframes skel {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="bg-noise" aria-hidden="true"></div>
+  <div class="bg-shape bg-shape-a" aria-hidden="true"></div>
+  <div class="bg-shape bg-shape-b" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/logo-horizontal.png" alt="Smarties logo" width="34" height="34">
+        <span>SMARTIECOIN</span>
+        <strong>SMT</strong>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+
+      <nav id="primary-nav" class="nav-links" aria-label="Primary">
+        <a href="index.html#snapshot">Snapshot</a>
+        <a href="index.html#tokenomics">Tokenomics</a>
+        <a href="index.html#live">Live Stats</a>
+        <a href="index.html#tech">Technology</a>
+        <a href="masternodes.html" aria-current="page">Masternodes</a>
+        <a href="index.html#links">Links</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="mn-hero">
+      <div class="container">
+        <p class="eyebrow">Network Health</p>
+        <h1>Masternode + Quorum Dashboard</h1>
+        <p class="lead">
+          Live snapshot of the Smartiecoin masternode set and LLMQ quorum health. This page tracks
+          node counts, active quorums, and DKG sessions as the network grows toward the thresholds
+          required to activate InstantSend, ChainLocks, and platform quorums at scale.
+        </p>
+        <div class="mn-meta">
+          <span><span id="freshness-dot" class="dot"></span><span id="freshness-label">Loading...</span></span>
+          <span>Source: <code>smartiecoin-cli</code> on a synced node</span>
+          <span>Updated: <span id="fetched-at">-</span></span>
+          <span>Auto-refresh: <span id="refresh-countdown">60s</span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="mn-grid" id="stat-cards">
+          <article class="card mn-stat accent-orange">
+            <span class="label">Enabled Nodes</span>
+            <div class="value"><span id="stat-enabled" class="skeleton">--</span></div>
+            <div class="sub"><span id="stat-total">total --</span></div>
+          </article>
+          <article class="card mn-stat accent-sky">
+            <span class="label">Evo Nodes</span>
+            <div class="value"><span id="stat-evo" class="skeleton">--</span></div>
+            <div class="sub">75,000 SMT collateral</div>
+          </article>
+          <article class="card mn-stat accent-mint">
+            <span class="label">Regular Nodes</span>
+            <div class="value"><span id="stat-regular" class="skeleton">--</span></div>
+            <div class="sub">15,000 SMT collateral</div>
+          </article>
+          <article class="card mn-stat accent-violet">
+            <span class="label">DKG Sessions</span>
+            <div class="value"><span id="stat-dkg" class="skeleton">--</span></div>
+            <div class="sub"><span id="stat-dkg-sub">monitoring--</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <article class="card mn-progress-card">
+          <div class="mn-progress-head">
+            <h3>Progress Toward LLMQ_100_67 Activation</h3>
+            <span class="pct"><span id="progress-pct" class="skeleton">--%</span></span>
+          </div>
+          <div class="mn-progress-track">
+            <div class="mn-progress-bar" id="progress-bar"></div>
+          </div>
+          <p class="mn-progress-foot">
+            <span id="progress-foot">LLMQ_100_67 needs ~100 enabled masternodes to form reliably. Once this threshold holds, the network can activate stronger InstantSend and ChainLock quorums.</span>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="mn-grid-2 mn-grid">
+          <article class="card quorum-list">
+            <h3>Active Quorums</h3>
+            <div id="quorum-rows">
+              <div class="quorum-row is-empty">
+                <span class="q-name skeleton">LLMQ_TYPE</span>
+                <span class="q-count skeleton">-</span>
+                <span class="q-bar"><span style="width: 0%"></span></span>
+                <span class="q-status off">...</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card dkg-card">
+            <h3>DKG Health</h3>
+            <p class="sub">Distributed Key Generation stats across currently forming quorums.</p>
+            <div class="dkg-metrics">
+              <div class="m" id="dkg-sessions-box">
+                <div class="k">Sessions</div>
+                <div class="v"><span id="dkg-sessions" class="skeleton">-</span></div>
+              </div>
+              <div class="m" id="dkg-bad-box">
+                <div class="k">Worst Bad Members</div>
+                <div class="v"><span id="dkg-bad" class="skeleton">-</span></div>
+              </div>
+              <div class="m" id="dkg-commits-box">
+                <div class="k">Premature Commits</div>
+                <div class="v"><span id="dkg-commits" class="skeleton">-</span></div>
+              </div>
+            </div>
+            <ul class="dkg-sessions" id="dkg-list">
+              <li><span class="q skeleton">LLMQ_TYPE idx -</span><span class="phase skeleton">phase -</span><span class="bad skeleton">bad -</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <div id="notice" class="mn-note" hidden></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>What these numbers mean</h2>
+          <p>
+            A healthy LLMQ_100_67 quorum requires ~100 enabled masternodes. When <strong>Bad Members</strong>
+            in a DKG session rise close to the quorum size, the session can fail — this is expected
+            while the network is still growing, and clears up once more nodes come online. Evo nodes
+            and regular nodes both contribute to every LLMQ set; the 75k / 15k collateral simply maps
+            to different masternode roles.
+          </p>
+        </div>
+        <div class="cards cards-2">
+          <article class="card">
+            <h3>Raw Data</h3>
+            <p>
+              All data on this page comes from <code>smartiecoin-cli</code> on a synced full node
+              (<code>masternode count</code>, <code>masternodelist json</code>, <code>quorum list</code>,
+              <code>quorum dkgstatus</code>) and is refreshed every minute.
+            </p>
+            <p style="margin-top: 0.6rem;">
+              <a class="btn btn-soft" href="assets/quorum-health.json" target="_blank" rel="noopener">View JSON</a>
+            </p>
+          </article>
+          <article class="card">
+            <h3>Run Your Own Masternode</h3>
+            <p>
+              Grow the network and help stabilize quorums. Check the repository for setup guides,
+              the required collateral, and the <code>protx register_prepare</code> flow.
+            </p>
+            <p style="margin-top: 0.6rem;">
+              <a class="btn btn-soft" href="https://github.com/SmartiesCoin/Smartiecoin" target="_blank" rel="noopener">Smartiecoin on GitHub</a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>Smartiecoin (SMT) - Live network health from the official full node.</p>
+      <p><span id="year"></span> smartiecoin.com</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var DATA_URL = 'https://explorer.smartiecoin.com/quorum-health.json';
+      var FALLBACK_URL = 'assets/quorum-health.json';
+      var REFRESH_MS = 60 * 1000;
+      var STALE_AFTER_MIN = 10;
+
+      var QUORUM_META = {
+        llmq_10_60:  { label: 'LLMQ_10_60',  target: 4 },
+        llmq_10_75:  { label: 'LLMQ_10_75',  target: 4 },
+        llmq_60_75:  { label: 'LLMQ_60_75',  target: 4 },
+        llmq_100_67: { label: 'LLMQ_100_67', target: 4 },
+        llmq_400_60: { label: 'LLMQ_400_60', target: 4 },
+        llmq_400_85: { label: 'LLMQ_400_85', target: 4 },
+        llmq_25_67:  { label: 'LLMQ_25_67',  target: 4 }
+      };
+
+      var $ = function (id) { return document.getElementById(id); };
+
+      function fmtNum(n) {
+        if (n === null || n === undefined || isNaN(n)) return '-';
+        return Number(n).toLocaleString('en-US');
+      }
+
+      function clearSkeleton(el) {
+        if (el) el.classList.remove('skeleton');
+      }
+
+      function setText(id, text) {
+        var el = $(id);
+        if (!el) return;
+        el.textContent = text;
+        clearSkeleton(el);
+      }
+
+      function minutesSince(iso) {
+        if (!iso) return Infinity;
+        var t = Date.parse(iso);
+        if (isNaN(t)) return Infinity;
+        return (Date.now() - t) / 60000;
+      }
+
+      function fmtAgo(iso) {
+        var mins = minutesSince(iso);
+        if (!isFinite(mins)) return 'never';
+        if (mins < 1) return 'just now';
+        if (mins < 60) return Math.round(mins) + ' min ago';
+        var hrs = mins / 60;
+        if (hrs < 24) return Math.round(hrs) + ' hr ago';
+        return Math.round(hrs / 24) + ' d ago';
+      }
+
+      function setFreshness(iso, isError) {
+        var dot = $('freshness-dot');
+        var label = $('freshness-label');
+        dot.classList.remove('stale', 'down');
+        if (isError || !iso) {
+          dot.classList.add('down');
+          label.textContent = 'Data unavailable';
+          return;
+        }
+        var mins = minutesSince(iso);
+        if (mins > STALE_AFTER_MIN) {
+          dot.classList.add('stale');
+          label.textContent = 'Data is stale (' + fmtAgo(iso) + ')';
+        } else {
+          label.textContent = 'Live';
+        }
+      }
+
+      function showNotice(msg, isError) {
+        var n = $('notice');
+        n.hidden = false;
+        n.textContent = msg;
+        n.classList.toggle('mn-error', !!isError);
+      }
+
+      function hideNotice() {
+        $('notice').hidden = true;
+      }
+
+      function renderStats(data) {
+        var nodes = data.nodes || {};
+        setText('stat-enabled', fmtNum(nodes.enabled));
+        var totalEl = $('stat-total');
+        totalEl.textContent = 'total ' + fmtNum(nodes.total);
+        setText('stat-evo', fmtNum(nodes.evo));
+        setText('stat-regular', fmtNum(nodes.regular));
+
+        var dkg = data.dkg || {};
+        setText('stat-dkg', fmtNum(dkg.sessions_count));
+        var subEl = $('stat-dkg-sub');
+        var bad = dkg.worst_bad_members || 0;
+        var commits = dkg.total_premature_commits || 0;
+        subEl.textContent = 'worst bad: ' + bad + ' | commits: ' + commits;
+      }
+
+      function renderProgress(data) {
+        var nodes = data.nodes || {};
+        var pct = typeof nodes.progress_pct === 'number'
+          ? nodes.progress_pct
+          : (nodes.target_for_llmq_100_67 ? Math.floor(((nodes.enabled || 0) / nodes.target_for_llmq_100_67) * 100) : 0);
+        pct = Math.max(0, Math.min(100, pct));
+        setText('progress-pct', pct + '%');
+        $('progress-bar').style.width = pct + '%';
+
+        var target = nodes.target_for_llmq_100_67 || 100;
+        var remaining = Math.max(0, target - (nodes.enabled || 0));
+        var foot = remaining > 0
+          ? remaining + ' more enabled node' + (remaining === 1 ? '' : 's') + ' needed to reach the ' + target + '-node milestone for LLMQ_100_67 quorums.'
+          : 'Milestone reached. LLMQ_100_67 has enough nodes to form reliably.';
+        $('progress-foot').textContent = foot;
+      }
+
+      function renderQuorums(data) {
+        var container = $('quorum-rows');
+        container.innerHTML = '';
+        var quorums = data.quorums || [];
+
+        var known = Object.keys(QUORUM_META);
+        var byType = {};
+        quorums.forEach(function (q) {
+          byType[q.type] = q;
+        });
+        known.forEach(function (t) {
+          if (!byType[t]) byType[t] = { type: t, active_count: 0 };
+        });
+
+        known.forEach(function (t) {
+          var q = byType[t];
+          var meta = QUORUM_META[t] || { label: t.toUpperCase(), target: 4 };
+          var count = q.active_count || 0;
+          var target = meta.target || 4;
+          var pct = Math.max(0, Math.min(100, Math.round((count / target) * 100)));
+
+          var statusClass = 'off';
+          var statusText = 'EMPTY';
+          if (count >= target) { statusClass = 'ok'; statusText = 'HEALTHY'; }
+          else if (count > 0)  { statusClass = 'warn'; statusText = 'FORMING'; }
+
+          var row = document.createElement('div');
+          row.className = 'quorum-row' + (count === 0 ? ' is-empty' : '');
+          row.innerHTML =
+            '<span class="q-name">' + meta.label + '</span>' +
+            '<span class="q-count">' + count + ' / ' + target + '</span>' +
+            '<span class="q-bar"><span style="width:' + pct + '%"></span></span>' +
+            '<span class="q-status ' + statusClass + '">' + statusText + '</span>';
+          container.appendChild(row);
+        });
+      }
+
+      function renderDkg(data) {
+        var dkg = data.dkg || {};
+        setText('dkg-sessions', fmtNum(dkg.sessions_count));
+        setText('dkg-bad', fmtNum(dkg.worst_bad_members));
+        setText('dkg-commits', fmtNum(dkg.total_premature_commits));
+
+        var badBox = $('dkg-bad-box');
+        badBox.classList.remove('warn', 'ok');
+        if ((dkg.worst_bad_members || 0) >= 10) badBox.classList.add('warn');
+        else if ((dkg.sessions_count || 0) > 0) badBox.classList.add('ok');
+
+        var list = $('dkg-list');
+        list.innerHTML = '';
+        var sessions = dkg.sessions || [];
+        if (!sessions.length) {
+          var li = document.createElement('li');
+          li.innerHTML = '<span class="q">No active DKG sessions</span><span class="phase">-</span><span class="bad">-</span>';
+          list.appendChild(li);
+          return;
+        }
+        sessions.forEach(function (s) {
+          var typeKey = 'llmq_' + (s.llmqType || 'unknown');
+          var label = (QUORUM_META[typeKey] && QUORUM_META[typeKey].label) || ('Type ' + s.llmqType);
+          var li = document.createElement('li');
+          if ((s.badMembers || 0) >= 10) li.className = 'is-bad';
+          li.innerHTML =
+            '<span class="q">' + label + ' idx ' + (s.quorumIndex != null ? s.quorumIndex : '-') + (s.aborted ? ' (aborted)' : '') + '</span>' +
+            '<span class="phase">phase ' + (s.phase != null ? s.phase : '-') + '</span>' +
+            '<span class="bad">bad ' + (s.badMembers || 0) + '</span>';
+          list.appendChild(li);
+        });
+      }
+
+      function renderAll(data) {
+        renderStats(data);
+        renderProgress(data);
+        renderQuorums(data);
+        renderDkg(data);
+        $('fetched-at').textContent = fmtAgo(data.fetched_at);
+        setFreshness(data.fetched_at, false);
+      }
+
+      function renderError() {
+        ['stat-enabled','stat-evo','stat-regular','stat-dkg','progress-pct','dkg-sessions','dkg-bad','dkg-commits'].forEach(function (id) {
+          var el = $(id);
+          if (el) { el.textContent = '-'; clearSkeleton(el); }
+        });
+        $('progress-bar').style.width = '0%';
+        $('quorum-rows').innerHTML = '<div class="quorum-row is-empty"><span class="q-name">No data</span><span class="q-count">-</span><span class="q-bar"><span style="width:0%"></span></span><span class="q-status off">OFFLINE</span></div>';
+        $('dkg-list').innerHTML = '<li><span class="q">Data unavailable</span><span class="phase">-</span><span class="bad">-</span></li>';
+        $('fetched-at').textContent = 'never';
+        setFreshness(null, true);
+        showNotice('Could not load quorum data. The snapshot job may be warming up or the VPS may be offline.', true);
+      }
+
+      function fetchJson(url) {
+        return fetch(url, { cache: 'no-store' }).then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        });
+      }
+
+      function load() {
+        fetchJson(DATA_URL)
+          .catch(function () { return fetchJson(FALLBACK_URL); })
+          .then(function (data) {
+            hideNotice();
+            renderAll(data);
+            if (data.placeholder) {
+              showNotice('Showing fallback snapshot. The live explorer feed is temporarily unavailable.', false);
+            }
+          })
+          .catch(function () {
+            renderError();
+          });
+      }
+
+      var countdown = REFRESH_MS / 1000;
+      setInterval(function () {
+        countdown -= 1;
+        if (countdown <= 0) countdown = REFRESH_MS / 1000;
+        $('refresh-countdown').textContent = countdown + 's';
+      }, 1000);
+
+      load();
+      setInterval(load, REFRESH_MS);
+
+      $('year').textContent = new Date().getFullYear();
+
+      var menuBtn = document.querySelector('.menu-toggle');
+      var nav = document.getElementById('primary-nav');
+      if (menuBtn && nav) {
+        menuBtn.addEventListener('click', function () {
+          var open = menuBtn.getAttribute('aria-expanded') === 'true';
+          menuBtn.setAttribute('aria-expanded', open ? 'false' : 'true');
+          nav.classList.toggle('is-open', !open);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
