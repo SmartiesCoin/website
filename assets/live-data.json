@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-04-17T18:03:03Z",
+  "fetched_at": "2026-04-17T19:17:30Z",
   "summary": {
-    "difficulty": 0.001820041333698295,
+    "difficulty": 0.004217051210773412,
     "difficultyHybrid": "",
-    "supply": 3435512,
-    "hashrate": "130091.0954",
+    "supply": 3439157,
+    "hashrate": "179170.0382",
     "lastPrice": 0.0028937125,
     "lastUSDPrice": 0.0028937125,
-    "connections": 67,
-    "blockcount": 70880,
+    "connections": 68,
+    "blockcount": 70964,
     "masternodeCountOnline": 43,
     "masternodeCountOffline": 1
   },
@@ -17,9 +17,9 @@
     "last_price_usd": 0.0028937125
   },
   "release": {
-    "tag_name": "v0.1.9",
-    "name": "v0.1.9",
-    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.1.9",
-    "published_at": "2026-04-02T19:50:49Z"
+    "tag_name": "v0.2.0",
+    "name": "v0.2.0 — Violet/Orange UI Refresh",
+    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.2.0",
+    "published_at": "2026-04-17T18:15:30Z"
   }
 }
