@@ -142,45 +142,103 @@
       border-radius: 999px;
       transition: width 0.6s ease;
     }
-    .mn-milestones {
-      position: relative;
-      margin-top: 0.7rem;
-      height: 54px;
-    }
-    .mn-milestone {
+    .mn-progress-ticks {
       position: absolute;
-      top: 0;
-      transform: translateX(-50%);
-      text-align: center;
-      width: 120px;
+      inset: 0;
+      pointer-events: none;
     }
-    .mn-milestone .tick {
+    .mn-progress-ticks > span {
+      position: absolute;
+      top: -4px;
+      bottom: -4px;
       width: 2px;
-      height: 10px;
-      margin: 0 auto 0.25rem;
-      background: var(--line);
-      border-radius: 1px;
+      background: #4a557f;
+      border-radius: 2px;
     }
-    .mn-milestone.reached .tick { background: var(--mint); }
-    .mn-milestone .num {
+    .mn-progress-ticks > span.reached { background: var(--mint); box-shadow: 0 0 0 3px rgba(57, 214, 195, 0.18); }
+
+    .mn-progress-scale {
+      position: relative;
+      margin-top: 0.35rem;
+      height: 1.2rem;
+      font-size: 0.75rem;
       font-family: "Outfit", sans-serif;
-      font-weight: 800;
-      font-size: 0.95rem;
-      color: #d8e0ff;
-    }
-    .mn-milestone.reached .num { color: var(--mint); }
-    .mn-milestone .label {
-      font-size: 0.72rem;
       color: #8896c5;
-      line-height: 1.25;
-      display: block;
-      margin-top: 0.1rem;
     }
-    .mn-milestone.reached .label { color: #b5c8d6; }
+    .mn-progress-scale > span {
+      position: absolute;
+      transform: translateX(-50%);
+      font-weight: 800;
+    }
+    .mn-progress-scale > span.reached { color: var(--mint); }
+
     .mn-progress-foot {
-      margin-top: 0.6rem;
+      margin-top: 0.8rem;
       font-size: 0.88rem;
       color: #93a6db;
+    }
+
+    .mn-milestones {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 700px) {
+      .mn-milestones { grid-template-columns: 1fr; }
+    }
+    .mn-ms-card {
+      background: #111833;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 0.9rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0.7rem;
+      align-items: center;
+    }
+    .mn-ms-card.reached {
+      border-color: rgba(57, 214, 195, 0.5);
+      background: linear-gradient(180deg, rgba(57, 214, 195, 0.08) 0%, #111833 60%);
+    }
+    .mn-ms-card .ms-num {
+      font-family: "Outfit", sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: #d8e0ff;
+      line-height: 1;
+      min-width: 2.4rem;
+      text-align: center;
+    }
+    .mn-ms-card.reached .ms-num { color: var(--mint); }
+    .mn-ms-card .ms-body { min-width: 0; }
+    .mn-ms-card .ms-title {
+      font-weight: 800;
+      font-size: 0.88rem;
+      color: #eaeeff;
+      line-height: 1.25;
+    }
+    .mn-ms-card .ms-sub {
+      font-size: 0.75rem;
+      color: #8896c5;
+      margin-top: 0.1rem;
+    }
+    .mn-ms-card .ms-status {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.5rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .mn-ms-card .ms-status.reached {
+      background: var(--mint);
+      color: #0c2a24;
+    }
+    .mn-ms-card .ms-status.pending {
+      background: #2a355e;
+      color: #c9d1ec;
     }
 
     .quorum-list {
@@ -442,7 +500,9 @@
           </div>
           <div class="mn-progress-track">
             <div class="mn-progress-bar" id="progress-bar"></div>
+            <div class="mn-progress-ticks" id="progress-ticks"></div>
           </div>
+          <div class="mn-progress-scale" id="progress-scale"></div>
           <div class="mn-milestones" id="progress-milestones"></div>
           <p class="mn-progress-foot">
             <span id="progress-foot">Each milestone unlocks a stronger LLMQ. Regular (15k SMT) and Evo (75k SMT) nodes count equally toward all of them.</span>
@@ -648,9 +708,9 @@
       }
 
       var MILESTONES = [
-        { nodes: 60,  label: 'InstantSend DIP0024 reliable (LLMQ_60_75)' },
-        { nodes: 100, label: 'Platform quorum possible (LLMQ_100_67, optional)' },
-        { nodes: 400, label: 'Full ChainLocks + MNHF (LLMQ_400)' }
+        { nodes: 60,  title: 'InstantSend DIP0024', sub: 'LLMQ_60_75 reliable at 60 nodes' },
+        { nodes: 100, title: 'Platform possible',   sub: 'LLMQ_100_67 - optional, Evo-only' },
+        { nodes: 400, title: 'Full ChainLocks + MNHF', sub: 'LLMQ_400_60 / LLMQ_400_85 at scale' }
       ];
       var MILESTONE_MAX = 400;
 
@@ -662,19 +722,40 @@
         setText('progress-nodes', enabled.toString());
         $('progress-bar').style.width = fillPct + '%';
 
-        var container = $('progress-milestones');
-        container.innerHTML = '';
+        var ticks = $('progress-ticks');
+        var scale = $('progress-scale');
+        var cards = $('progress-milestones');
+        ticks.innerHTML = '';
+        scale.innerHTML = '';
+        cards.innerHTML = '';
+
         MILESTONES.forEach(function (m) {
           var left = (m.nodes / MILESTONE_MAX) * 100;
           var reached = enabled >= m.nodes;
-          var el = document.createElement('div');
-          el.className = 'mn-milestone' + (reached ? ' reached' : '');
-          el.style.left = left + '%';
-          el.innerHTML =
-            '<div class="tick"></div>' +
-            '<div class="num">' + m.nodes + '</div>' +
-            '<span class="label">' + m.label + '</span>';
-          container.appendChild(el);
+
+          var tick = document.createElement('span');
+          if (reached) tick.className = 'reached';
+          tick.style.left = left + '%';
+          ticks.appendChild(tick);
+
+          var num = document.createElement('span');
+          if (reached) num.className = 'reached';
+          num.style.left = left + '%';
+          num.textContent = m.nodes;
+          scale.appendChild(num);
+
+          var card = document.createElement('div');
+          card.className = 'mn-ms-card' + (reached ? ' reached' : '');
+          var statusCls = reached ? 'reached' : 'pending';
+          var statusTxt = reached ? 'REACHED' : 'PENDING';
+          card.innerHTML =
+            '<span class="ms-num">' + m.nodes + '</span>' +
+            '<div class="ms-body">' +
+              '<div class="ms-title">' + m.title + '</div>' +
+              '<div class="ms-sub">' + m.sub + '</div>' +
+            '</div>' +
+            '<span class="ms-status ' + statusCls + '">' + statusTxt + '</span>';
+          cards.appendChild(card);
         });
 
         var next = null;
@@ -686,7 +767,7 @@
           foot = 'All network growth milestones reached. The chain can form every LLMQ type reliably.';
         } else {
           var remaining = next.nodes - enabled;
-          foot = 'Next milestone: ' + next.nodes + ' nodes (' + remaining + ' more to go) - ' + next.label + '.';
+          foot = 'Next milestone: ' + next.nodes + ' nodes (' + remaining + ' more to go) - ' + next.title + '.';
         }
         $('progress-foot').textContent = foot;
       }
