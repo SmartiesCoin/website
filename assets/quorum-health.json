@@ -1,29 +1,49 @@
 {
-  "fetched_at": "2026-04-17T00:00:00Z",
-  "placeholder": true,
+  "fetched_at": "2026-04-17T16:10:01Z",
   "nodes": {
-    "total": 49,
-    "enabled": 49,
-    "evo": 31,
-    "regular": 18,
+    "total": 44,
+    "enabled": 43,
+    "evo": 32,
+    "regular": 12,
     "target_for_chainlocks": 400,
-    "progress_pct": 12
+    "progress_pct": 10
   },
   "quorums": [
-    { "type": "llmq_10_60", "active_count": 4, "latest": null },
-    { "type": "llmq_10_75", "active_count": 4, "latest": null },
-    { "type": "llmq_60_75", "active_count": 0, "latest": null },
-    { "type": "llmq_100_67", "active_count": 0, "latest": null },
-    { "type": "llmq_400_60", "active_count": 0, "latest": null },
-    { "type": "llmq_400_85", "active_count": 0, "latest": null }
+    {
+      "type": "llmq_60_75",
+      "active_count": 24,
+      "latest": "000000a47c1f66a2fa9461f0feafba7dfb16ae455e53fc8c028c117302e84429"
+    },
+    {
+      "type": "llmq_400_60",
+      "active_count": 0,
+      "latest": null
+    },
+    {
+      "type": "llmq_400_85",
+      "active_count": 0,
+      "latest": null
+    },
+    {
+      "type": "llmq_100_67",
+      "active_count": 0,
+      "latest": null
+    },
+    {
+      "type": "llmq_10_60",
+      "active_count": 4,
+      "latest": "000001ee66f4595fc4e6d43e4b50ec6e24cd4d3a0c2f6a7041582da54e4dbe7a"
+    },
+    {
+      "type": "llmq_10_75",
+      "active_count": 2,
+      "latest": "000001ee66f4595fc4e6d43e4b50ec6e24cd4d3a0c2f6a7041582da54e4dbe7a"
+    }
   ],
   "dkg": {
-    "sessions_count": 2,
-    "worst_bad_members": 14,
+    "sessions_count": 0,
+    "worst_bad_members": 0,
     "total_premature_commits": 0,
-    "sessions": [
-      { "llmqType": 5, "quorumIndex": 0, "phase": 6, "badMembers": 14, "receivedContributions": 35, "receivedComplaints": 0, "receivedPrematureCommitments": 0, "aborted": false },
-      { "llmqType": 5, "quorumIndex": 1, "phase": 6, "badMembers": 17, "receivedContributions": 32, "receivedComplaints": 0, "receivedPrematureCommitments": 0, "aborted": false }
-    ]
+    "sessions": []
   }
 }
