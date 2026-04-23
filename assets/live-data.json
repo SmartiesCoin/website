@@ -1,25 +1,25 @@
 {
-  "fetched_at": "2026-04-23T19:37:22Z",
+  "fetched_at": "2026-04-23T20:37:28Z",
   "summary": {
-    "difficulty": 0.001710403512728002,
+    "difficulty": 0.002955426566342258,
     "difficultyHybrid": "",
-    "supply": 3809507,
-    "hashrate": "123663.9925",
+    "supply": 3812342,
+    "hashrate": "154149.7012",
     "lastPrice": 0.0028937125,
     "lastUSDPrice": 0.0028937125,
-    "connections": 68,
-    "blockcount": 79190,
-    "masternodeCountOnline": 51,
-    "masternodeCountOffline": 2
+    "connections": 69,
+    "blockcount": 79253,
+    "masternodeCountOnline": 34,
+    "masternodeCountOffline": 19
   },
   "current_price": {
     "last_price_btc": null,
     "last_price_usd": 0.0028937125
   },
   "release": {
-    "tag_name": "v0.2.0",
-    "name": "v0.2.0 — Violet/Orange UI Refresh",
-    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.2.0",
-    "published_at": "2026-04-17T18:15:30Z"
+    "tag_name": "v0.3.0",
+    "name": "v0.3.0 — Reward Realloc (18/72/10)",
+    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.3.0",
+    "published_at": "2026-04-23T19:54:25Z"
   }
 }
