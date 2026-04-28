@@ -1,16 +1,16 @@
 {
-  "fetched_at": "2026-04-28T17:14:30Z",
+  "fetched_at": "2026-04-28T18:55:09Z",
   "summary": {
-    "difficulty": 0.004570787468530719,
+    "difficulty": 0.002391034359968244,
     "difficultyHybrid": "",
-    "supply": 4112582,
-    "hashrate": "313578.2370",
+    "supply": 4116587,
+    "hashrate": "265688.1749",
     "lastPrice": 0.0028937125,
     "lastUSDPrice": 0.0028937125,
-    "connections": 67,
-    "blockcount": 85925,
-    "masternodeCountOnline": 56,
-    "masternodeCountOffline": 5
+    "connections": 66,
+    "blockcount": 86016,
+    "masternodeCountOnline": 57,
+    "masternodeCountOffline": 4
   },
   "current_price": {
     "last_price_btc": null,
