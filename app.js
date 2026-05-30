@@ -411,6 +411,12 @@
 
   const computeDerivedStats = (summaryData, priceUsd, masternodeStatsData) => {
     const masternodes = (() => {
+      const statsOnline = masternodeStatsData?.counts?.online;
+      const statsOffline = masternodeStatsData?.counts?.offline;
+      if (statsOnline !== undefined && statsOffline !== undefined) {
+        return `${statsOnline}/${statsOffline}`;
+      }
+
       const online = summaryData.masternodeCountOnline;
       const offline = summaryData.masternodeCountOffline;
       if (online === undefined || offline === undefined) return '--';
@@ -452,7 +458,8 @@
       if (isValidSummary(localData?.summary)) {
         const parsedPrice = Number(localData?.current_price?.last_price_usd);
         const price = Number.isFinite(parsedPrice) ? parsedPrice : null;
-        const derived = computeDerivedStats(localData.summary, price, null);
+        const localMasternodeStats = localData?.masternode_stats || localData?.masternodeStats || null;
+        const derived = computeDerivedStats(localData.summary, price, localMasternodeStats);
         renderStats(localData.summary, price, derived.marketCapUsd, derived.masternodes, derived.mnLocked, derived.roi15k, derived.roi75k);
         if (updatedEl) updatedEl.textContent = '(cached – refreshing\u2026)';
         return true;
@@ -537,11 +544,13 @@
     try {
       let localPriceUsd = null;
       let localSummaryCandidate = null;
+      let localMasternodeCandidate = null;
 
       try {
         const localData = await loadLocalLiveData();
         if (isValidSummary(localData?.summary)) {
           localSummaryCandidate = localData.summary;
+          localMasternodeCandidate = localData?.masternode_stats || localData?.masternodeStats || null;
           const parsedLocalPrice = Number(localData?.current_price?.last_price_usd);
           localPriceUsd = Number.isFinite(parsedLocalPrice) ? parsedLocalPrice : null;
         }
@@ -589,6 +598,9 @@
       if (mnResult.status === 'fulfilled') {
         masternodeStatsData = mnResult.value.stats;
         masternodeSourceName = mnResult.value.source;
+      } else if (isValidMasternodeStats(localMasternodeCandidate)) {
+        masternodeStatsData = localMasternodeCandidate;
+        masternodeSourceName = 'local cache';
       }
 
       const priceUsd = (() => {

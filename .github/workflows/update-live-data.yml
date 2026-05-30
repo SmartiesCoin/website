@@ -23,17 +23,20 @@ jobs:
 
           summary_json="$(curl -fsSL https://explorer.smartiecoin.com/ext/getsummary)"
           current_price_json="$(curl -fsSL https://explorer.smartiecoin.com/ext/getcurrentprice)"
-          release_json="$(curl -fsSL -H 'Accept: application/vnd.github+json' https://api.github.com/repos/SmartiesCoin/Smartiecoin/releases/latest)"
+          masternode_stats_json="$(curl -fsSL https://explorer.smartiecoin.com/ext/getmasternodestats || printf 'null')"
+          release_json="$(curl -fsSL -H 'Accept: application/vnd.github+json' https://api.github.com/repos/SmartiesCoin/Smartiecoin/releases/latest | jq '{tag_name, name, html_url, published_at}')"
           fetched_at="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
 
           echo "$summary_json" | jq -e '.blockcount != null and .difficulty != null' >/dev/null
           echo "$current_price_json" | jq -e '.last_price_usd != null' >/dev/null
+          echo "$masternode_stats_json" | jq -e '(. == null) or (.counts or .locked or .roi)' >/dev/null
           echo "$release_json" | jq -e '.tag_name != null' >/dev/null
 
           jq -n \
             --arg fetched_at "$fetched_at" \
             --argjson summary "$summary_json" \
             --argjson current_price "$current_price_json" \
+            --argjson masternode_stats "$masternode_stats_json" \
             --argjson release "$release_json" \
             '{
               fetched_at: $fetched_at,
@@ -53,6 +56,7 @@ jobs:
                 last_price_btc: $current_price.last_price_btc,
                 last_price_usd: $current_price.last_price_usd
               },
+              masternode_stats: $masternode_stats,
               release: {
                 tag_name: $release.tag_name,
                 name: $release.name,

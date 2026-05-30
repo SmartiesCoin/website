@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Smartiecoin (SMT) | CPU Mining + Privacy + Masternodes</title>
-  <meta name="description" content="Smartiecoin (SMT) is a secondary coin in the Ethernova ecosystem, focused on CPU mining, privacy through CoinJoin/Tor, and deterministic masternodes.">
+  <title>Smartiecoin (SMT) | v0.3.5 Shielded Privacy + Masternodes</title>
+  <meta name="description" content="Smartiecoin (SMT) v0.3.5 adds shielded transaction support, refreshed wallet builds, CPU mining, governance, and deterministic masternodes.">
   <meta name="theme-color" content="#0b1020">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Smartiecoin (SMT)">
-  <meta property="og:description" content="A secondary Ethernova ecosystem coin focused on CPU mining, privacy, and masternodes.">
+  <meta property="og:description" content="Smartiecoin Core v0.3.5 is live with shielded transaction support, refreshed wallet builds, and masternode infrastructure.">
   <meta property="og:image" content="assets/logo-horizontal.png">
   <meta property="og:url" content="https://smartiecoin.com/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/logo-horizontal.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Outfit:wght@500;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script defer src="app.js"></script>
 </head>
@@ -38,6 +38,7 @@
 
       <nav id="primary-nav" class="nav-links" aria-label="Primary">
         <a href="#snapshot">Snapshot</a>
+        <a href="#release">v0.3.5</a>
         <a href="#tokenomics">Tokenomics</a>
         <a href="#live">Live Stats</a>
         <a href="#tech">Technology</a>
@@ -52,17 +53,82 @@
     <section id="top" class="hero">
       <div class="container hero-grid">
         <div class="hero-copy" data-reveal>
-          <p class="eyebrow">Ethernova Ecosystem + SMT</p>
-          <h1>Serious infrastructure. Colorful identity.</h1>
+          <p class="eyebrow">Smartiecoin Core v0.3.5 is live</p>
+          <h1>Shielded privacy arrives for SMT.</h1>
           <p class="lead">
-            Smartiecoin (SMT) is a secondary coin inside the Ethernova ecosystem. The current focus
-            is CPU mining, privacy, and masternode services on top of the core network layer.
+            Smartiecoin (SMT) keeps the CPU-mined, masternode-powered core and now moves into a new
+            privacy chapter with shielded transaction support, refreshed cross-platform wallets,
+            and safer migration paths for legacy users.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin" target="_blank" rel="noopener">Core Repository</a>
-            <a class="btn btn-soft" href="https://github.com/SmartiesCoin/Smartiecoin/releases" target="_blank" rel="noopener">Releases</a>
-            <a class="btn btn-soft" href="https://ethnova.net/" target="_blank" rel="noopener">Ethernova</a>
+            <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.3.5" target="_blank" rel="noopener">Download v0.3.5</a>
+            <a class="btn btn-soft" href="#release">See What Changed</a>
+            <a class="btn btn-soft" href="masternodes.html">Masternode Dashboard</a>
           </div>
+        </div>
+        <aside class="hero-card release-pulse" data-reveal>
+          <div class="release-kicker">Latest network upgrade</div>
+          <h2>v0.3.5</h2>
+          <p>Transparent wallets stay supported while SMT adds shielded transaction tooling for the next privacy phase.</p>
+          <dl class="release-facts">
+            <div>
+              <dt>Shield activation</dt>
+              <dd>Block 130,000</dd>
+            </div>
+            <div>
+              <dt>Published</dt>
+              <dd data-release-date>Loading...</dd>
+            </div>
+            <div>
+              <dt>Builds</dt>
+              <dd>Windows, Linux, macOS</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section id="release" class="section release-section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow release-eyebrow">New release spotlight</p>
+          <h2>Smartiecoin Core v0.3.5</h2>
+          <p>
+            A practical privacy and compatibility update: shielded transaction support, BDB migration options,
+            self-contained Sapling parameter handling, and refreshed binaries for the platforms the community uses.
+          </p>
+        </div>
+
+        <div class="release-grid">
+          <article class="card release-card release-card-featured" data-reveal>
+            <span>01</span>
+            <h3>Shielded Transactions</h3>
+            <p>SMT now includes Sapling-style shielded transaction support while keeping transparent addresses available for regular deposits, withdrawals, and exchange integrations.</p>
+          </article>
+          <article class="card release-card" data-reveal>
+            <span>02</span>
+            <h3>Safer Wallet Migration</h3>
+            <p>Windows users can choose the BDB 6.2 auto-migration build or the BDB 4.8 legacy build, reducing friction for older wallet.dat files.</p>
+          </article>
+          <article class="card release-card" data-reveal>
+            <span>03</span>
+            <h3>Self-contained Packages</h3>
+            <p>Release packages include the required Sapling startup path, with the Linux daemon/Qt build prepared to run without manual parameter-file setup.</p>
+          </article>
+          <article class="card release-card" data-reveal>
+            <span>04</span>
+            <h3>Network Systems Preserved</h3>
+            <p>Masternodes, InstantSend, ChainLocks, CoinJoin legacy privacy, governance, and 60-second CPU mining remain part of the same SMT core.</p>
+          </article>
+        </div>
+
+        <div class="release-download-strip" data-reveal>
+          <div>
+            <strong>Latest release:</strong>
+            <span data-release-version>Loading...</span>
+            <span class="release-muted">published <span data-release-date>Loading...</span></span>
+          </div>
+          <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.3.5" target="_blank" rel="noopener">Open GitHub Release &rarr;</a>
         </div>
       </div>
     </section>
@@ -81,7 +147,7 @@
           </article>
           <article class="card" data-reveal>
             <h3>Optional Privacy</h3>
-            <p>CoinJoin support plus Tor onion service support (v3) for additional network privacy.</p>
+            <p>Shielded transaction support in v0.3.5, with legacy CoinJoin and Tor onion service support (v3) still available.</p>
           </article>
           <article class="card" data-reveal>
             <h3>Masternode Layer</h3>
@@ -294,8 +360,8 @@
             <p>Deterministic masternodes with BLS signatures, operator/owner separation, and automatic PoSe monitoring. Easy setup with Plug &amp; Play Wizard.</p>
           </article>
           <article class="card feature" data-reveal>
-            <h3>4. PrivateSend (CoinJoin)</h3>
-            <p>Wallet-level coin mixing through masternodes for on-chain privacy. Plus optional Tor v3 for transport-level anonymity.</p>
+            <h3>4. Shielded TX + Legacy PrivateSend</h3>
+            <p>Transparent addresses remain supported while v0.3.5 adds shielded transaction support. Legacy CoinJoin mixing and optional Tor v3 remain available.</p>
           </article>
           <article class="card feature" data-reveal>
             <h3>5. On-Chain Governance</h3>
@@ -314,14 +380,16 @@
         <div>
           <h2>Current Status</h2>
           <p>
-            SMT is a secondary coin integrated with the Ethernova ecosystem. The network is fully operational with
-            CPU mining, InstantSend, ChainLocks, PrivateSend, masternodes, and on-chain governance.
+            SMT is a secondary coin integrated with the Ethernova ecosystem. The network is active with
+            CPU mining, InstantSend, ChainLocks, shielded transaction tooling, legacy PrivateSend, masternodes,
+            and on-chain governance.
           </p>
         </div>
         <ul class="status-list">
           <li><span class="status-dot"></span> Core running on release <strong class="release-inline" data-release-version>Loading...</strong></li>
+          <li><span class="status-dot"></span> Shielded transaction support prepared for block 130,000 activation</li>
           <li><span class="status-dot"></span> InstantSend &amp; ChainLocks active via LLMQ quorums</li>
-          <li><span class="status-dot"></span> PrivateSend (CoinJoin) mixing available</li>
+          <li><span class="status-dot"></span> Legacy PrivateSend (CoinJoin) mixing available</li>
           <li><span class="status-dot"></span> On-chain governance with treasury superblocks</li>
           <li><span class="status-dot"></span> Listed on Klingex, Gatevia &amp; Nestex exchanges</li>
         </ul>
