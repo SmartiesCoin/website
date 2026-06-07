@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-06-07T02:39:16Z",
+  "fetched_at": "2026-06-07T06:49:45Z",
   "summary": {
-    "difficulty": 0.001927841114474843,
+    "difficulty": 0.002480414058639433,
     "difficultyHybrid": "",
-    "supply": 6755070,
-    "hashrate": "131935.0476",
+    "supply": 6766005,
+    "hashrate": "117635.8302",
     "lastPrice": 0.0015,
     "lastUSDPrice": 0.0015,
-    "connections": 123,
-    "blockcount": 139847,
+    "connections": 128,
+    "blockcount": 140092,
     "masternodeCountOnline": 99,
     "masternodeCountOffline": 6
   },
@@ -32,8 +32,8 @@
       "evo_smt": 4125000,
       "total_smt": 4875000,
       "source": "protx_list_registered",
-      "supply_smt": 6755070,
-      "percent_of_supply": 72.16801602352011
+      "supply_smt": 6766005,
+      "percent_of_supply": 72.05138039360006
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 3.6500077977777776,
-      "network_reward_per_day": 5256.0112288,
-      "regular_reward_per_day": 53.091022513131314,
-      "evo_reward_per_day": 265.4551125656566,
+      "network_reward_per_block": 9.725014653104166,
+      "network_reward_per_day": 14004.02110047,
+      "regular_reward_per_day": 141.45475859060605,
+      "evo_reward_per_day": 707.2737929530302,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-06-07",
-      "chart_reference_payments": 146
+      "chart_reference_payments": 389
     },
     "roi": {
-      "regular_annual_percent": 129.18815478195287,
-      "evo_annual_percent": 129.18815478195287
+      "regular_annual_percent": 344.2065792371414,
+      "evo_annual_percent": 344.2065792371414
     },
     "lookback": {
-      "since_block": 136967,
-      "current_block": 139847,
+      "since_block": 137210,
+      "current_block": 140090,
       "payment_count": 2880,
-      "total_reward": 103680.17884408
+      "total_reward": 103680.18240602
     }
   },
   "release": {
