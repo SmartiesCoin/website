@@ -1,22 +1,68 @@
 {
-  "fetched_at": "2026-06-13T20:10:10Z",
+  "fetched_at": "2026-06-13T21:38:13Z",
   "summary": {
-    "difficulty": 0.001231300984334342,
+    "difficulty": 0.001059012264666096,
     "difficultyHybrid": "",
-    "supply": 7169474,
-    "hashrate": "61264.4700",
+    "supply": 7173209,
+    "hashrate": "61939.5327",
     "lastPrice": 0.00072862,
     "lastUSDPrice": 0.00072862,
-    "connections": 128,
-    "blockcount": 149058,
-    "masternodeCountOnline": 103,
-    "masternodeCountOffline": 7
+    "connections": 129,
+    "blockcount": 149139,
+    "masternodeCountOnline": 106,
+    "masternodeCountOffline": 4
   },
   "current_price": {
     "last_price_btc": null,
     "last_price_usd": 0.00072862
   },
-  "masternode_stats": null,
+  "masternode_stats": {
+    "counts": {
+      "total": 81,
+      "online": 79,
+      "offline": 2,
+      "pose_banned": 2
+    },
+    "queue_depth": 79,
+    "locked": {
+      "regular_nodes": 48,
+      "evo_nodes": 62,
+      "total_nodes": 110,
+      "regular_smt": 720000,
+      "evo_smt": 4650000,
+      "total_smt": 5370000,
+      "source": "protx_list_registered",
+      "supply_smt": 7173209,
+      "percent_of_supply": 74.86189235529037
+    },
+    "estimation": {
+      "block_time_seconds": 60,
+      "payments_per_block": 1,
+      "lookback_blocks": 2880,
+      "regular_collateral": 15000,
+      "evo_collateral": 75000,
+      "evo_weight": 5
+    },
+    "rewards": {
+      "network_reward_per_block": 27.475046885465275,
+      "network_reward_per_day": 39564.06751507,
+      "regular_reward_per_day": 500.81098120341767,
+      "evo_reward_per_day": 2504.0549060170883,
+      "source": "latest_chart_day",
+      "chart_reference_day": "2026-06-13",
+      "chart_reference_payments": 1099
+    },
+    "roi": {
+      "regular_annual_percent": 1218.6400542616498,
+      "evo_annual_percent": 1218.6400542616498
+    },
+    "lookback": {
+      "since_block": 146259,
+      "current_block": 149139,
+      "payment_count": 2568,
+      "total_reward": 92448.12677306
+    }
+  },
   "release": {
     "tag_name": "v0.3.7",
     "name": "Smartiecoin Core v0.3.7",
