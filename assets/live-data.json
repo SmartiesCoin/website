@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-06-13T22:45:12Z",
+  "fetched_at": "2026-06-13T23:51:18Z",
   "summary": {
-    "difficulty": 0.0009507711902648459,
+    "difficulty": 0.000921210452119716,
     "difficultyHybrid": "",
-    "supply": 7175819,
-    "hashrate": "57367.1683",
+    "supply": 7178654,
+    "hashrate": "54377.0635",
     "lastPrice": 0.00072862,
     "lastUSDPrice": 0.00072862,
     "connections": 130,
-    "blockcount": 149198,
+    "blockcount": 149266,
     "masternodeCountOnline": 106,
     "masternodeCountOffline": 4
   },
@@ -16,7 +16,53 @@
     "last_price_btc": null,
     "last_price_usd": 0.00072862
   },
-  "masternode_stats": null,
+  "masternode_stats": {
+    "counts": {
+      "total": 110,
+      "online": 106,
+      "offline": 4,
+      "pose_banned": 4
+    },
+    "queue_depth": 106,
+    "locked": {
+      "regular_nodes": 48,
+      "evo_nodes": 62,
+      "total_nodes": 110,
+      "regular_smt": 720000,
+      "evo_smt": 4650000,
+      "total_smt": 5370000,
+      "source": "protx_list_registered",
+      "supply_smt": 7178654,
+      "percent_of_supply": 74.80510970440977
+    },
+    "estimation": {
+      "block_time_seconds": 60,
+      "payments_per_block": 1,
+      "lookback_blocks": 2880,
+      "regular_collateral": 15000,
+      "evo_collateral": 75000,
+      "evo_weight": 5
+    },
+    "rewards": {
+      "network_reward_per_block": 33.70005071297916,
+      "network_reward_per_day": 48528.07302669,
+      "regular_reward_per_day": 457.81200968575473,
+      "evo_reward_per_day": 2289.060048428774,
+      "source": "latest_chart_day",
+      "chart_reference_day": "2026-06-13",
+      "chart_reference_payments": 1348
+    },
+    "roi": {
+      "regular_annual_percent": 1114.0092235686698,
+      "evo_annual_percent": 1114.00922356867
+    },
+    "lookback": {
+      "since_block": 146380,
+      "current_block": 149260,
+      "payment_count": 2880,
+      "total_reward": 103680.13385085
+    }
+  },
   "release": {
     "tag_name": "v0.3.7",
     "name": "Smartiecoin Core v0.3.7",
