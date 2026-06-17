@@ -1,29 +1,29 @@
 {
-  "fetched_at": "2026-06-17T13:51:54Z",
+  "fetched_at": "2026-06-17T16:51:16Z",
   "summary": {
-    "difficulty": 0.001339283962614573,
+    "difficulty": 0.001108361737340238,
     "difficultyHybrid": "",
-    "supply": 7507874,
-    "hashrate": "95386.5072",
-    "lastPrice": 0.00083341,
-    "lastUSDPrice": 0.00083341,
-    "connections": 130,
-    "blockcount": 154177,
-    "masternodeCountOnline": 104,
-    "masternodeCountOffline": 5
+    "supply": 7515299,
+    "hashrate": "95290.5014",
+    "lastPrice": 0.00088036,
+    "lastUSDPrice": 0.00088036,
+    "connections": 128,
+    "blockcount": 154350,
+    "masternodeCountOnline": 105,
+    "masternodeCountOffline": 4
   },
   "current_price": {
     "last_price_btc": null,
-    "last_price_usd": 0.00083341
+    "last_price_usd": 0.00088036
   },
   "masternode_stats": {
     "counts": {
       "total": 109,
-      "online": 102,
-      "offline": 7,
-      "pose_banned": 7
+      "online": 105,
+      "offline": 4,
+      "pose_banned": 4
     },
-    "queue_depth": 102,
+    "queue_depth": 105,
     "locked": {
       "regular_nodes": 43,
       "evo_nodes": 66,
@@ -32,8 +32,8 @@
       "evo_smt": 4950000,
       "total_smt": 5595000,
       "source": "protx_list_registered",
-      "supply_smt": 7507874,
-      "percent_of_supply": 74.52176208604459
+      "supply_smt": 7515299,
+      "percent_of_supply": 74.44813572952985
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,29 +44,29 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 19.77501609978472,
-      "network_reward_per_day": 28476.02318369,
-      "regular_reward_per_day": 279.17669787931374,
-      "evo_reward_per_day": 1395.8834893965686,
+      "network_reward_per_block": 23.90001962742361,
+      "network_reward_per_day": 34416.02826349,
+      "regular_reward_per_day": 327.77169774752383,
+      "evo_reward_per_day": 1638.8584887376192,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-06-17",
-      "chart_reference_payments": 791
+      "chart_reference_payments": 956
     },
     "roi": {
-      "regular_annual_percent": 679.3299648396635,
-      "evo_annual_percent": 679.3299648396634
+      "regular_annual_percent": 797.577797852308,
+      "evo_annual_percent": 797.577797852308
     },
     "lookback": {
-      "since_block": 151296,
-      "current_block": 154176,
+      "since_block": 151461,
+      "current_block": 154341,
       "payment_count": 2880,
-      "total_reward": 103680.08084129
+      "total_reward": 103680.08206067
     }
   },
   "release": {
-    "tag_name": "v0.3.8",
-    "name": "Smartiecoin Core v0.3.8",
-    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.3.8",
-    "published_at": "2026-06-17T03:19:54Z"
+    "tag_name": "v0.4.0",
+    "name": "Smartiecoin Core v0.4.0",
+    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.4.0",
+    "published_at": "2026-06-17T16:35:46Z"
   }
 }
