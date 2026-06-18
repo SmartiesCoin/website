@@ -195,9 +195,9 @@ a {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.78fr);
   gap: 1.4rem;
-  align-items: stretch;
+  align-items: center;
 }
 
 .eyebrow {
@@ -282,6 +282,132 @@ h1 {
   background: linear-gradient(120deg, #39d6c3, #ffcf73);
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.fork-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+  border: 1px solid rgba(92, 119, 207, 0.62);
+  background:
+    radial-gradient(circle at 14% 0%, rgba(57, 214, 195, 0.26), transparent 31%),
+    radial-gradient(circle at 100% 16%, rgba(255, 147, 40, 0.24), transparent 34%),
+    linear-gradient(150deg, rgba(18, 28, 59, 0.96), rgba(7, 11, 26, 0.96));
+  box-shadow: 0 24px 70px rgba(2, 6, 18, 0.56);
+}
+
+.fork-panel::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.fork-panel::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -80px;
+  bottom: -95px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 207, 115, 0.28), transparent 58%),
+    repeating-conic-gradient(from 22deg, rgba(255, 255, 255, 0.14) 0 8deg, transparent 8deg 18deg);
+  opacity: 0.9;
+  animation: forkSpin 22s linear infinite;
+}
+
+@keyframes forkSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fork-panel-top,
+.fork-metric,
+.fork-panel p {
+  position: relative;
+  z-index: 1;
+}
+
+.fork-panel-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.fork-kicker {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 0.34rem 0.72rem;
+  color: #07101c;
+  background: linear-gradient(120deg, #39d6c3, #ffcf73);
+  font-weight: 900;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.fork-panel-top strong {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(2rem, 5.6vw, 4.4rem);
+  line-height: 0.9;
+  color: #ffffff;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.34);
+}
+
+.fork-metric-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.68rem;
+  margin-top: 0.68rem;
+}
+
+.fork-metric {
+  padding: 0.82rem;
+  border: 1px solid rgba(114, 139, 222, 0.46);
+  border-radius: 18px;
+  background: rgba(5, 10, 25, 0.52);
+}
+
+.fork-metric-main {
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(255, 147, 40, 0.18), rgba(57, 214, 195, 0.12));
+}
+
+.fork-metric span {
+  display: block;
+  color: #aebde8;
+  font-size: 0.77rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.fork-metric strong {
+  display: block;
+  margin-top: 0.28rem;
+  font-family: "Outfit", sans-serif;
+  color: #ffffff;
+  font-size: clamp(1.28rem, 3vw, 2rem);
+}
+
+.fork-metric-main strong {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  color: #ffcf73;
+}
+
+.fork-panel p {
+  margin: 0.88rem 0 0;
+  color: #c9d6fa;
 }
 
 .btn {
@@ -777,6 +903,28 @@ h1 {
     flex-direction: column;
   }
 
+}
+
+@media (max-width: 560px) {
+  .hero-update-strip {
+    width: 100%;
+    border-radius: 24px;
+    padding: 0.58rem;
+    background:
+      linear-gradient(135deg, rgba(57, 214, 195, 0.18), rgba(255, 147, 40, 0.12)),
+      rgba(8, 12, 27, 0.78);
+  }
+
+  .hero-update-strip span,
+  .hero-update-strip strong {
+    flex: 1 1 calc(50% - 0.45rem);
+    justify-content: center;
+    text-align: center;
+  }
+
+  .fork-metric-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 1040px) {

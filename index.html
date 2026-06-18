@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Smartiecoin (SMT) | v0.3.5 Shielded Privacy + Masternodes</title>
-  <meta name="description" content="Smartiecoin (SMT) v0.3.5 adds shielded transaction support, refreshed wallet builds, CPU mining, governance, and deterministic masternodes.">
+  <title>Smartiecoin (SMT) | v0.4.0 Economics Fork + Masternodes</title>
+  <meta name="description" content="Smartiecoin (SMT) v0.4.0 prepares the mandatory economics fork at block 172,800 with 2-minute blocks, lower daily emission, refreshed wallets, CPU mining, governance, and deterministic masternodes.">
   <meta name="theme-color" content="#0b1020">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Smartiecoin (SMT)">
-  <meta property="og:description" content="Smartiecoin Core v0.3.5 is live with shielded transaction support, refreshed wallet builds, and masternode infrastructure.">
+  <meta property="og:description" content="Smartiecoin Core v0.4.0 is live with the approved economics fork, 2-minute block target, lower daily emission, refreshed wallet builds, and masternode infrastructure.">
   <meta property="og:image" content="assets/logo-horizontal.png">
   <meta property="og:url" content="https://smartiecoin.com/">
   <meta name="twitter:card" content="summary_large_image">
@@ -38,7 +38,7 @@
 
       <nav id="primary-nav" class="nav-links" aria-label="Primary">
         <a href="#snapshot">Snapshot</a>
-        <a href="#release">v0.3.5</a>
+        <a href="#release">v0.4.0 Fork</a>
         <a href="#tokenomics">Tokenomics</a>
         <a href="#live">Live Stats</a>
         <a href="#tech">Technology</a>
@@ -53,60 +53,92 @@
     <section id="top" class="hero">
       <div class="container hero-grid">
         <div class="hero-copy" data-reveal>
-          <p class="eyebrow">Smartiecoin Core v0.3.5 is live</p>
-          <h1>Shielded privacy arrives for SMT.</h1>
+          <p class="eyebrow">Smartiecoin Core v0.4.0 is live</p>
+          <h1>The SMT economics fork is ready.</h1>
           <p class="lead">
-            Smartiecoin (SMT) keeps the CPU-mined, masternode-powered core and now moves into a new
-            privacy chapter with shielded transaction support, refreshed cross-platform wallets,
-            and safer migration paths for legacy users.
+            Smartiecoin (SMT) is preparing the approved v0.4.0 network fork at block 172,800:
+            a 2-minute block target, lower daily emission, healthier masternode economics,
+            and refreshed cross-platform wallet builds for the next era of the network.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.3.5" target="_blank" rel="noopener">Download v0.3.5</a>
+            <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.4.0" target="_blank" rel="noopener">Download v0.4.0</a>
             <a class="btn btn-soft" href="#release">See What Changed</a>
             <a class="btn btn-soft" href="masternodes.html">Masternode Dashboard</a>
           </div>
           <div class="hero-update-strip" data-reveal>
-            <span class="update-pill">Now live</span>
-            <strong>v0.3.5</strong>
-            <span>Shielded TX support</span>
-            <span>Activation: block 130,000</span>
+            <span class="update-pill">Mandatory</span>
+            <strong>v0.4.0</strong>
+            <span>Fork block 172,800</span>
+            <span>2-minute blocks</span>
             <span>Windows, Linux, macOS</span>
           </div>
         </div>
+
+        <aside class="fork-panel" data-reveal aria-label="Smartiecoin v0.4.0 fork details">
+          <div class="fork-panel-top">
+            <span class="fork-kicker">Approved Fork</span>
+            <strong>v0.4.0</strong>
+          </div>
+          <div class="fork-metric fork-metric-main">
+            <span>Activation Block</span>
+            <strong>172,800</strong>
+          </div>
+          <div class="fork-metric-grid">
+            <div class="fork-metric">
+              <span>Target Block Time</span>
+              <strong>2 min</strong>
+            </div>
+            <div class="fork-metric">
+              <span>Daily Emission</span>
+              <strong>-50%</strong>
+            </div>
+            <div class="fork-metric">
+              <span>InstantSend</span>
+              <strong>Active</strong>
+            </div>
+            <div class="fork-metric">
+              <span>Shielded TX</span>
+              <strong>Supported</strong>
+            </div>
+          </div>
+          <p>
+            No coin swap. No chain reset. Existing SMT stays on the same chain while upgraded nodes enforce the new rules at activation.
+          </p>
+        </aside>
       </div>
     </section>
 
     <section id="release" class="section release-section">
       <div class="container">
         <div class="section-head" data-reveal>
-          <p class="eyebrow release-eyebrow">New release spotlight</p>
-          <h2>Smartiecoin Core v0.3.5</h2>
+          <p class="eyebrow release-eyebrow">Mandatory release spotlight</p>
+          <h2>Smartiecoin Core v0.4.0</h2>
           <p>
-            A practical privacy and compatibility update: shielded transaction support, BDB migration options,
-            self-contained Sapling parameter handling, and refreshed binaries for the platforms the community uses.
+            A protocol-level economics update: 2-minute blocks, lower daily emission, long-term tail emission,
+            refreshed binaries, and safer startup behavior for the public node infrastructure.
           </p>
         </div>
 
         <div class="release-grid">
           <article class="card release-card release-card-featured" data-reveal>
             <span>01</span>
-            <h3>Shielded Transactions</h3>
-            <p>SMT now includes Sapling-style shielded transaction support while keeping transparent addresses available for regular deposits, withdrawals, and exchange integrations.</p>
+            <h3>Programmed Fork at Block 172,800</h3>
+            <p>v0.4.0 is a mandatory upgrade. Nodes, masternodes, pools, explorers, wallets, services, and exchanges should update before the activation block.</p>
           </article>
           <article class="card release-card" data-reveal>
             <span>02</span>
-            <h3>Safer Wallet Migration</h3>
-            <p>Windows users can choose the BDB 6.2 auto-migration build or the BDB 4.8 legacy build, reducing friction for older wallet.dat files.</p>
+            <h3>2-Minute Block Target</h3>
+            <p>The fork changes SMT from 60-second blocks to a 120-second target, slowing emission without resetting the network.</p>
           </article>
           <article class="card release-card" data-reveal>
             <span>03</span>
-            <h3>Self-contained Packages</h3>
-            <p>Release packages include the required Sapling startup path, with the Linux daemon/Qt build prepared to run without manual parameter-file setup.</p>
+            <h3>Healthier Emission</h3>
+            <p>With half as many blocks per day, daily SMT emission drops roughly 50%, reducing sell pressure and stretching the reward schedule.</p>
           </article>
           <article class="card release-card" data-reveal>
             <span>04</span>
-            <h3>Network Systems Preserved</h3>
-            <p>Masternodes, InstantSend, ChainLocks, CoinJoin legacy privacy, governance, and 60-second CPU mining remain part of the same SMT core.</p>
+            <h3>Systems Preserved</h3>
+            <p>Masternodes, InstantSend, ChainLocks, shielded transaction support, legacy PrivateSend, governance, and CPU mining remain part of the same SMT core.</p>
           </article>
         </div>
 
@@ -116,7 +148,7 @@
             <span data-release-version>Loading...</span>
             <span class="release-muted">published <span data-release-date>Loading...</span></span>
           </div>
-          <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.3.5" target="_blank" rel="noopener">Open GitHub Release &rarr;</a>
+          <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.4.0" target="_blank" rel="noopener">Open GitHub Release &rarr;</a>
         </div>
       </div>
     </section>
@@ -135,7 +167,7 @@
           </article>
           <article class="card" data-reveal>
             <h3>Optional Privacy</h3>
-            <p>Shielded transaction support in v0.3.5, with legacy CoinJoin and Tor onion service support (v3) still available.</p>
+            <p>Shielded transaction support is active, with legacy CoinJoin and Tor onion service support (v3) still available.</p>
           </article>
           <article class="card" data-reveal>
             <h3>Masternode Layer</h3>
@@ -146,8 +178,8 @@
             <p>Issuance and validation are coordinated by the peer-to-peer network and protocol consensus.</p>
           </article>
           <article class="card" data-reveal>
-            <h3>Active Release</h3>
-            <p>Current repo tag: <strong data-release-version>Loading...</strong> (<span data-release-date>Loading...</span>).</p>
+            <h3>Active Fork Release</h3>
+            <p>Current repo tag: <strong data-release-version>Loading...</strong> (<span data-release-date>Loading...</span>) with fork activation scheduled at block 172,800.</p>
           </article>
         </div>
       </div>
@@ -156,69 +188,72 @@
     <section id="tokenomics" class="section section-alt">
       <div class="container">
         <div class="section-head" data-reveal>
-          <h2>Tokenomics Explained</h2>
-          <p>How SMT emissions and masternode rewards work on mainnet.</p>
+          <h2>v0.4.0 Tokenomics</h2>
+          <p>How the approved economics fork changes SMT emission timing without a coin swap or chain reset.</p>
         </div>
 
         <div class="tokenomics-grid">
           <article class="card tokenomics-card" data-reveal>
             <h3>Core Parameters</h3>
             <ul class="tokenomics-list">
-              <li><strong>Max supply:</strong> 100,000,000 SMT (theoretical; ~90M without governance proposals)</li>
-              <li><strong>Base block subsidy:</strong> 50 SMT</li>
-              <li><strong>Halving interval:</strong> 1,000,000 blocks (since v0.1.4, block 40,000+)</li>
-              <li><strong>Target block time:</strong> 60 seconds</li>
-              <li><strong>Approx. halving cadence:</strong> ~694 days</li>
+              <li><strong>Fork activation:</strong> block 172,800</li>
+              <li><strong>Target block time after fork:</strong> 120 seconds</li>
+              <li><strong>Daily emission effect:</strong> roughly 50% fewer block rewards per day</li>
+              <li><strong>Halving interval:</strong> 1,000,000 blocks</li>
+              <li><strong>Tail emission floor:</strong> halvings stop at 1 SMT per block</li>
             </ul>
             <p class="tokenomics-note">
-              Emission decreases through halvings. Since v0.1.4 (block 40,000), the reward split is fixed at 45% miner / 45% masternode / 10% governance superblocks.
+              v0.4.0 does not reset balances. It changes the future timing of rewards by slowing the block target while preserving the SMT chain and network services.
             </p>
           </article>
 
           <article class="card tokenomics-card" data-reveal>
-            <h3>Reward Formula (since v0.1.4)</h3>
-            <p class="tokenomics-formula"><strong>Every block (from block 40,000):</strong></p>
-            <p class="tokenomics-formula">Governance reserve = block subsidy x 10%</p>
-            <p class="tokenomics-formula">Distributable = block subsidy - governance reserve</p>
-            <p class="tokenomics-formula">MN reward = distributable x 50% (fixed)</p>
-            <p class="tokenomics-formula">Miner reward = distributable x 50% (fixed)</p>
+            <h3>Why the Fork Matters</h3>
+            <p class="tokenomics-formula"><strong>Same chain, slower emission:</strong></p>
+            <p class="tokenomics-formula">1-minute blocks &rarr; 2-minute blocks</p>
+            <p class="tokenomics-formula">~1,440 blocks/day &rarr; ~720 blocks/day</p>
+            <p class="tokenomics-formula">Same services, fewer new coins per day</p>
+            <p class="tokenomics-formula">Lower ROI pressure over time</p>
             <p class="tokenomics-note">
-              10% of the block subsidy is reserved for governance. This is <strong>not a dev fee</strong> — it is only paid out in superblocks (every 21,600 blocks) when the community approves funding proposals via masternode voting. If no proposals are approved, those coins are <strong>never created</strong>, reducing the effective supply. The 45/45/10 split is fixed and no longer changes with block height.
+              InstantSend keeps user transactions fast while the base chain moves to a more sustainable long-term reward pace.
             </p>
           </article>
         </div>
 
         <article class="card tokenomics-card tokenomics-table-card" data-reveal>
-          <h3>Reward Distribution (Mainnet)</h3>
+          <h3>Long-Term Emission Schedule</h3>
           <div class="tokenomics-table-wrap">
-            <table class="tokenomics-table" aria-label="Reward distribution schedule">
+            <table class="tokenomics-table" aria-label="Smartiecoin v0.4.0 long-term emission schedule">
               <thead>
                 <tr>
-                  <th>Block Height Range</th>
-                  <th>Miner</th>
-                  <th>Masternode</th>
-                  <th>Governance</th>
+                  <th>Block Range</th>
+                  <th>Approx. Years</th>
+                  <th>Reward / Block</th>
+                  <th>Circulating Supply Target</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>0 - 101 (legacy)</td><td>80%</td><td>20%</td><td>0%</td></tr>
-                <tr><td>102 - 27,599 (legacy)</td><td>75%</td><td>25%</td><td>0%</td></tr>
-                <tr><td>27,600 - 39,999 (v0.1.3)</td><td>67.5%</td><td>22.5%</td><td>10%</td></tr>
-                <tr><td style="font-weight:bold">40,000+ (v0.1.4)</td><td style="font-weight:bold">45%</td><td style="font-weight:bold">45%</td><td style="font-weight:bold">10%</td></tr>
+                <tr><td>1M</td><td>~3.8</td><td>50 SMT</td><td>50,000,000 SMT</td></tr>
+                <tr><td>2M</td><td>~7.6</td><td>25 SMT</td><td>75,000,000 SMT</td></tr>
+                <tr><td>3M</td><td>~11.4</td><td>12.5 SMT</td><td>87,500,000 SMT</td></tr>
+                <tr><td>4M</td><td>~15.2</td><td>6.25 SMT</td><td>93,750,000 SMT</td></tr>
+                <tr><td>5M</td><td>~19.0</td><td>3.125 SMT</td><td>96,875,000 SMT</td></tr>
+                <tr><td>6M</td><td>~22.8</td><td>1.5625 SMT</td><td>98,437,500 SMT</td></tr>
+                <tr><td style="font-weight:bold">7M+</td><td style="font-weight:bold">~26.6+</td><td style="font-weight:bold">1 SMT tail</td><td style="font-weight:bold">Long-term tail emission</td></tr>
               </tbody>
             </table>
           </div>
           <p class="tokenomics-note">
-            Since v0.1.4, the reward split is permanently fixed at 45/45/10. The 10% governance portion is only minted in superblocks when community proposals are approved — there is no dev fee.
+            The published schedule is calculated with governance superblocks included. Without approved superblocks, effective emission is lower because unpaid governance coins are not created.
           </p>
         </article>
 
         <article class="card tokenomics-card tokenomics-table-card" data-reveal>
-          <h3>Governance Superblocks (since v0.1.3)</h3>
-          <p>10% of the block subsidy is reserved for <strong>community governance</strong>. These coins are only created in <strong>superblocks</strong> (every 21,600 blocks / ~15 days) when funding proposals are approved by masternode vote. <strong>This is not a dev fee.</strong></p>
+          <h3>Governance Superblocks</h3>
+          <p>10% of the block subsidy is reserved for <strong>community governance</strong>. These coins are only created in <strong>superblocks</strong> when funding proposals are approved by masternode vote. <strong>This is not a dev fee.</strong></p>
           <ul class="tokenomics-list">
             <li><strong>Governance reserve:</strong> 10% of every block subsidy</li>
-            <li><strong>Superblock cycle:</strong> 21,600 blocks (~15 days)</li>
+            <li><strong>Superblock cycle:</strong> 21,600 blocks (~15 days before the fork, ~30 days after 2-minute blocks)</li>
             <li><strong>Proposal cost:</strong> 5 SMT (anti-spam)</li>
             <li><strong>No approved proposals?</strong> Coins are never created, reducing effective emission</li>
           </ul>
@@ -230,26 +265,27 @@
         <div class="tokenomics-grid tokenomics-grid-bottom">
           <article class="card tokenomics-card" data-reveal>
             <h3>Why Rewards Change Over Time</h3>
-            <p>SMT uses two timing layers (since v0.1.4):</p>
+            <p>SMT now uses three timing layers:</p>
             <ul class="tokenomics-list">
-              <li><strong>Halving clock:</strong> reduces subsidy every 1,000,000 blocks (~694 days).</li>
-              <li><strong>Governance superblocks:</strong> 10% reserved every block; only minted if community proposals pass.</li>
+              <li><strong>Fork clock:</strong> v0.4.0 activates the new timing at block 172,800.</li>
+              <li><strong>Block clock:</strong> 2-minute blocks reduce daily emission.</li>
+              <li><strong>Halving clock:</strong> subsidy continues down toward the 1 SMT tail emission floor.</li>
             </ul>
             <p class="tokenomics-note">
-              The 45/45/10 split is fixed. Only halvings change the absolute payout amounts. Without approved proposals, the governance portion is never created.
+              This keeps SMT alive long-term while reducing daily inflation pressure now.
             </p>
           </article>
 
           <article class="card tokenomics-card" data-reveal>
-            <h3>Concrete Examples (v0.1.4)</h3>
+            <h3>Concrete Fork Effects</h3>
             <ul class="tokenomics-list">
-              <li><strong>Normal block:</strong> 50 base - 5 governance = 45 &rarr; 22.5 MN / 22.5 miner</li>
-              <li><strong>Superblock w/ proposal:</strong> 5 SMT paid to approved proposal + 22.5 MN / 22.5 miner</li>
-              <li><strong>Superblock w/o proposal:</strong> 5 SMT not created &rarr; 22.5 MN / 22.5 miner</li>
-              <li><strong>After 1st halving:</strong> 25 base - 2.5 governance = 22.5 &rarr; 11.25 MN / 11.25 miner</li>
+              <li><strong>Before fork:</strong> roughly 1,440 blocks per day at a 60-second target</li>
+              <li><strong>After fork:</strong> roughly 720 blocks per day at a 120-second target</li>
+              <li><strong>Users:</strong> InstantSend still provides fast transaction experience</li>
+              <li><strong>Network:</strong> lower daily emission and healthier masternode ROI pressure</li>
             </ul>
             <p class="tokenomics-note">
-              These are base examples without fee variation. The 10% governance reserve applies to every block. Actual max supply depends on governance activity (~90M without proposals, up to 100M with full governance). There is no dev fee — governance funds are controlled by masternode voting.
+              Existing wallets, balances, masternodes, and services remain on the same chain. Everyone simply needs to update before activation.
             </p>
           </article>
         </div>
@@ -337,7 +373,7 @@
         <div class="cards cards-3">
           <article class="card feature" data-reveal>
             <h3>1. PoW Layer (Yespower)</h3>
-            <p>CPU-only mining with 60-second blocks. No GPU, no ASIC — decentralized and accessible to everyone.</p>
+            <p>CPU-first yespower mining. v0.4.0 moves the network toward 2-minute blocks for lower daily emission and longer-term sustainability.</p>
           </article>
           <article class="card feature" data-reveal>
             <h3>2. InstantSend + ChainLocks</h3>
@@ -349,7 +385,7 @@
           </article>
           <article class="card feature" data-reveal>
             <h3>4. Shielded TX + Legacy PrivateSend</h3>
-            <p>Transparent addresses remain supported while v0.3.5 adds shielded transaction support. Legacy CoinJoin mixing and optional Tor v3 remain available.</p>
+            <p>Transparent addresses remain supported while shielded transaction tooling, legacy CoinJoin mixing, and optional Tor v3 remain available.</p>
           </article>
           <article class="card feature" data-reveal>
             <h3>5. On-Chain Governance</h3>
@@ -370,12 +406,14 @@
           <p>
             SMT is a secondary coin integrated with the Ethernova ecosystem. The network is active with
             CPU mining, InstantSend, ChainLocks, shielded transaction tooling, legacy PrivateSend, masternodes,
-            and on-chain governance.
+            on-chain governance, and the v0.4.0 economics fork.
           </p>
         </div>
         <ul class="status-list">
           <li><span class="status-dot"></span> Core running on release <strong class="release-inline" data-release-version>Loading...</strong></li>
-          <li><span class="status-dot"></span> Shielded transaction support prepared for block 130,000 activation</li>
+          <li><span class="status-dot"></span> Mandatory fork activation at block <strong>172,800</strong></li>
+          <li><span class="status-dot"></span> 2-minute block target with lower daily emission</li>
+          <li><span class="status-dot"></span> Shielded transaction support active on mainnet</li>
           <li><span class="status-dot"></span> InstantSend &amp; ChainLocks active via LLMQ quorums</li>
           <li><span class="status-dot"></span> Legacy PrivateSend (CoinJoin) mixing available</li>
           <li><span class="status-dot"></span> On-chain governance with treasury superblocks</li>
