@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-06-18T18:38:08Z",
+  "fetched_at": "2026-06-18T23:10:24Z",
   "summary": {
-    "difficulty": 0.001364431986558008,
+    "difficulty": 0.00143081722009211,
     "difficultyHybrid": "",
-    "supply": 7581809,
-    "hashrate": "79167.0172",
+    "supply": 7593419,
+    "hashrate": "74758.4478",
     "lastPrice": 0.00091356,
     "lastUSDPrice": 0.00091356,
-    "connections": 128,
-    "blockcount": 155822,
+    "connections": 130,
+    "blockcount": 156078,
     "masternodeCountOnline": 107,
     "masternodeCountOffline": 2
   },
@@ -32,8 +32,8 @@
       "evo_smt": 5100000,
       "total_smt": 5715000,
       "source": "protx_list_registered",
-      "supply_smt": 7581809,
-      "percent_of_supply": 75.37778912657916
+      "supply_smt": 7593419,
+      "percent_of_supply": 75.26253983877355
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,29 +44,29 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 26.65002201027083,
-      "network_reward_per_day": 38376.03169479,
-      "regular_reward_per_day": 352.0736852733028,
-      "evo_reward_per_day": 1760.3684263665139,
+      "network_reward_per_block": 33.0250258614375,
+      "network_reward_per_day": 47556.03724047,
+      "regular_reward_per_day": 436.29391963733946,
+      "evo_reward_per_day": 2181.469598186697,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-06-18",
-      "chart_reference_payments": 1066
+      "chart_reference_payments": 1321
     },
     "roi": {
-      "regular_annual_percent": 856.7126341650367,
-      "evo_annual_percent": 856.7126341650369
+      "regular_annual_percent": 1061.6485377841925,
+      "evo_annual_percent": 1061.6485377841925
     },
     "lookback": {
-      "since_block": 152939,
-      "current_block": 155819,
+      "since_block": 153197,
+      "current_block": 156077,
       "payment_count": 2880,
-      "total_reward": 103680.08098056
+      "total_reward": 103680.08057211
     }
   },
   "release": {
-    "tag_name": "v0.4.0",
-    "name": "Smartiecoin Core v0.4.0",
-    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.4.0",
-    "published_at": "2026-06-17T16:35:46Z"
+    "tag_name": "v0.4.1",
+    "name": "Smartiecoin Core v0.4.1",
+    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.4.1",
+    "published_at": "2026-06-18T20:22:19Z"
   }
 }
