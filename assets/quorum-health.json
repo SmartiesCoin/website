@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-19T23:45:01Z",
+  "fetched_at": "2026-06-20T01:50:01Z",
   "nodes": {
     "total": 110,
     "enabled": 108,
@@ -12,7 +12,7 @@
     {
       "type": "llmq_60_75",
       "active_count": 32,
-      "latest": "0000010d6aef40c497528025a14817775bce3e72df19b281d3831cc5e98a9144"
+      "latest": "000001432be18e1212d64ca13c4179f157fe5f5329904e195d3c5dd37be067ce"
     },
     {
       "type": "llmq_400_60",
@@ -27,17 +27,17 @@
     {
       "type": "llmq_100_67",
       "active_count": 24,
-      "latest": "0000007a62126f45ea641359e91559477ebd7a52f6a355fe9e678e8d399759ac"
+      "latest": "000000cc2db340e3b15cdc38c431eff6833ae73f14deff85277d7341037b1bac"
     },
     {
       "type": "llmq_10_60",
       "active_count": 4,
-      "latest": "0000007a62126f45ea641359e91559477ebd7a52f6a355fe9e678e8d399759ac"
+      "latest": "000000cc2db340e3b15cdc38c431eff6833ae73f14deff85277d7341037b1bac"
     },
     {
       "type": "llmq_10_75",
       "active_count": 2,
-      "latest": "0000007a62126f45ea641359e91559477ebd7a52f6a355fe9e678e8d399759ac"
+      "latest": "000000cc2db340e3b15cdc38c431eff6833ae73f14deff85277d7341037b1bac"
     }
   ],
   "dkg": {
