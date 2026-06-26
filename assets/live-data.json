@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-06-26T11:18:24Z",
+  "fetched_at": "2026-06-26T13:25:08Z",
   "summary": {
-    "difficulty": 0.002473631208329307,
+    "difficulty": 0.001713345517123677,
     "difficultyHybrid": "",
-    "supply": 8055119,
-    "hashrate": "129523.3923",
+    "supply": 8060519,
+    "hashrate": "136335.8538",
     "lastPrice": 0.00995,
     "lastUSDPrice": 0.00995,
     "connections": 126,
-    "blockcount": 166337,
+    "blockcount": 166457,
     "masternodeCountOnline": 107,
     "masternodeCountOffline": 3
   },
@@ -16,53 +16,7 @@
     "last_price_btc": null,
     "last_price_usd": 0.00995
   },
-  "masternode_stats": {
-    "counts": {
-      "total": 110,
-      "online": 106,
-      "offline": 4,
-      "pose_banned": 4
-    },
-    "queue_depth": 106,
-    "locked": {
-      "regular_nodes": 39,
-      "evo_nodes": 71,
-      "total_nodes": 110,
-      "regular_smt": 585000,
-      "evo_smt": 5325000,
-      "total_smt": 5910000,
-      "source": "protx_list_registered",
-      "supply_smt": 8055119,
-      "percent_of_supply": 73.36949336192302
-    },
-    "estimation": {
-      "block_time_seconds": 60,
-      "payments_per_block": 1,
-      "lookback_blocks": 2880,
-      "regular_collateral": 15000,
-      "evo_collateral": 75000,
-      "evo_weight": 5
-    },
-    "rewards": {
-      "network_reward_per_block": 15.975009083305556,
-      "network_reward_per_day": 23004.01307996,
-      "regular_reward_per_day": 217.01899132037738,
-      "evo_reward_per_day": 1085.094956601887,
-      "source": "latest_chart_day",
-      "chart_reference_day": "2026-06-26",
-      "chart_reference_payments": 639
-    },
-    "roi": {
-      "regular_annual_percent": 528.0795455462517,
-      "evo_annual_percent": 528.0795455462517
-    },
-    "lookback": {
-      "since_block": 163457,
-      "current_block": 166337,
-      "payment_count": 2865,
-      "total_reward": 103140.09059079
-    }
-  },
+  "masternode_stats": null,
   "release": {
     "tag_name": "v0.4.1",
     "name": "Smartiecoin Core v0.4.1",
