@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-06-27T17:34:45Z",
+  "fetched_at": "2026-06-27T18:48:38Z",
   "summary": {
-    "difficulty": 0.00224652567528433,
+    "difficulty": 0.003279310485627177,
     "difficultyHybrid": "",
-    "supply": 8132608,
-    "hashrate": "158740.9327",
+    "supply": 8135983,
+    "hashrate": "172984.6236",
     "lastPrice": 0.00995,
     "lastUSDPrice": 0.00995,
-    "connections": 130,
-    "blockcount": 168059,
+    "connections": 129,
+    "blockcount": 168134,
     "masternodeCountOnline": 107,
     "masternodeCountOffline": 3
   },
@@ -32,8 +32,8 @@
       "evo_smt": 5325000,
       "total_smt": 5910000,
       "source": "protx_list_registered",
-      "supply_smt": 8132608,
-      "percent_of_supply": 72.6704151976832
+      "supply_smt": 8135983,
+      "percent_of_supply": 72.64026977440832
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 24.900036445756946,
-      "network_reward_per_day": 35856.05248189,
-      "regular_reward_per_day": 332.00048594342593,
-      "evo_reward_per_day": 1660.0024297171296,
+      "network_reward_per_block": 26.77503730248611,
+      "network_reward_per_day": 38556.05371558,
+      "regular_reward_per_day": 357.00049736648145,
+      "evo_reward_per_day": 1785.0024868324072,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-06-27",
-      "chart_reference_payments": 996
+      "chart_reference_payments": 1071
     },
     "roi": {
-      "regular_annual_percent": 807.867849129003,
-      "evo_annual_percent": 807.867849129003
+      "regular_annual_percent": 868.7012102584381,
+      "evo_annual_percent": 868.7012102584381
     },
     "lookback": {
-      "since_block": 165179,
-      "current_block": 168059,
+      "since_block": 165254,
+      "current_block": 168134,
       "payment_count": 2880,
-      "total_reward": 103680.11392471
+      "total_reward": 103680.11377666
     }
   },
   "release": {
