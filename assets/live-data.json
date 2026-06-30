@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-06-29T23:42:22Z",
+  "fetched_at": "2026-06-30T01:50:55Z",
   "summary": {
-    "difficulty": 0.0009836658779928298,
+    "difficulty": 0.002374071165260132,
     "difficultyHybrid": "",
-    "supply": 8270668,
-    "hashrate": "104241.7101",
+    "supply": 8276203,
+    "hashrate": "136796.1678",
     "lastPrice": 0.004,
     "lastUSDPrice": 0.004,
-    "connections": 131,
-    "blockcount": 171128,
+    "connections": 129,
+    "blockcount": 171252,
     "masternodeCountOnline": 104,
     "masternodeCountOffline": 4
   },
@@ -32,8 +32,8 @@
       "evo_smt": 5400000,
       "total_smt": 5940000,
       "source": "protx_list_registered",
-      "supply_smt": 8270668,
-      "percent_of_supply": 71.82007547637022
+      "supply_smt": 8276203,
+      "percent_of_supply": 71.77204329086659
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 33.650023165243056,
-      "network_reward_per_day": 48456.03335795,
-      "regular_reward_per_day": 465.92339767259614,
-      "evo_reward_per_day": 2329.616988362981,
+      "network_reward_per_block": 2.5500011963055558,
+      "network_reward_per_day": 3672.00172268,
+      "regular_reward_per_day": 35.307708871923076,
+      "evo_reward_per_day": 176.53854435961537,
       "source": "latest_chart_day",
-      "chart_reference_day": "2026-06-29",
-      "chart_reference_payments": 1346
+      "chart_reference_day": "2026-06-30",
+      "chart_reference_payments": 102
     },
     "roi": {
-      "regular_annual_percent": 1133.7469343366506,
-      "evo_annual_percent": 1133.7469343366506
+      "regular_annual_percent": 85.91542492167949,
+      "evo_annual_percent": 85.91542492167949
     },
     "lookback": {
-      "since_block": 168247,
-      "current_block": 171127,
+      "since_block": 168370,
+      "current_block": 171250,
       "payment_count": 2874,
-      "total_reward": 103464.08050988
+      "total_reward": 103464.07228217
     }
   },
   "release": {
