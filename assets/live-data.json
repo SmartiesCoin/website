@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-07-04T11:01:57Z",
+  "fetched_at": "2026-07-04T12:13:16Z",
   "summary": {
-    "difficulty": 0.002386464936608558,
+    "difficulty": 0.003207488770485641,
     "difficultyHybrid": "",
-    "supply": 8553628,
-    "hashrate": "75403.3748",
+    "supply": 8555338,
+    "hashrate": "76523.6086",
     "lastPrice": 0.00089553,
     "lastUSDPrice": 0.00089553,
-    "connections": 118,
-    "blockcount": 175018,
+    "connections": 116,
+    "blockcount": 175053,
     "masternodeCountOnline": 106,
     "masternodeCountOffline": 5
   },
@@ -32,8 +32,8 @@
       "evo_smt": 5550000,
       "total_smt": 6105000,
       "source": "protx_list_registered",
-      "supply_smt": 8553628,
-      "percent_of_supply": 71.37322315162642
+      "supply_smt": 8555338,
+      "percent_of_supply": 71.35895741348851
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 7.900010191611111,
-      "network_reward_per_day": 11376.01467592,
-      "regular_reward_per_day": 107.3208931690566,
-      "evo_reward_per_day": 536.604465845283,
+      "network_reward_per_block": 8.85001065886111,
+      "network_reward_per_day": 12744.01534876,
+      "regular_reward_per_day": 120.22655989396226,
+      "evo_reward_per_day": 601.1327994698113,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-07-04",
-      "chart_reference_payments": 316
+      "chart_reference_payments": 354
     },
     "roi": {
-      "regular_annual_percent": 261.1475067113711,
-      "evo_annual_percent": 261.1475067113711
+      "regular_annual_percent": 292.55129574197485,
+      "evo_annual_percent": 292.55129574197485
     },
     "lookback": {
-      "since_block": 172135,
-      "current_block": 175015,
+      "since_block": 172173,
+      "current_block": 175053,
       "payment_count": 2880,
-      "total_reward": 103680.11549458
+      "total_reward": 103680.11567458
     }
   },
   "release": {
