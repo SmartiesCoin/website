@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-07-04T17:36:21Z",
+  "fetched_at": "2026-07-04T18:38:29Z",
   "summary": {
-    "difficulty": 0.002723855311598906,
+    "difficulty": 0.002743736401684851,
     "difficultyHybrid": "",
-    "supply": 8562313,
-    "hashrate": "81676.5835",
+    "supply": 8563483,
+    "hashrate": "87084.4689",
     "lastPrice": 0.00098885,
     "lastUSDPrice": 0.00098885,
-    "connections": 118,
-    "blockcount": 175208,
+    "connections": 119,
+    "blockcount": 175234,
     "masternodeCountOnline": 107,
     "masternodeCountOffline": 6
   },
@@ -32,8 +32,8 @@
       "evo_smt": 5550000,
       "total_smt": 6135000,
       "source": "protx_list_registered",
-      "supply_smt": 8562313,
-      "percent_of_supply": 71.6511998568611
+      "supply_smt": 8563483,
+      "percent_of_supply": 71.64141039341119
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 12.725013549659723,
-      "network_reward_per_day": 18324.01951151,
-      "regular_reward_per_day": 171.25251879915888,
-      "evo_reward_per_day": 856.2625939957944,
+      "network_reward_per_block": 13.375013781833333,
+      "network_reward_per_day": 19260.01984584,
+      "regular_reward_per_day": 180.0001854751402,
+      "evo_reward_per_day": 900.0009273757009,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-07-04",
-      "chart_reference_payments": 509
+      "chart_reference_payments": 535
     },
     "roi": {
-      "regular_annual_percent": 416.7144624112866,
-      "evo_annual_percent": 416.7144624112866
+      "regular_annual_percent": 438.0004513228411,
+      "evo_annual_percent": 438.0004513228411
     },
     "lookback": {
-      "since_block": 172328,
-      "current_block": 175208,
+      "since_block": 172354,
+      "current_block": 175234,
       "payment_count": 2880,
-      "total_reward": 103680.11422358
+      "total_reward": 103680.11401441
     }
   },
   "release": {
