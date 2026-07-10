@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-07-10T05:04:44Z",
+  "fetched_at": "2026-07-10T08:35:02Z",
   "summary": {
-    "difficulty": 0.002186841961951786,
+    "difficulty": 0.002807498039656515,
     "difficultyHybrid": "",
-    "supply": 8729893,
-    "hashrate": "89956.8009",
+    "supply": 8734708,
+    "hashrate": "82003.2773",
     "lastPrice": 0.00384,
     "lastUSDPrice": 0.00384,
-    "connections": 128,
-    "blockcount": 178932,
+    "connections": 126,
+    "blockcount": 179039,
     "masternodeCountOnline": 105,
     "masternodeCountOffline": 6
   },
@@ -32,8 +32,8 @@
       "evo_smt": 5625000,
       "total_smt": 6165000,
       "source": "protx_list_registered",
-      "supply_smt": 8729893,
-      "percent_of_supply": 70.6194222540872
+      "supply_smt": 8734708,
+      "percent_of_supply": 70.58049336051073
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 3.6000013685763887,
-      "network_reward_per_day": 5184.00197075,
-      "regular_reward_per_day": 49.37144734047619,
-      "evo_reward_per_day": 246.85723670238093,
+      "network_reward_per_block": 6.275002429736111,
+      "network_reward_per_day": 9036.00349882,
+      "regular_reward_per_day": 86.0571761792381,
+      "evo_reward_per_day": 430.2858808961905,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-07-10",
-      "chart_reference_payments": 144
+      "chart_reference_payments": 251
     },
     "roi": {
-      "regular_annual_percent": 120.13718852849206,
-      "evo_annual_percent": 120.13718852849206
+      "regular_annual_percent": 209.40579536947936,
+      "evo_annual_percent": 209.40579536947936
     },
     "lookback": {
-      "since_block": 176052,
-      "current_block": 178932,
-      "payment_count": 2854,
-      "total_reward": 102744.09570997
+      "since_block": 176159,
+      "current_block": 179039,
+      "payment_count": 2855,
+      "total_reward": 102780.09271978
     }
   },
   "release": {
