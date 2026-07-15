@@ -130,69 +130,6 @@
     return stats.counts !== undefined || stats.locked !== undefined || stats.roi !== undefined;
   };
 
-  const parseTickerRows = (payload) => {
-    if (Array.isArray(payload)) return payload;
-    if (Array.isArray(payload?.data)) return payload.data;
-    if (Array.isArray(payload?.result)) return payload.result;
-    return [];
-  };
-
-  const extractKlingexSmtPrice = (payload) => {
-    const rows = parseTickerRows(payload);
-    if (!rows.length) return null;
-
-    const smtTicker = rows.find((row) => {
-      const tickerId = String(row?.ticker_id ?? '').toUpperCase();
-      const baseCurrency = String(row?.base_currency ?? row?.base_asset_symbol ?? '').toUpperCase();
-      const quoteCurrency = String(row?.target_currency ?? row?.quote_currency ?? row?.quote_asset_symbol ?? '').toUpperCase();
-      return tickerId === 'SMT_USDT' || (baseCurrency === 'SMT' && quoteCurrency === 'USDT');
-    });
-
-    if (!smtTicker) return null;
-
-    const lastPrice = Number(smtTicker.last_price ?? smtTicker.price ?? smtTicker.last);
-    if (!Number.isFinite(lastPrice) || lastPrice <= 0) return null;
-    return lastPrice;
-  };
-
-  const fetchKlingexSmtTicker = async () => {
-    const tickersUrl = 'https://api.klingex.io/api/tickers';
-    const allOriginsRaw = `https://api.allorigins.win/raw?url=${encodeURIComponent(tickersUrl)}`;
-    const allOriginsGet = `https://api.allorigins.win/get?url=${encodeURIComponent(tickersUrl)}`;
-
-    const sources = [
-      { name: 'klingex direct', url: tickersUrl, parser: 'json' },
-      { name: 'klingex via allorigins raw', url: allOriginsRaw, parser: 'json' },
-      { name: 'klingex via allorigins get', url: allOriginsGet, parser: 'allorigins' }
-    ];
-
-    for (const source of sources) {
-      try {
-        const text = await fetchText(source.url);
-        let payload = null;
-
-        if (source.parser === 'json') {
-          payload = tryParseJson(text);
-        } else if (source.parser === 'allorigins') {
-          const wrapped = tryParseJson(text);
-          payload = wrapped?.contents ? tryParseJson(wrapped.contents) : null;
-        }
-
-        const priceUsd = extractKlingexSmtPrice(payload);
-        if (Number.isFinite(priceUsd)) {
-          return {
-            priceUsd,
-            source: source.name
-          };
-        }
-      } catch (_error) {
-        // continue to next source
-      }
-    }
-
-    throw new Error('Could not load SMT ticker from Klingex');
-  };
-
   const extractGateviaSmtPrice = (quotes) => {
     if (!Array.isArray(quotes)) return null;
     const smtQuote = quotes.find((q) => {
@@ -558,10 +495,9 @@
         localSummaryCandidate = null;
       }
 
-      // Fetch all three data sources in parallel instead of sequentially
-      const [summaryResult, klingexResult, gateviaResult, mnResult] = await Promise.allSettled([
+      // Fetch live data sources in parallel instead of sequentially
+      const [summaryResult, gateviaResult, mnResult] = await Promise.allSettled([
         fetchExplorerSummary(),
-        fetchKlingexSmtTicker(),
         fetchGateviaSmtTicker(),
         fetchExplorerMasternodeStats()
       ]);
@@ -580,14 +516,10 @@
         sourceName = 'allorigins fallback';
       }
 
-      // Resolve exchange price (prefer Klingex, fall back to Gatevia)
+      // Resolve exchange price from Gatevia
       let exchangePriceUsd = null;
       let exchangeSource = '';
-      if (klingexResult.status === 'fulfilled') {
-        exchangePriceUsd = Number(klingexResult.value?.priceUsd);
-        exchangeSource = String(klingexResult.value?.source || 'klingex');
-      }
-      if (!Number.isFinite(exchangePriceUsd) && gateviaResult.status === 'fulfilled') {
+      if (gateviaResult.status === 'fulfilled') {
         exchangePriceUsd = Number(gateviaResult.value?.priceUsd);
         exchangeSource = String(gateviaResult.value?.source || 'gatevia');
       }
