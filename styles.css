@@ -142,8 +142,8 @@ a {
 }
 
 .brand-logo {
-  border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.45));
 }
 
 .brand span {
