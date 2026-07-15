@@ -613,6 +613,47 @@ h1 {
   color: #9fb0e3;
 }
 
+.exchange-strip {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(81, 168, 255, 0.45);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(57, 214, 195, 0.2), transparent 34%),
+    linear-gradient(135deg, rgba(22, 34, 67, 0.96), rgba(11, 17, 35, 0.96));
+  box-shadow: var(--shadow);
+}
+
+.exchange-strip-copy {
+  display: grid;
+  gap: 0.24rem;
+}
+
+.exchange-strip-copy strong {
+  font-family: "Outfit", sans-serif;
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+.exchange-strip-copy span {
+  color: #b8c5e9;
+}
+
+.exchange-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.64rem;
+}
+
+.exchange-actions .btn {
+  white-space: nowrap;
+}
+
 .card.feature {
   border-top: 4px solid #4ec9f7;
 }
@@ -903,6 +944,19 @@ h1 {
     flex-direction: column;
   }
 
+  .exchange-strip {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .exchange-actions {
+    justify-content: flex-start;
+  }
+
+  .exchange-actions .btn {
+    flex: 1 1 240px;
+  }
+
 }
 
 @media (max-width: 560px) {
@@ -924,6 +978,15 @@ h1 {
 
   .fork-metric-grid {
     grid-template-columns: 1fr;
+  }
+
+  .exchange-actions {
+    flex-direction: column;
+  }
+
+  .exchange-actions .btn {
+    flex-basis: auto;
+    width: 100%;
   }
 }
 
