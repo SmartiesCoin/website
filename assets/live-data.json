@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-07-19T22:27:31Z",
+  "fetched_at": "2026-07-19T23:31:14Z",
   "summary": {
-    "difficulty": 0.002471267159157825,
+    "difficulty": 0.003243207451256129,
     "difficultyHybrid": "",
-    "supply": 9028648,
-    "hashrate": "103020.1274",
+    "supply": 9030268,
+    "hashrate": "88994.9047",
     "lastPrice": 0.00059486,
     "lastUSDPrice": 0.00059486,
-    "connections": 122,
-    "blockcount": 185572,
+    "connections": 123,
+    "blockcount": 185607,
     "masternodeCountOnline": 104,
     "masternodeCountOffline": 9
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6000000,
       "total_smt": 6495000,
       "source": "protx_list_registered",
-      "supply_smt": 9028648,
-      "percent_of_supply": 71.93768103485705
+      "supply_smt": 9030268,
+      "percent_of_supply": 71.92477565449884
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 15.975012894770835,
-      "network_reward_per_day": 23004.01856847,
-      "regular_reward_per_day": 221.19248623528847,
-      "evo_reward_per_day": 1105.9624311764424,
+      "network_reward_per_block": 16.875013177368054,
+      "network_reward_per_day": 24300.01897541,
+      "regular_reward_per_day": 233.65402860971153,
+      "evo_reward_per_day": 1168.2701430485577,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-07-19",
-      "chart_reference_payments": 639
+      "chart_reference_payments": 675
     },
     "roi": {
-      "regular_annual_percent": 538.235049839202,
-      "evo_annual_percent": 538.2350498392019
+      "regular_annual_percent": 568.5581362836314,
+      "evo_annual_percent": 568.5581362836314
     },
     "lookback": {
-      "since_block": 182691,
-      "current_block": 185571,
+      "since_block": 182727,
+      "current_block": 185607,
       "payment_count": 2873,
-      "total_reward": 103428.08253529
+      "total_reward": 103428.08249468
     }
   },
   "release": {
