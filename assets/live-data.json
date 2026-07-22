@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-07-22T03:33:49Z",
+  "fetched_at": "2026-07-22T06:12:42Z",
   "summary": {
-    "difficulty": 0.002008962729641285,
+    "difficulty": 0.002769381571972565,
     "difficultyHybrid": "",
-    "supply": 9096463,
-    "hashrate": "64312.0549",
+    "supply": 9100018,
+    "hashrate": "71678.6236",
     "lastPrice": 0.00076939,
     "lastUSDPrice": 0.00076939,
-    "connections": 128,
-    "blockcount": 187079,
+    "connections": 110,
+    "blockcount": 187157,
     "masternodeCountOnline": 107,
     "masternodeCountOffline": 11
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6225000,
       "total_smt": 6750000,
       "source": "protx_list_registered",
-      "supply_smt": 9096463,
-      "percent_of_supply": 74.20466614331306
+      "supply_smt": 9100018,
+      "percent_of_supply": 74.17567745470393
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 2.6500004049930554,
-      "network_reward_per_day": 3816.00058319,
-      "regular_reward_per_day": 35.66355685224299,
-      "evo_reward_per_day": 178.31778426121497,
+      "network_reward_per_block": 4.6250007134305555,
+      "network_reward_per_day": 6660.00102734,
+      "regular_reward_per_day": 62.24300025551402,
+      "evo_reward_per_day": 311.2150012775701,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-07-22",
-      "chart_reference_payments": 106
+      "chart_reference_payments": 185
     },
     "roi": {
-      "regular_annual_percent": 86.78132167379128,
-      "evo_annual_percent": 86.78132167379128
+      "regular_annual_percent": 151.45796728841745,
+      "evo_annual_percent": 151.45796728841742
     },
     "lookback": {
-      "since_block": 184198,
-      "current_block": 187078,
+      "since_block": 184277,
+      "current_block": 187157,
       "payment_count": 2874,
-      "total_reward": 103464.10002811
+      "total_reward": 103464.09966793
     }
   },
   "release": {
