@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-07-24T22:56:17Z",
+  "fetched_at": "2026-07-25T00:08:29Z",
   "summary": {
-    "difficulty": 0.00505821169235329,
+    "difficulty": 0.00478005963495472,
     "difficultyHybrid": "",
-    "supply": 9182503,
-    "hashrate": "168223.7661",
+    "supply": 9184078,
+    "hashrate": "176290.8412",
     "lastPrice": 0.0007236,
     "lastUSDPrice": 0.0007236,
-    "connections": 113,
-    "blockcount": 188990,
+    "connections": 115,
+    "blockcount": 189025,
     "masternodeCountOnline": 109,
     "masternodeCountOffline": 9
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6225000,
       "total_smt": 6750000,
       "source": "protx_list_registered",
-      "supply_smt": 9182503,
-      "percent_of_supply": 73.5093688507371
+      "supply_smt": 9184078,
+      "percent_of_supply": 73.49676254927277
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 16.575017833840278,
-      "network_reward_per_day": 23868.02568073,
-      "regular_reward_per_day": 218.9727126672477,
-      "evo_reward_per_day": 1094.8635633362385,
+      "network_reward_per_block": 0.10000001979166667,
+      "network_reward_per_day": 144.0000285,
+      "regular_reward_per_day": 1.3211011788990827,
+      "evo_reward_per_day": 6.605505894495414,
       "source": "latest_chart_day",
-      "chart_reference_day": "2026-07-24",
-      "chart_reference_payments": 663
+      "chart_reference_day": "2026-07-25",
+      "chart_reference_payments": 4
     },
     "roi": {
-      "regular_annual_percent": 532.8336008236361,
-      "evo_annual_percent": 532.8336008236361
+      "regular_annual_percent": 3.2146795353211015,
+      "evo_annual_percent": 3.2146795353211015
     },
     "lookback": {
-      "since_block": 186110,
-      "current_block": 188990,
+      "since_block": 186145,
+      "current_block": 189025,
       "payment_count": 2879,
-      "total_reward": 103644.11155436
+      "total_reward": 103644.11069301
     }
   },
   "release": {
