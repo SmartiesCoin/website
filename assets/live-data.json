@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-07-27T01:19:40Z",
+  "fetched_at": "2026-07-27T04:58:13Z",
   "summary": {
-    "difficulty": 0.003900714538763942,
+    "difficulty": 0.003213326644030778,
     "difficultyHybrid": "",
-    "supply": 9246627,
-    "hashrate": "135790.5127",
+    "supply": 9251217,
+    "hashrate": "128014.0588",
     "lastPrice": 0.00070755,
     "lastUSDPrice": 0.00070755,
-    "connections": 120,
-    "blockcount": 190415,
+    "connections": 119,
+    "blockcount": 190517,
     "masternodeCountOnline": 103,
     "masternodeCountOffline": 12
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6300000,
       "total_smt": 6765000,
       "source": "protx_list_registered",
-      "supply_smt": 9246627,
-      "percent_of_supply": 73.16181349155751
+      "supply_smt": 9251217,
+      "percent_of_supply": 73.12551418910614
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 0.8500000028750001,
-      "network_reward_per_day": 1224.00000414,
-      "regular_reward_per_day": 11.883495185825243,
-      "evo_reward_per_day": 59.41747592912621,
+      "network_reward_per_block": 3.4000000121875,
+      "network_reward_per_day": 4896.00001755,
+      "regular_reward_per_day": 47.53398075291262,
+      "evo_reward_per_day": 237.6699037645631,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-07-27",
-      "chart_reference_payments": 34
+      "chart_reference_payments": 136
     },
     "roi": {
-      "regular_annual_percent": 28.91650495217476,
-      "evo_annual_percent": 28.916504952174755
+      "regular_annual_percent": 115.66601983208737,
+      "evo_annual_percent": 115.66601983208737
     },
     "lookback": {
-      "since_block": 187535,
-      "current_block": 190415,
-      "payment_count": 2863,
-      "total_reward": 103068.07840153
+      "since_block": 187637,
+      "current_block": 190517,
+      "payment_count": 2864,
+      "total_reward": 103104.07683963
     }
   },
   "release": {
