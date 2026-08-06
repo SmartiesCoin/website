@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-08-05T22:42:56Z",
+  "fetched_at": "2026-08-06T01:05:24Z",
   "summary": {
-    "difficulty": 0.006014804486501727,
+    "difficulty": 0.005016187125249833,
     "difficultyHybrid": "",
-    "supply": 9602892,
-    "hashrate": "195480.4673",
+    "supply": 9605862,
+    "hashrate": "150174.6005",
     "lastPrice": 0.00080734,
     "lastUSDPrice": 0.00080734,
-    "connections": 128,
-    "blockcount": 197132,
+    "connections": 129,
+    "blockcount": 197199,
     "masternodeCountOnline": 111,
     "masternodeCountOffline": 7
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6525000,
       "total_smt": 6990000,
       "source": "protx_list_registered",
-      "supply_smt": 9602892,
-      "percent_of_supply": 72.79057184023313
+      "supply_smt": 9605862,
+      "percent_of_supply": 72.76806599969893
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 16.05000625811111,
-      "network_reward_per_day": 23112.00901168,
-      "regular_reward_per_day": 208.2162974025225,
-      "evo_reward_per_day": 1041.0814870126126,
+      "network_reward_per_block": 0.8000000033125,
+      "network_reward_per_day": 1152.00000477,
+      "regular_reward_per_day": 10.378378421351352,
+      "evo_reward_per_day": 51.89189210675676,
       "source": "latest_chart_day",
-      "chart_reference_day": "2026-08-05",
-      "chart_reference_payments": 642
+      "chart_reference_day": "2026-08-06",
+      "chart_reference_payments": 32
     },
     "roi": {
-      "regular_annual_percent": 506.6596570128048,
-      "evo_annual_percent": 506.6596570128048
+      "regular_annual_percent": 25.254054158621624,
+      "evo_annual_percent": 25.254054158621624
     },
     "lookback": {
-      "since_block": 194252,
-      "current_block": 197132,
+      "since_block": 194318,
+      "current_block": 197198,
       "payment_count": 2851,
-      "total_reward": 102636.02064712
+      "total_reward": 102636.02078307
     }
   },
   "release": {
