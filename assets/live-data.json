@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-08-08T19:03:14Z",
+  "fetched_at": "2026-08-08T19:39:48Z",
   "summary": {
-    "difficulty": 0.003318676835671135,
+    "difficulty": 0.003169484502098577,
     "difficultyHybrid": "",
-    "supply": 9690372,
-    "hashrate": "107882.2649",
+    "supply": 9691182,
+    "hashrate": "113845.5319",
     "lastPrice": 0.00070517,
     "lastUSDPrice": 0.00070517,
-    "connections": 129,
-    "blockcount": 199077,
+    "connections": 130,
+    "blockcount": 199094,
     "masternodeCountOnline": 99,
     "masternodeCountOffline": 21
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6600000,
       "total_smt": 7080000,
       "source": "protx_list_registered",
-      "supply_smt": 9690372,
-      "percent_of_supply": 73.06221061482469
+      "supply_smt": 9691182,
+      "percent_of_supply": 73.05610399226843
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 13.675000572555556,
-      "network_reward_per_day": 19692.00082448,
-      "regular_reward_per_day": 198.90909923717172,
-      "evo_reward_per_day": 994.5454961858586,
+      "network_reward_per_block": 14.125000573805556,
+      "network_reward_per_day": 20340.00082628,
+      "regular_reward_per_day": 205.45455380080807,
+      "evo_reward_per_day": 1027.2727690040404,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-08-08",
-      "chart_reference_payments": 547
+      "chart_reference_payments": 565
     },
     "roi": {
-      "regular_annual_percent": 484.01214147711784,
-      "evo_annual_percent": 484.01214147711784
+      "regular_annual_percent": 499.939414248633,
+      "evo_annual_percent": 499.939414248633
     },
     "lookback": {
-      "since_block": 196196,
-      "current_block": 199076,
+      "since_block": 196214,
+      "current_block": 199094,
       "payment_count": 2880,
-      "total_reward": 103680.03133948
+      "total_reward": 103680.03133768
     }
   },
   "release": {
