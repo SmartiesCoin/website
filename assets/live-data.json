@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-08-09T17:39:58Z",
+  "fetched_at": "2026-08-09T18:04:41Z",
   "summary": {
-    "difficulty": 0.004056604661204956,
+    "difficulty": 0.003715041704156266,
     "difficultyHybrid": "",
-    "supply": 9719127,
-    "hashrate": "114870.3564",
+    "supply": 9719802,
+    "hashrate": "118351.1166",
     "lastPrice": 0.00067668,
     "lastUSDPrice": 0.00067668,
-    "connections": 128,
-    "blockcount": 199715,
+    "connections": 127,
+    "blockcount": 199731,
     "masternodeCountOnline": 113,
     "masternodeCountOffline": 7
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6600000,
       "total_smt": 7080000,
       "source": "protx_list_registered",
-      "supply_smt": 9719127,
-      "percent_of_supply": 72.84604882722492
+      "supply_smt": 9719802,
+      "percent_of_supply": 72.84098997078335
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 12.025000604541667,
-      "network_reward_per_day": 17316.00087054,
-      "regular_reward_per_day": 196.77273716522726,
-      "evo_reward_per_day": 983.8636858261362,
+      "network_reward_per_block": 12.40000060761111,
+      "network_reward_per_day": 17856.00087496,
+      "regular_reward_per_day": 202.90910085181815,
+      "evo_reward_per_day": 1014.5455042590908,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-08-09",
-      "chart_reference_payments": 481
+      "chart_reference_payments": 496
     },
     "roi": {
-      "regular_annual_percent": 478.81366043538634,
-      "evo_annual_percent": 478.81366043538634
+      "regular_annual_percent": 493.74547873942413,
+      "evo_annual_percent": 493.74547873942413
     },
     "lookback": {
-      "since_block": 196835,
-      "current_block": 199715,
-      "payment_count": 2755,
-      "total_reward": 99180.02405562
+      "since_block": 196850,
+      "current_block": 199730,
+      "payment_count": 2760,
+      "total_reward": 99360.02405472
     }
   },
   "release": {
