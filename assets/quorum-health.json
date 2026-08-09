@@ -1,8 +1,8 @@
 {
-  "fetched_at": "2026-08-09T16:55:01Z",
+  "fetched_at": "2026-08-09T17:25:02Z",
   "nodes": {
     "total": 120,
-    "enabled": 112,
+    "enabled": 113,
     "evo": 88,
     "regular": 32,
     "target_for_chainlocks": 400,
