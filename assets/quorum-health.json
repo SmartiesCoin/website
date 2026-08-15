@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-15T07:00:01Z",
+  "fetched_at": "2026-08-15T07:35:02Z",
   "nodes": {
     "total": 121,
-    "enabled": 113,
+    "enabled": 111,
     "evo": 88,
     "regular": 33,
     "target_for_chainlocks": 400,
-    "progress_pct": 28
+    "progress_pct": 27
   },
   "quorums": [
     {
@@ -27,17 +27,17 @@
     {
       "type": "llmq_100_67",
       "active_count": 24,
-      "latest": "0000022a8e2b1436b1517b34d6044408200969bfc4abfff1dde1b89e11610a9b"
+      "latest": "000000a8b197ad8b4952ac670c706a96c8ca273cf043f60fa778509d85e01962"
     },
     {
       "type": "llmq_10_60",
       "active_count": 4,
-      "latest": "0000022a8e2b1436b1517b34d6044408200969bfc4abfff1dde1b89e11610a9b"
+      "latest": "000000a8b197ad8b4952ac670c706a96c8ca273cf043f60fa778509d85e01962"
     },
     {
       "type": "llmq_10_75",
       "active_count": 2,
-      "latest": "0000022a8e2b1436b1517b34d6044408200969bfc4abfff1dde1b89e11610a9b"
+      "latest": "000000a8b197ad8b4952ac670c706a96c8ca273cf043f60fa778509d85e01962"
     }
   ],
   "dkg": {
