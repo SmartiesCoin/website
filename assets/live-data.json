@@ -1,20 +1,20 @@
 {
-  "fetched_at": "2026-08-18T20:17:56Z",
+  "fetched_at": "2026-08-18T21:02:45Z",
   "summary": {
-    "difficulty": 0.001197228064903846,
+    "difficulty": 0.001077225150855902,
     "difficultyHybrid": "",
-    "supply": 9997497,
-    "hashrate": "63801.5639",
-    "lastPrice": 0.00047699,
-    "lastUSDPrice": 0.00047699,
+    "supply": 9998307,
+    "hashrate": "51232.9137",
+    "lastPrice": 0.00047047,
+    "lastUSDPrice": 0.00047047,
     "connections": 121,
-    "blockcount": 205901,
+    "blockcount": 205919,
     "masternodeCountOnline": 114,
     "masternodeCountOffline": 7
   },
   "current_price": {
     "last_price_btc": null,
-    "last_price_usd": 0.00047699
+    "last_price_usd": 0.00047047
   },
   "masternode_stats": {
     "counts": {
@@ -32,8 +32,8 @@
       "evo_smt": 6600000,
       "total_smt": 7095000,
       "source": "protx_list_registered",
-      "supply_smt": 9997497,
-      "percent_of_supply": 70.96776323113674
+      "supply_smt": 9998307,
+      "percent_of_supply": 70.96201386894802
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 14.050000816819445,
-      "network_reward_per_day": 20232.00117622,
-      "regular_reward_per_day": 177.47369452824563,
-      "evo_reward_per_day": 887.3684726412282,
+      "network_reward_per_block": 14.500000819319444,
+      "network_reward_per_day": 20880.00117982,
+      "regular_reward_per_day": 183.15790508614035,
+      "evo_reward_per_day": 915.7895254307017,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-08-18",
-      "chart_reference_payments": 562
+      "chart_reference_payments": 580
     },
     "roi": {
-      "regular_annual_percent": 431.85265668539773,
-      "evo_annual_percent": 431.85265668539773
+      "regular_annual_percent": 445.6842357096082,
+      "evo_annual_percent": 445.6842357096082
     },
     "lookback": {
-      "since_block": 203021,
-      "current_block": 205901,
+      "since_block": 203039,
+      "current_block": 205919,
       "payment_count": 2880,
-      "total_reward": 103680.00464688
+      "total_reward": 103680.00464273
     }
   },
   "release": {
