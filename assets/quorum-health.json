@@ -1,12 +1,12 @@
 {
-  "fetched_at": "2026-08-18T22:35:01Z",
+  "fetched_at": "2026-08-18T22:55:02Z",
   "nodes": {
     "total": 121,
-    "enabled": 110,
+    "enabled": 113,
     "evo": 88,
     "regular": 33,
     "target_for_chainlocks": 400,
-    "progress_pct": 27
+    "progress_pct": 28
   },
   "quorums": [
     {
