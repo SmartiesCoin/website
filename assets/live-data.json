@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-08-19T16:14:24Z",
+  "fetched_at": "2026-08-19T16:49:55Z",
   "summary": {
-    "difficulty": 0.001406015717683114,
+    "difficulty": 0.001562857715201465,
     "difficultyHybrid": "",
-    "supply": 10022877,
-    "hashrate": "59895.0006",
+    "supply": 10023642,
+    "hashrate": "56195.0308",
     "lastPrice": 0.00039343,
     "lastUSDPrice": 0.00039343,
-    "connections": 122,
-    "blockcount": 206466,
+    "connections": 123,
+    "blockcount": 206482,
     "masternodeCountOnline": 112,
     "masternodeCountOffline": 8
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6600000,
       "total_smt": 7080000,
       "source": "protx_list_registered",
-      "supply_smt": 10022877,
-      "percent_of_supply": 70.63840053110499
+      "supply_smt": 10023642,
+      "percent_of_supply": 70.63300943908412
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 11.40000068851389,
-      "network_reward_per_day": 16416.00099146,
-      "regular_reward_per_day": 146.57143742375,
-      "evo_reward_per_day": 732.8571871187501,
+      "network_reward_per_block": 11.825000691826387,
+      "network_reward_per_day": 17028.00099623,
+      "regular_reward_per_day": 152.03572318062498,
+      "evo_reward_per_day": 760.1786159031249,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-08-19",
-      "chart_reference_payments": 456
+      "chart_reference_payments": 473
     },
     "roi": {
-      "regular_annual_percent": 356.6571643977917,
-      "evo_annual_percent": 356.65716439779175
+      "regular_annual_percent": 369.9535930728541,
+      "evo_annual_percent": 369.9535930728541
     },
     "lookback": {
-      "since_block": 203585,
-      "current_block": 206465,
+      "since_block": 203602,
+      "current_block": 206482,
       "payment_count": 2880,
-      "total_reward": 103680.00474484
+      "total_reward": 103680.00474961
     }
   },
   "release": {
