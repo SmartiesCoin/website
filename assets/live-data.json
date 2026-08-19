@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-08-19T18:49:11Z",
+  "fetched_at": "2026-08-19T19:14:41Z",
   "summary": {
-    "difficulty": 0.001541922214559341,
+    "difficulty": 0.001453730316134381,
     "difficultyHybrid": "",
-    "supply": 10026342,
-    "hashrate": "52860.1769",
+    "supply": 10026477,
+    "hashrate": "49956.8407",
     "lastPrice": 0.00039301,
     "lastUSDPrice": 0.00039301,
-    "connections": 122,
-    "blockcount": 206542,
+    "connections": 123,
+    "blockcount": 206545,
     "masternodeCountOnline": 112,
     "masternodeCountOffline": 8
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6600000,
       "total_smt": 7080000,
       "source": "protx_list_registered",
-      "supply_smt": 10026342,
-      "percent_of_supply": 70.61398863114783
+      "supply_smt": 10026477,
+      "percent_of_supply": 70.61303785965897
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -57,8 +57,8 @@
       "evo_annual_percent": 0
     },
     "lookback": {
-      "since_block": 203662,
-      "current_block": 206542,
+      "since_block": 203665,
+      "current_block": 206545,
       "payment_count": 0,
       "total_reward": 0
     }
