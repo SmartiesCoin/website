@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-08-22T14:42:22Z",
+  "fetched_at": "2026-08-22T15:00:08Z",
   "summary": {
-    "difficulty": 0.001540029921252737,
+    "difficulty": 0.001490316253136407,
     "difficultyHybrid": "",
-    "supply": 10112967,
-    "hashrate": "57894.7093",
+    "supply": 10113237,
+    "hashrate": "56385.6054",
     "lastPrice": 0.00040813,
     "lastUSDPrice": 0.00040813,
     "connections": 125,
-    "blockcount": 208467,
+    "blockcount": 208473,
     "masternodeCountOnline": 112,
     "masternodeCountOffline": 10
   },
@@ -16,53 +16,7 @@
     "last_price_btc": null,
     "last_price_usd": 0.00040813
   },
-  "masternode_stats": {
-    "counts": {
-      "total": 122,
-      "online": 112,
-      "offline": 10,
-      "pose_banned": 10
-    },
-    "queue_depth": 112,
-    "locked": {
-      "regular_nodes": 34,
-      "evo_nodes": 88,
-      "total_nodes": 122,
-      "regular_smt": 510000,
-      "evo_smt": 6600000,
-      "total_smt": 7110000,
-      "source": "protx_list_registered",
-      "supply_smt": 10112967,
-      "percent_of_supply": 70.30577673199171
-    },
-    "estimation": {
-      "block_time_seconds": 60,
-      "payments_per_block": 1,
-      "lookback_blocks": 2880,
-      "regular_collateral": 15000,
-      "evo_collateral": 75000,
-      "evo_weight": 5
-    },
-    "rewards": {
-      "network_reward_per_block": 10.425000415319444,
-      "network_reward_per_day": 15012.00059806,
-      "regular_reward_per_day": 134.0357196255357,
-      "evo_reward_per_day": 670.1785981276785,
-      "source": "latest_chart_day",
-      "chart_reference_day": "2026-08-22",
-      "chart_reference_payments": 417
-    },
-    "roi": {
-      "regular_annual_percent": 326.1535844221369,
-      "evo_annual_percent": 326.1535844221369
-    },
-    "lookback": {
-      "since_block": 205587,
-      "current_block": 208467,
-      "payment_count": 2880,
-      "total_reward": 103680.0122234
-    }
-  },
+  "masternode_stats": null,
   "release": {
     "tag_name": "v0.4.1",
     "name": "Smartiecoin Core v0.4.1",
