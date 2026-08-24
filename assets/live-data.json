@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-08-24T18:54:54Z",
+  "fetched_at": "2026-08-24T19:29:24Z",
   "summary": {
-    "difficulty": 0.001401320840312674,
+    "difficulty": 0.001378984673374955,
     "difficultyHybrid": "",
-    "supply": 10179567,
-    "hashrate": "48923.6318",
+    "supply": 10180377,
+    "hashrate": "49768.7733",
     "lastPrice": 0.00045601,
     "lastUSDPrice": 0.00045601,
-    "connections": 127,
-    "blockcount": 209947,
+    "connections": 126,
+    "blockcount": 209966,
     "masternodeCountOnline": 113,
     "masternodeCountOffline": 9
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6600000,
       "total_smt": 7110000,
       "source": "protx_list_registered",
-      "supply_smt": 10179567,
-      "percent_of_supply": 69.84579992449581
+      "supply_smt": 10180377,
+      "percent_of_supply": 69.84024265506082
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 13.575000567520833,
-      "network_reward_per_day": 19548.00081723,
-      "regular_reward_per_day": 172.99115767460177,
-      "evo_reward_per_day": 864.9557883730088,
+      "network_reward_per_block": 14.025000570833335,
+      "network_reward_per_day": 20196.000822,
+      "regular_reward_per_day": 178.72567099115045,
+      "evo_reward_per_day": 893.6283549557522,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-08-24",
-      "chart_reference_payments": 543
+      "chart_reference_payments": 561
     },
     "roi": {
-      "regular_annual_percent": 420.945150341531,
-      "evo_annual_percent": 420.945150341531
+      "regular_annual_percent": 434.8991327451327,
+      "evo_annual_percent": 434.8991327451328
     },
     "lookback": {
-      "since_block": 207067,
-      "current_block": 209947,
+      "since_block": 207085,
+      "current_block": 209965,
       "payment_count": 2880,
-      "total_reward": 103680.0040967
+      "total_reward": 103680.00409967
     }
   },
   "release": {
