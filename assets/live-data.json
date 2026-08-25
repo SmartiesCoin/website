@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-08-24T23:51:00Z",
+  "fetched_at": "2026-08-25T00:40:18Z",
   "summary": {
-    "difficulty": 0.001930545264813013,
+    "difficulty": 0.00192830580496697,
     "difficultyHybrid": "",
-    "supply": 10185912,
-    "hashrate": "46744.9622",
+    "supply": 10187082,
+    "hashrate": "49769.2769",
     "lastPrice": 0.00045156,
     "lastUSDPrice": 0.00045156,
-    "connections": 127,
-    "blockcount": 210088,
+    "connections": 126,
+    "blockcount": 210115,
     "masternodeCountOnline": 113,
     "masternodeCountOffline": 9
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6600000,
       "total_smt": 7110000,
       "source": "protx_list_registered",
-      "supply_smt": 10185912,
-      "percent_of_supply": 69.8022916357416
+      "supply_smt": 10187082,
+      "percent_of_supply": 69.79427474913817
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 17.100000613722223,
-      "network_reward_per_day": 24624.00088376,
-      "regular_reward_per_day": 217.91151224566372,
-      "evo_reward_per_day": 1089.5575612283185,
+      "network_reward_per_block": 0.5750000057638889,
+      "network_reward_per_day": 828.0000083,
+      "regular_reward_per_day": 7.327433701769912,
+      "evo_reward_per_day": 36.637168508849555,
       "source": "latest_chart_day",
-      "chart_reference_day": "2026-08-24",
-      "chart_reference_payments": 684
+      "chart_reference_day": "2026-08-25",
+      "chart_reference_payments": 23
     },
     "roi": {
-      "regular_annual_percent": 530.2513464644483,
-      "evo_annual_percent": 530.2513464644483
+      "regular_annual_percent": 17.830088674306783,
+      "evo_annual_percent": 17.830088674306786
     },
     "lookback": {
-      "since_block": 207208,
-      "current_block": 210088,
+      "since_block": 207234,
+      "current_block": 210114,
       "payment_count": 2880,
-      "total_reward": 103680.00412647
+      "total_reward": 103680.00410828
     }
   },
   "release": {
