@@ -1,14 +1,14 @@
 {
-  "fetched_at": "2026-09-07T19:55:25Z",
+  "fetched_at": "2026-09-07T22:36:32Z",
   "summary": {
-    "difficulty": 0.002213560806837932,
+    "difficulty": 0.002607522141358377,
     "difficultyHybrid": "",
-    "supply": 10609722,
-    "hashrate": "61376.1618",
+    "supply": 10612872,
+    "hashrate": "68667.4644",
     "lastPrice": 0.00047594,
     "lastUSDPrice": 0.00047594,
     "connections": 126,
-    "blockcount": 219506,
+    "blockcount": 219576,
     "masternodeCountOnline": 113,
     "masternodeCountOffline": 8
   },
@@ -32,8 +32,8 @@
       "evo_smt": 6750000,
       "total_smt": 7215000,
       "source": "protx_list_registered",
-      "supply_smt": 10609722,
-      "percent_of_supply": 68.00366682557753
+      "supply_smt": 10612872,
+      "percent_of_supply": 67.98348269912235
     },
     "estimation": {
       "block_time_seconds": 60,
@@ -44,23 +44,23 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 14.0250025589375,
-      "network_reward_per_day": 20196.00368487,
-      "regular_reward_per_day": 178.72569632628318,
-      "evo_reward_per_day": 893.628481631416,
+      "network_reward_per_block": 15.775002628048611,
+      "network_reward_per_day": 22716.00378439,
+      "regular_reward_per_day": 201.02658216274335,
+      "evo_reward_per_day": 1005.1329108137168,
       "source": "latest_chart_day",
       "chart_reference_day": "2026-09-07",
-      "chart_reference_payments": 561
+      "chart_reference_payments": 631
     },
     "roi": {
-      "regular_annual_percent": 434.8991943939557,
-      "evo_annual_percent": 434.89919439395584
+      "regular_annual_percent": 489.16468326267557,
+      "evo_annual_percent": 489.16468326267545
     },
     "lookback": {
-      "since_block": 216626,
-      "current_block": 219506,
+      "since_block": 216696,
+      "current_block": 219576,
       "payment_count": 2868,
-      "total_reward": 103248.00947423
+      "total_reward": 103248.00954642
     }
   },
   "release": {
