@@ -1,68 +1,22 @@
 {
-  "fetched_at": "2026-09-09T22:37:02Z",
+  "fetched_at": "2026-09-10T00:35:06Z",
   "summary": {
-    "difficulty": 0.00166340323036537,
+    "difficulty": 0.00168219275693258,
     "difficultyHybrid": "",
-    "supply": 10673577,
-    "hashrate": "50145.9178",
-    "lastPrice": 0.00048569,
-    "lastUSDPrice": 0.00048569,
-    "connections": 120,
-    "blockcount": 220925,
+    "supply": 10676232,
+    "hashrate": "58669.3030",
+    "lastPrice": 0.0004864,
+    "lastUSDPrice": 0.0004864,
+    "connections": 121,
+    "blockcount": 220985,
     "masternodeCountOnline": 114,
     "masternodeCountOffline": 7
   },
   "current_price": {
     "last_price_btc": null,
-    "last_price_usd": 0.00048569
+    "last_price_usd": 0.0004864
   },
-  "masternode_stats": {
-    "counts": {
-      "total": 121,
-      "online": 114,
-      "offline": 7,
-      "pose_banned": 7
-    },
-    "queue_depth": 114,
-    "locked": {
-      "regular_nodes": 31,
-      "evo_nodes": 90,
-      "total_nodes": 121,
-      "regular_smt": 465000,
-      "evo_smt": 6750000,
-      "total_smt": 7215000,
-      "source": "protx_list_registered",
-      "supply_smt": 10673577,
-      "percent_of_supply": 67.59683281434144
-    },
-    "estimation": {
-      "block_time_seconds": 60,
-      "payments_per_block": 1,
-      "lookback_blocks": 2880,
-      "regular_collateral": 15000,
-      "evo_collateral": 75000,
-      "evo_weight": 5
-    },
-    "rewards": {
-      "network_reward_per_block": 15.600000920493054,
-      "network_reward_per_day": 22464.00132551,
-      "regular_reward_per_day": 197.05264320622805,
-      "evo_reward_per_day": 985.2632160311402,
-      "source": "latest_chart_day",
-      "chart_reference_day": "2026-09-09",
-      "chart_reference_payments": 624
-    },
-    "roi": {
-      "regular_annual_percent": 479.49476513515503,
-      "evo_annual_percent": 479.4947651351549
-    },
-    "lookback": {
-      "since_block": 218045,
-      "current_block": 220925,
-      "payment_count": 2877,
-      "total_reward": 103572.01083535
-    }
-  },
+  "masternode_stats": null,
   "release": {
     "tag_name": "v0.4.1",
     "name": "Smartiecoin Core v0.4.1",
