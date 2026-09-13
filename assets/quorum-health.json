@@ -1,8 +1,8 @@
 {
-  "fetched_at": "2026-09-12T23:20:02Z",
+  "fetched_at": "2026-09-13T01:05:01Z",
   "nodes": {
     "total": 122,
-    "enabled": 113,
+    "enabled": 114,
     "evo": 90,
     "regular": 32,
     "target_for_chainlocks": 400,
@@ -27,17 +27,17 @@
     {
       "type": "llmq_100_67",
       "active_count": 24,
-      "latest": "000001473abd48f069f0017abc1b1ae94f3f597d73fb8867c015fcba55af34f8"
+      "latest": "0000009f4dc4ad8f3179f14bf5fe67e59668f29723cf9db4a04c9273168db84c"
     },
     {
       "type": "llmq_10_60",
       "active_count": 4,
-      "latest": "000001473abd48f069f0017abc1b1ae94f3f597d73fb8867c015fcba55af34f8"
+      "latest": "0000009f4dc4ad8f3179f14bf5fe67e59668f29723cf9db4a04c9273168db84c"
     },
     {
       "type": "llmq_10_75",
       "active_count": 2,
-      "latest": "0000017c2941ca92b30545497196c0b89b245de4e079e62485d75f61986d352d"
+      "latest": "0000009f4dc4ad8f3179f14bf5fe67e59668f29723cf9db4a04c9273168db84c"
     }
   ],
   "dkg": {
