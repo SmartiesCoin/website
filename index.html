@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Smartiecoin (SMT) | v0.5.0 "Korsh L3" Fork + Masternodes</title>
   <meta name="description" content="Smartiecoin (SMT) v0.5.0 'Korsh L3' activates Sunday, September 27, 2026 at 17:00 UTC: mining gets ~25–30× faster per CPU core, same chain, no reset. CPU mining, governance, deterministic masternodes.">
-  <meta name="theme-color" content="#0b1020">
+  <meta name="theme-color" content="#0a0a0b">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Smartiecoin (SMT) — v0.5.0 &quot;Korsh L3&quot;">
   <meta property="og:description" content="The Korsh L3 fork: mining becomes ~25–30× faster per CPU core. Activates September 27, 2026 at 17:00 UTC — same chain, no reset.">
@@ -21,22 +21,18 @@
   <link rel="apple-touch-icon" href="assets/logo-mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Outfit:wght@500;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script defer src="app.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="bg-noise" aria-hidden="true"></div>
-  <div class="bg-shape bg-shape-a" aria-hidden="true"></div>
-  <div class="bg-shape bg-shape-b" aria-hidden="true"></div>
-
   <header class="site-header">
     <div class="container header-row">
       <a class="brand" href="#top">
-        <img class="brand-logo" src="assets/logo-mark.png" alt="Smartiecoin logo" width="34" height="34">
-        <span>SMARTIECOIN</span>
+        <img class="brand-logo" src="assets/logo-mark.png" alt="Smartiecoin logo" width="30" height="30">
+        <span>Smartiecoin</span>
         <strong>SMT</strong>
       </a>
 
@@ -56,120 +52,106 @@
 
   <main id="main">
     <section id="top" class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy" data-reveal>
-          <p class="eyebrow">Smartiecoin Core v0.5.0 &mdash; &ldquo;Korsh L3&rdquo; is here</p>
-          <h1>Mining gets <span class="hl">25&ndash;30&times; faster</span> per CPU core.</h1>
-          <p class="lead">
-            The v0.5.0 &ldquo;Korsh L3&rdquo; upgrade moves SMT proof-of-work to
-            Yespower <strong>N=256, r=8</strong> &mdash; the same algorithm, now small enough to run
-            entirely inside the CPU&rsquo;s L2 cache. It activates by block timestamp on
-            <strong>Sunday, September 27, 2026, 17:00 UTC</strong>. Same chain. Same wallets. No reset.
-          </p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.5.0" target="_blank" rel="noopener">Download v0.5.0</a>
-            <a class="btn btn-soft" href="#korsh">What is Korsh L3?</a>
-            <a class="btn btn-soft" href="masternodes.html">Masternode Dashboard</a>
+      <div class="container hero-inner">
+        <div class="hero-grid">
+          <div class="hero-copy" data-reveal>
+            <div class="hero-badge"><span class="chip">v0.5.0 &mdash; &ldquo;Korsh L3&rdquo;</span><span>released and verified</span></div>
+            <h1>Mining gets <span class="accent">25&ndash;30&times;</span> faster per CPU core.</h1>
+            <p class="lead">
+              The <b>Korsh L3</b> upgrade moves SMT proof-of-work to Yespower <b>N=256, r=8</b> &mdash;
+              the same algorithm, now small enough to run entirely inside the CPU&rsquo;s L2 cache. It activates
+              by block timestamp on <b>Sunday, September 27, 2026, 17:00 UTC</b>. Same chain. Same wallets. No reset.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.5.0" target="_blank" rel="noopener">Download v0.5.0</a>
+              <a class="btn btn-ghost" href="#korsh">What is Korsh L3?</a>
+              <a class="btn btn-ghost" href="masternodes.html">Masternode Dashboard</a>
+            </div>
+            <div class="hero-meta">
+              <span>Windows · Linux · macOS</span>
+              <span>Miner kits included</span>
+              <span>SHA256 verified</span>
+              <span>BDB 4.8 gate passed</span>
+            </div>
           </div>
-          <div class="hero-update-strip" data-reveal>
-            <span class="update-pill">Mandatory for miners</span>
-            <strong>v0.5.0</strong>
-            <span>Fork Sep 27 &middot; 17:00 UTC</span>
-            <span>~25&ndash;30&times; faster</span>
-            <span>Windows, Linux, macOS</span>
-          </div>
-        </div>
 
-        <aside class="fork-panel" data-reveal aria-label="Smartiecoin v0.5.0 Korsh L3 fork details">
-          <div class="fork-panel-top">
-            <span class="fork-kicker">Korsh L3 Fork</span>
-            <strong>v0.5.0</strong>
-          </div>
-          <div class="fork-metric fork-metric-main">
-            <span>Activation (by timestamp)</span>
-            <strong>Sep 27 &middot; 17:00 UTC</strong>
-          </div>
-          <div class="fork-metric-grid">
-            <div class="fork-metric">
-              <span>Speedup per core</span>
-              <strong>25&ndash;30&times;</strong>
+          <aside class="fork-card" data-reveal aria-label="Smartiecoin v0.5.0 Korsh L3 fork details">
+            <div class="fork-card-head">
+              <span>Korsh L3 fork · <b style="color:var(--ink);font-weight:500">activation by timestamp</b></span>
+              <span class="fork-badge">v0.5.0</span>
             </div>
-            <div class="fork-metric">
-              <span>Working set</span>
-              <strong>256 KB</strong>
+            <div class="countdown-block">
+              <div class="lbl">Fork in</div>
+              <div class="countdown-value" id="fork-countdown" data-fork-ts="1790528400">calculating...</div>
             </div>
-            <div class="fork-metric">
-              <span>Cache level</span>
-              <strong>L2</strong>
+            <div class="fork-rows">
+              <div class="fork-row"><span class="k">Activates</span><span class="v">Sep 27 · 17:00 UTC</span></div>
+              <div class="fork-row"><span class="k">Speedup per core</span><span class="v acc">25&ndash;30&times;</span></div>
+              <div class="fork-row"><span class="k">Working set</span><span class="v">256 KB<small>8 MB</small></span></div>
+              <div class="fork-row"><span class="k">Cache residency</span><span class="v">L2<small>L3+RAM</small></span></div>
+              <div class="fork-row"><span class="k">Coin swap · chain reset</span><span class="v">None</span></div>
             </div>
-            <div class="fork-metric">
-              <span>Fork in</span>
-              <strong id="fork-countdown" data-fork-ts="1790528400">calculating...</strong>
-            </div>
-          </div>
-          <p>
-            No coin swap. No chain reset. Old miners stop working at activation &mdash; update every miner before the fork.
-          </p>
-        </aside>
+            <div class="fork-note">Old miners stop working at activation. <b>Update every rig before Sep 27, 17:00 UTC.</b></div>
+          </aside>
+        </div>
       </div>
     </section>
 
-    <section id="korsh" class="section korsh-section">
+    <section id="korsh" class="section">
       <div class="container">
         <div class="section-head" data-reveal>
-          <p class="eyebrow korsh-eyebrow">Deep dive</p>
+          <p class="section-label">The Korsh L3 upgrade</p>
           <h2>What is &ldquo;Korsh L3&rdquo;?</h2>
           <p>
-            Yespower hashes over a working set of <strong>128 &times; N &times; r bytes</strong>.
-            The old parameters (N=2048, r=32) produced a <strong>~8 MB</strong> dataset &mdash; far larger than any
-            CPU core&rsquo;s private <strong>L2 cache</strong>, so every hash had to be served from the slower, shared
-            L3 cache or main memory. The new parameters (N=256, r=8) shrink it to <strong>~256 KB</strong>,
-            small enough to live right next to the core in L2.
+            Yespower hashes over a working set of <b>128 &times; N &times; r bytes</b>.
+            The old parameters (N=2048, r=32) produced a <b>~8 MB</b> dataset &mdash; far larger than any
+            CPU core&rsquo;s private <b>L2 cache</b>, so every hash had to be served from the slower, shared
+            L3 cache or main memory. The new parameters (N=256, r=8) shrink it to <b>~256 KB</b>,
+            small enough to live right next to the core in L2. Same algorithm, dramatically better cache
+            behavior &mdash; that is the whole trick.
           </p>
-          <p class="korsh-tagline">Same algorithm, dramatically better cache behavior &mdash; that is the whole trick.</p>
         </div>
 
-        <div class="korsh-compare" data-reveal>
-          <div class="korsh-col korsh-col-old">
-            <span class="korsh-tag">Before</span>
-            <strong>N=2048 &middot; r=32</strong>
-            <div class="korsh-bar korsh-bar-8mb"><span>8 MB working set</span></div>
-            <ul>
-              <li>Hashed out of <strong>L3 / RAM</strong></li>
-              <li>~0.32 kH/s per core (Apple Silicon)</li>
-              <li>~0.16 kH/s per core (AMD EPYC)</li>
+        <div class="compare-grid" data-reveal>
+          <div class="compare-col is-old">
+            <div class="compare-head"><span class="nm">Before</span><span class="prm">N=2048 · r=32</span></div>
+            <div class="compare-set">8 MB</div>
+            <div class="compare-cap">Working set — hashed out of L3/RAM</div>
+            <ul class="compare-rows">
+              <li><span>Apple Silicon, per core</span><b>~0.32 kH/s</b></li>
+              <li><span>AMD EPYC, per core</span><b>~0.16 kH/s</b></li>
+              <li><span>Cache misses per nonce</span><b>Constant</b></li>
             </ul>
           </div>
-          <div class="korsh-vs" aria-hidden="true">&rarr;</div>
-          <div class="korsh-col korsh-col-new">
-            <span class="korsh-tag korsh-tag-new">Korsh L3</span>
-            <strong>N=256 &middot; r=8</strong>
-            <div class="korsh-bar korsh-bar-256kb"><span>256 KB working set</span></div>
-            <ul>
-              <li>Hashed inside <strong>L2 cache</strong></li>
-              <li>~8.0 kH/s per core (Apple Silicon, ~25&times;)</li>
-              <li>~4.9 kH/s per core (AMD EPYC, ~31&times;)</li>
+          <div class="compare-col is-new">
+            <div class="compare-head"><span class="nm">Korsh L3</span><span class="prm">N=256 · r=8</span></div>
+            <div class="compare-set">256 KB</div>
+            <div class="compare-cap">Working set — resident in L2 cache</div>
+            <ul class="compare-rows">
+              <li><span>Apple Silicon, per core</span><b>~8.0 kH/s <em>25.3&times;</em></b></li>
+              <li><span>AMD EPYC, per core</span><b>~4.9 kH/s <em>31.3&times;</em></b></li>
+              <li><span>Cache misses per nonce</span><b>Near zero</b></li>
             </ul>
           </div>
         </div>
 
-        <div class="korsh-notes">
-          <article class="card korsh-note-card" data-reveal>
-            <h3>Named after Korsh</h3>
+        <div class="notes-grid">
+          <article class="note-card" data-reveal>
+            <b>Named after Korsh</b>
             <p>
               The configuration is the one designed and run by the Korsh project &mdash; the &ldquo;L3&rdquo; in the name
               refers to the fact that this Yespower profile removes the L3 dependency and fits in L2.
             </p>
           </article>
-          <article class="card korsh-note-card" data-reveal>
-            <h3>Measured on real code</h3>
+          <article class="note-card" data-reveal>
+            <b>Measured on real code</b>
             <p>
               Benchmarks use the node&rsquo;s own Yespower consensus code &mdash; same source, same build, one thread:
               ~0.32 &rarr; ~8.0 kH/s on Apple Silicon (~25&times;) and ~0.16 &rarr; ~4.9 kH/s on AMD EPYC (~31&times;).
             </p>
           </article>
-          <article class="card korsh-note-card" data-reveal>
-            <h3>Why it matters for miners</h3>
+          <article class="note-card" data-reveal>
+            <b>Why it matters for miners</b>
             <p>
               Small working set means hashrate scales with cores: laptops, office PCs and small desktops become
               viable mining machines again, with less power and heat per hash.
@@ -179,10 +161,10 @@
       </div>
     </section>
 
-    <section id="release" class="section section-alt release-section">
+    <section id="release" class="section">
       <div class="container">
         <div class="section-head" data-reveal>
-          <p class="eyebrow release-eyebrow">Release spotlight</p>
+          <p class="section-label">Release spotlight</p>
           <h2>Smartiecoin Core v0.5.0 &mdash; &ldquo;Korsh L3&rdquo;</h2>
           <p>
             A proof-of-work upgrade that makes CPU mining ~25&ndash;30&times; faster per core &mdash;
@@ -191,35 +173,34 @@
         </div>
 
         <div class="release-grid">
-          <article class="card release-card release-card-featured" data-reveal>
-            <span>01</span>
-            <h3>Programmed Fork &mdash; Sep 27, 2026 &middot; 17:00 UTC</h3>
+          <article class="card release-card is-featured" data-reveal>
+            <span class="step">01</span>
+            <h3>Programmed Fork &mdash; Sep 27, 2026 · 17:00 UTC</h3>
             <p>v0.5.0 activates by block timestamp (expected around block 232,480). All miners must update before the fork; nodes, masternodes, exchanges and pools are strongly recommended to update too.</p>
           </article>
           <article class="card release-card" data-reveal>
-            <span>02</span>
+            <span class="step">02</span>
             <h3>Yespower &ldquo;Korsh L3&rdquo; (N=256, r=8)</h3>
             <p>Same audited Yespower algorithm, new memory parameters: an ~8 MB working set becomes ~256 KB, small enough to hash entirely inside the CPU&rsquo;s L2 cache.</p>
           </article>
           <article class="card release-card" data-reveal>
-            <span>03</span>
+            <span class="step">03</span>
             <h3>~25&ndash;30&times; Faster Per Core</h3>
             <p>Measured with the consensus code itself: ~25&times; on Apple Silicon and ~31&times; on an AMD EPYC, same hardware, one thread. Hashrate now scales almost linearly with thread count.</p>
           </article>
           <article class="card release-card" data-reveal>
-            <span>04</span>
+            <span class="step">04</span>
             <h3>Everything Else Preserved</h3>
             <p>Masternodes, InstantSend, ChainLocks, shielded transaction support, legacy PrivateSend, governance and emission economics all continue unchanged. Miners ship in one-click kits for Windows and macOS.</p>
           </article>
-        </div>
-
-        <div class="release-download-strip" data-reveal>
-          <div>
-            <strong>Latest release:</strong>
-            <span data-release-version>Loading...</span>
-            <span class="release-muted">published <span data-release-date>Loading...</span></span>
+          <div class="release-foot" data-reveal>
+            <div>
+              <b>Latest release:</b>
+              <span data-release-version>Loading...</span>
+              · published <span data-release-date>Loading...</span>
+            </div>
+            <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.5.0" target="_blank" rel="noopener">Open GitHub Release &rarr;</a>
           </div>
-          <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.5.0" target="_blank" rel="noopener">Open GitHub Release &rarr;</a>
         </div>
       </div>
     </section>
@@ -231,7 +212,7 @@
           <p>Core project facts taken from the SMT repository and docs.</p>
         </div>
 
-        <div class="cards cards-3 snapshot-grid">
+        <div class="cards cards-3">
           <article class="card" data-reveal>
             <h3>CPU Mining Base</h3>
             <p>Proof-of-work runs Yespower &ldquo;Korsh L3&rdquo; (N=256, r=8) &mdash; an L2-resident profile ~25&ndash;30&times; faster per core than the previous parameters.</p>
@@ -250,28 +231,28 @@
           </article>
           <article class="card" data-reveal>
             <h3>Active Fork Release</h3>
-            <p>Current repo tag: <strong data-release-version>Loading...</strong> (<span data-release-date>Loading...</span>) with the Korsh L3 fork activating by timestamp on September 27, 2026 at 17:00 UTC.</p>
+            <p>Current repo tag: <b data-release-version>Loading...</b> (<span data-release-date>Loading...</span>) with the Korsh L3 fork activating by timestamp on September 27, 2026 at 17:00 UTC.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="tokenomics" class="section section-alt">
+    <section id="tokenomics" class="section">
       <div class="container">
         <div class="section-head" data-reveal>
           <h2>Tokenomics</h2>
           <p>Emission economics set by the v0.4.0 fork &mdash; unchanged by v0.5.0, which upgrades mining only.</p>
         </div>
 
-        <div class="tokenomics-grid">
+        <div class="tok-grid">
           <article class="card tokenomics-card" data-reveal>
             <h3>Core Parameters</h3>
             <ul class="tokenomics-list">
-              <li><strong>Target block time:</strong> 120 seconds</li>
-              <li><strong>Daily emission effect:</strong> roughly 50% fewer block rewards per day vs 1-minute blocks</li>
-              <li><strong>Halving interval:</strong> 1,000,000 blocks</li>
-              <li><strong>Tail emission floor:</strong> halvings stop at 1 SMT per block</li>
-              <li><strong>v0.5.0:</strong> does not change emission &mdash; it upgrades proof-of-work to &ldquo;Korsh L3&rdquo;</li>
+              <li><b>Target block time:</b> 120 seconds</li>
+              <li><b>Daily emission effect:</b> roughly 50% fewer block rewards per day vs 1-minute blocks</li>
+              <li><b>Halving interval:</b> 1,000,000 blocks</li>
+              <li><b>Tail emission floor:</b> halvings stop at 1 SMT per block</li>
+              <li><b>v0.5.0:</b> does not change emission &mdash; it upgrades proof-of-work to &ldquo;Korsh L3&rdquo;</li>
             </ul>
             <p class="tokenomics-note">
               No version of SMT resets balances. Economy changes set future reward timing; v0.5.0 changes how the network hashes, not how it pays.
@@ -280,7 +261,7 @@
 
           <article class="card tokenomics-card" data-reveal>
             <h3>Network Tracks</h3>
-            <p class="tokenomics-formula"><strong>Same chain, better mining:</strong></p>
+            <p class="tokenomics-formula"><b>Same chain, better mining:</b></p>
             <p class="tokenomics-formula">8 MB working set &rarr; 256 KB (L2 cache)</p>
             <p class="tokenomics-formula">~0.3 kH/s &rarr; ~8 kH/s per core (measured)</p>
             <p class="tokenomics-formula">Same services, same emission schedule</p>
@@ -291,10 +272,10 @@
           </article>
         </div>
 
-        <article class="card tokenomics-card tokenomics-table-card" data-reveal>
+        <article class="card tokenomics-card" style="margin-top:14px" data-reveal>
           <h3>Long-Term Emission Schedule</h3>
-          <div class="tokenomics-table-wrap">
-            <table class="tokenomics-table" aria-label="Smartiecoin long-term emission schedule">
+          <div class="tokenomics-table-wrap" style="overflow-x:auto;margin-top:10px">
+            <table class="tok-table" aria-label="Smartiecoin long-term emission schedule">
               <thead>
                 <tr>
                   <th>Block Range</th>
@@ -304,13 +285,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td>1M</td><td>~3.8</td><td>50 SMT</td><td>50,000,000 SMT</td></tr>
-                <tr><td>2M</td><td>~7.6</td><td>25 SMT</td><td>75,000,000 SMT</td></tr>
-                <tr><td>3M</td><td>~11.4</td><td>12.5 SMT</td><td>87,500,000 SMT</td></tr>
-                <tr><td>4M</td><td>~15.2</td><td>6.25 SMT</td><td>93,750,000 SMT</td></tr>
-                <tr><td>5M</td><td>~19.0</td><td>3.125 SMT</td><td>96,875,000 SMT</td></tr>
-                <tr><td>6M</td><td>~22.8</td><td>1.5625 SMT</td><td>98,437,500 SMT</td></tr>
-                <tr><td style="font-weight:bold">7M+</td><td style="font-weight:bold">~26.6+</td><td style="font-weight:bold">1 SMT tail</td><td style="font-weight:bold">Long-term tail emission</td></tr>
+                <tr><td>1M</td><td>~3.8</td><td class="num">50 SMT</td><td class="num">50,000,000 SMT</td></tr>
+                <tr><td>2M</td><td>~7.6</td><td class="num">25 SMT</td><td class="num">75,000,000 SMT</td></tr>
+                <tr><td>3M</td><td>~11.4</td><td class="num">12.5 SMT</td><td class="num">87,500,000 SMT</td></tr>
+                <tr><td>4M</td><td>~15.2</td><td class="num">6.25 SMT</td><td class="num">93,750,000 SMT</td></tr>
+                <tr><td>5M</td><td>~19.0</td><td class="num">3.125 SMT</td><td class="num">96,875,000 SMT</td></tr>
+                <tr><td>6M</td><td>~22.8</td><td class="num">1.5625 SMT</td><td class="num">98,437,500 SMT</td></tr>
+                <tr><td><b>7M+</b></td><td><b>~26.6+</b></td><td class="num"><b>1 SMT tail</b></td><td class="num"><b>Long-term tail emission</b></td></tr>
               </tbody>
             </table>
           </div>
@@ -319,28 +300,28 @@
           </p>
         </article>
 
-        <article class="card tokenomics-card tokenomics-table-card" data-reveal>
+        <article class="card tokenomics-card" style="margin-top:14px" data-reveal>
           <h3>Governance Superblocks</h3>
-          <p>10% of the block subsidy is reserved for <strong>community governance</strong>. These coins are only created in <strong>superblocks</strong> when funding proposals are approved by masternode vote. <strong>This is not a dev fee.</strong></p>
-          <ul class="tokenomics-list">
-            <li><strong>Governance reserve:</strong> 10% of every block subsidy</li>
-            <li><strong>Superblock cycle:</strong> 21,600 blocks (~30 days with 2-minute blocks)</li>
-            <li><strong>Proposal cost:</strong> 5 SMT (anti-spam)</li>
-            <li><strong>No approved proposals?</strong> Coins are never created, reducing effective emission</li>
+          <p>10% of the block subsidy is reserved for <b>community governance</b>. These coins are only created in <b>superblocks</b> when funding proposals are approved by masternode vote. <b>This is not a dev fee.</b></p>
+          <ul class="tokenomics-list" style="margin-top:10px">
+            <li><b>Governance reserve:</b> 10% of every block subsidy</li>
+            <li><b>Superblock cycle:</b> 21,600 blocks (~30 days with 2-minute blocks)</li>
+            <li><b>Proposal cost:</b> 5 SMT (anti-spam)</li>
+            <li><b>No approved proposals?</b> Coins are never created, reducing effective emission</li>
           </ul>
           <p class="tokenomics-note">
             Anyone can submit a funding proposal for development, infrastructure, marketing, or community initiatives. Masternode operators vote to approve or reject it. Approved proposals are paid automatically by the network in the next superblock. No individual or team has control over these funds &mdash; it is fully decentralized.
           </p>
         </article>
 
-        <div class="tokenomics-grid tokenomics-grid-bottom">
+        <div class="tok-grid" style="margin-top:14px">
           <article class="card tokenomics-card" data-reveal>
             <h3>Why Rewards Change Over Time</h3>
             <p>SMT uses three timing layers:</p>
-            <ul class="tokenomics-list">
-              <li><strong>Block clock:</strong> 2-minute blocks set the daily emission pace.</li>
-              <li><strong>Halving clock:</strong> subsidy continues down toward the 1 SMT tail emission floor.</li>
-              <li><strong>Governance clock:</strong> superblocks release community funds only when proposals pass.</li>
+            <ul class="tokenomics-list" style="margin-top:10px">
+              <li><b>Block clock:</b> 2-minute blocks set the daily emission pace.</li>
+              <li><b>Halving clock:</b> subsidy continues down toward the 1 SMT tail emission floor.</li>
+              <li><b>Governance clock:</b> superblocks release community funds only when proposals pass.</li>
             </ul>
             <p class="tokenomics-note">
               This keeps SMT alive long-term while reducing daily inflation pressure.
@@ -350,10 +331,10 @@
           <article class="card tokenomics-card" data-reveal>
             <h3>Mining Economics After Korsh L3</h3>
             <ul class="tokenomics-list">
-              <li><strong>Per core:</strong> ~25&ndash;30&times; more hashes per second on the same hardware</li>
-              <li><strong>Scaling:</strong> hashrate scales almost linearly with thread count (each core hashes from its own L2)</li>
-              <li><strong>Energy:</strong> less memory traffic per hash means less power and heat</li>
-              <li><strong>Effect:</strong> mining returns to everyday CPUs &mdash; laptops, desktops, office PCs</li>
+              <li><b>Per core:</b> ~25&ndash;30&times; more hashes per second on the same hardware</li>
+              <li><b>Scaling:</b> hashrate scales almost linearly with thread count (each core hashes from its own L2)</li>
+              <li><b>Energy:</b> less memory traffic per hash means less power and heat</li>
+              <li><b>Effect:</b> mining returns to everyday CPUs &mdash; laptops, desktops, office PCs</li>
             </ul>
             <p class="tokenomics-note">
               Existing wallets, balances, masternodes, and services remain on the same chain. Everyone simply needs to update before activation.
@@ -361,7 +342,7 @@
           </article>
         </div>
 
-        <p class="tokenomics-source" data-reveal>
+        <p class="src-note" data-reveal>
           Source references:
           <a href="https://github.com/SmartiesCoin/Smartiecoin/blob/main/src/validation.cpp" target="_blank" rel="noopener">validation.cpp</a>,
           <a href="https://github.com/SmartiesCoin/Smartiecoin/blob/main/src/chainparams.cpp" target="_blank" rel="noopener">chainparams.cpp</a>,
@@ -377,103 +358,106 @@
           <p>Auto-updated every 60 seconds from the Smartiecoin explorer and Gatevia market API.</p>
         </div>
 
-        <div id="exchanges" class="exchange-strip" data-reveal aria-label="Smartiecoin exchanges">
-          <div class="exchange-strip-copy">
-            <strong>Trade Smartiecoin</strong>
-            <span>Open the live SMT/USDT market on Nestex or Gatevia.</span>
-          </div>
-          <div class="exchange-actions">
+        <div class="trade-card" data-reveal aria-label="Smartiecoin exchanges">
+          <p><b>Trade Smartiecoin</b> — open the live SMT/USDT market on Nestex or Gatevia.</p>
+          <div class="btn-row">
             <a class="btn btn-primary" href="https://trade.nestex.one/spot/SMT" target="_blank" rel="noopener">Trade SMT on Nestex &nearr;</a>
-            <a class="btn btn-soft" href="https://gatevia.io/exchange/SMT_USDT" target="_blank" rel="noopener">Trade SMT on Gatevia &nearr;</a>
+            <a class="btn btn-ghost" href="https://gatevia.io/exchange/SMT_USDT" target="_blank" rel="noopener">Trade SMT on Gatevia &nearr;</a>
           </div>
         </div>
 
-        <div class="cards cards-3 stats-grid" data-reveal>
-          <article class="card stat-card">
-            <span>Block Height</span>
-            <strong data-stat="blockcount">--</strong>
-          </article>
-          <article class="card stat-card">
-            <span>Difficulty</span>
-            <strong data-stat="difficulty">--</strong>
-          </article>
-          <article class="card stat-card">
-            <span>Network Hashrate</span>
-            <strong data-stat="hashrate">--</strong>
-          </article>
-          <article class="card stat-card">
-            <span>Circulating Supply</span>
-            <strong data-stat="supply">--</strong>
-          </article>
-          <article class="card stat-card">
-            <span>Price (USD)</span>
-            <strong data-stat="price">--</strong>
-          </article>
-          <article class="card stat-card">
-            <span>Market Cap (USD)</span>
-            <strong data-stat="marketcap">--</strong>
-          </article>
-          <article class="card stat-card">
-            <span>Masternodes (On/Off)</span>
-            <strong data-stat="masternodes">--</strong>
-          </article>
-          <article class="card stat-card">
-            <span>MN Collateral Locked</span>
-            <strong data-stat="mnlocked">--</strong>
-          </article>
-          <article class="card stat-card">
-            <span>ROI 15,000 MN (year)</span>
-            <strong data-stat="roi15k">--</strong>
-          </article>
-          <article class="card stat-card stat-card-last-center">
-            <span>ROI 75,000 MN (year)</span>
-            <strong data-stat="roi75k">--</strong>
-          </article>
+        <div class="stats-grid" style="margin-top:14px" data-reveal>
+          <div class="stat">
+            <div class="stat-label">Block Height</div>
+            <div class="stat-value" data-stat="blockcount">--</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Difficulty</div>
+            <div class="stat-value" data-stat="difficulty">--</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Network Hashrate</div>
+            <div class="stat-value" data-stat="hashrate">--</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Circulating Supply</div>
+            <div class="stat-value" data-stat="supply">--</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Price (USD)</div>
+            <div class="stat-value" data-stat="price">--</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Market Cap (USD)</div>
+            <div class="stat-value" data-stat="marketcap">--</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Masternodes (On/Off)</div>
+            <div class="stat-value" data-stat="masternodes">--</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">MN Collateral Locked</div>
+            <div class="stat-value" data-stat="mnlocked">--</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">ROI 15,000 MN (year)</div>
+            <div class="stat-value" data-stat="roi15k">--</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">ROI 75,000 MN (year)</div>
+            <div class="stat-value" data-stat="roi75k">--</div>
+          </div>
         </div>
 
-        <p class="stats-note" id="stats-status" data-reveal>
+        <p class="src-note" id="stats-status" style="margin-top:16px" data-reveal>
           Data: <a href="https://explorer.smartiecoin.com/info" target="_blank" rel="noopener">explorer.smartiecoin.com</a>
           + <a href="https://gatevia.io/exchange/SMT_USDT" target="_blank" rel="noopener">gatevia.io (SMT/USDT)</a>
           | Trade: <a href="https://trade.nestex.one/spot/SMT" target="_blank" rel="noopener">nestex.one (SMT/USDT)</a>
           <span id="stats-updated">(waiting for first update)</span>
         </p>
 
-        <p style="margin-top: 1rem; text-align: center;" data-reveal>
-          <a class="btn btn-primary" href="masternodes.html">Open Masternode + Quorum Dashboard &rarr;</a>
+        <p style="margin-top:22px" data-reveal>
+          <a class="btn btn-ghost" href="masternodes.html">Open Masternode + Quorum Dashboard &rarr;</a>
         </p>
       </div>
     </section>
 
-    <section id="tech" class="section section-alt">
+    <section id="tech" class="section">
       <div class="container">
         <div class="section-head" data-reveal>
           <h2>SMT Architecture</h2>
           <p>Full-featured blockchain with instant transactions, privacy, governance, and masternode infrastructure.</p>
         </div>
 
-        <div class="cards cards-3">
-          <article class="card feature" data-reveal>
-            <h3>1. PoW Layer &mdash; Yespower &ldquo;Korsh L3&rdquo;</h3>
+        <div class="tech-grid">
+          <article class="card" data-reveal>
+            <span class="layer-num">01</span>
+            <h3>PoW Layer &mdash; Yespower &ldquo;Korsh L3&rdquo;</h3>
             <p>CPU-first Yespower mining with the Korsh L3 profile (N=256, r=8): an L2-resident working set that makes mining ~25&ndash;30&times; faster per core on the same hardware.</p>
           </article>
-          <article class="card feature" data-reveal>
-            <h3>2. InstantSend + ChainLocks</h3>
+          <article class="card" data-reveal>
+            <span class="layer-num">02</span>
+            <h3>InstantSend + ChainLocks</h3>
             <p>Transactions locked in 2-3 seconds via LLMQ quorums. ChainLocks prevent 51% attacks and block reorganizations.</p>
           </article>
-          <article class="card feature" data-reveal>
-            <h3>3. Masternodes (ProTx)</h3>
+          <article class="card" data-reveal>
+            <span class="layer-num">03</span>
+            <h3>Masternodes (ProTx)</h3>
             <p>Deterministic masternodes with BLS signatures, operator/owner separation, and automatic PoSe monitoring. Easy setup with Plug &amp; Play Wizard.</p>
           </article>
-          <article class="card feature" data-reveal>
-            <h3>4. Shielded TX + Legacy PrivateSend</h3>
+          <article class="card" data-reveal>
+            <span class="layer-num">04</span>
+            <h3>Shielded TX + Legacy PrivateSend</h3>
             <p>Transparent addresses remain supported while shielded transaction tooling, legacy CoinJoin mixing, and optional Tor v3 remain available.</p>
           </article>
-          <article class="card feature" data-reveal>
-            <h3>5. On-Chain Governance</h3>
+          <article class="card" data-reveal>
+            <span class="layer-num">05</span>
+            <h3>On-Chain Governance</h3>
             <p>Masternode operators vote on budget proposals. Approved proposals are funded automatically via superblock payouts every 21,600 blocks.</p>
           </article>
-          <article class="card feature" data-reveal>
-            <h3>6. LLMQ Quorums</h3>
+          <article class="card" data-reveal>
+            <span class="layer-num">06</span>
+            <h3>LLMQ Quorums</h3>
             <p>Long-Living Masternode Quorums power InstantSend, ChainLocks, and governance. Currently using LLMQ_10_60 and LLMQ_10_75 (rotated).</p>
           </article>
         </div>
@@ -481,8 +465,8 @@
     </section>
 
     <section id="status" class="section">
-      <div class="container status-wrap" data-reveal>
-        <div>
+      <div class="container">
+        <div class="section-head" data-reveal>
           <h2>Current Status</h2>
           <p>
             SMT is a secondary coin integrated with the Ethernova ecosystem. The network is active with
@@ -490,28 +474,28 @@
             legacy PrivateSend, masternodes, and on-chain governance.
           </p>
         </div>
-        <ul class="status-list">
-          <li><span class="status-dot"></span> Core running on release <strong class="release-inline" data-release-version>Loading...</strong></li>
-          <li><span class="status-dot"></span> Korsh L3 fork activates <strong>Sep 27, 2026 &middot; 17:00 UTC</strong> (by timestamp)</li>
-          <li><span class="status-dot"></span> Yespower N=256, r=8 &mdash; ~25&ndash;30&times; faster per core, L2-resident</li>
-          <li><span class="status-dot"></span> Miners must update before activation; old builds produce invalid blocks</li>
-          <li><span class="status-dot"></span> Shielded transaction support active on mainnet</li>
-          <li><span class="status-dot"></span> InstantSend &amp; ChainLocks active via LLMQ quorums</li>
-          <li><span class="status-dot"></span> Legacy PrivateSend (CoinJoin) mixing available</li>
-          <li><span class="status-dot"></span> On-chain governance with treasury superblocks</li>
-          <li><span class="status-dot"></span> Listed on Gatevia &amp; Nestex exchanges</li>
+        <ul class="status-list" data-reveal>
+          <li>Core running on release <b data-release-version>Loading...</b></li>
+          <li>Korsh L3 fork activates <b>Sep 27, 2026 · 17:00 UTC</b> (by timestamp)</li>
+          <li>Yespower N=256, r=8 &mdash; ~25&ndash;30&times; faster per core, L2-resident</li>
+          <li>Miners must update before activation; old builds produce invalid blocks</li>
+          <li>Shielded transaction support active on mainnet</li>
+          <li>InstantSend &amp; ChainLocks active via LLMQ quorums</li>
+          <li>Legacy PrivateSend (CoinJoin) mixing available</li>
+          <li>On-chain governance with treasury superblocks</li>
+          <li>Listed on Gatevia &amp; Nestex exchanges</li>
         </ul>
       </div>
     </section>
 
-    <section id="links" class="section section-alt">
+    <section id="links" class="section">
       <div class="container">
         <div class="section-head" data-reveal>
           <h2>Official Links</h2>
           <p>Main project resources and technical references.</p>
         </div>
 
-        <div class="cards cards-2">
+        <div class="links-grid">
           <a class="card link-card" data-reveal href="https://github.com/SmartiesCoin/Smartiecoin" target="_blank" rel="noopener">
             <h3>Smartiecoin Core Repository</h3>
             <p>Primary source code and active development.</p>
@@ -563,8 +547,11 @@
 
   <footer class="site-footer">
     <div class="container footer-row">
-      <p>Smartiecoin (SMT) - Live project status from the official repository.</p>
-      <p><span id="year"></span> smartiecoin.com</p>
+      <a class="brand" href="#top">
+        <img src="assets/logo-mark.png" alt="" width="20" height="20">
+        <span>Smartiecoin (SMT)</span>
+      </a>
+      <p>Live project status from the official repository · <span id="year"></span> smartiecoin.com</p>
     </div>
   </footer>
 </body>
