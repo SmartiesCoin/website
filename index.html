@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Smartiecoin (SMT) | v0.4.0 Economics Fork + Masternodes</title>
-  <meta name="description" content="Smartiecoin (SMT) v0.4.0 prepares the mandatory economics fork at block 172,800 with 2-minute blocks, lower daily emission, refreshed wallets, CPU mining, governance, and deterministic masternodes.">
+  <title>Smartiecoin (SMT) | v0.5.0 "Korsh L3" Fork + Masternodes</title>
+  <meta name="description" content="Smartiecoin (SMT) v0.5.0 'Korsh L3' activates Sunday, September 27, 2026 at 17:00 UTC: mining gets ~25–30× faster per CPU core, same chain, no reset. CPU mining, governance, deterministic masternodes.">
   <meta name="theme-color" content="#0b1020">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Smartiecoin (SMT)">
-  <meta property="og:description" content="Smartiecoin Core v0.4.0 is live with the approved economics fork, 2-minute block target, lower daily emission, refreshed wallet builds, and masternode infrastructure.">
+  <meta property="og:title" content="Smartiecoin (SMT) — v0.5.0 &quot;Korsh L3&quot;">
+  <meta property="og:description" content="The Korsh L3 fork: mining becomes ~25–30× faster per CPU core. Activates September 27, 2026 at 17:00 UTC — same chain, no reset.">
   <meta property="og:image" content="https://smartiecoin.com/assets/logo-social.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -43,13 +43,12 @@
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
 
       <nav id="primary-nav" class="nav-links" aria-label="Primary">
+        <a href="#korsh">Korsh L3</a>
+        <a href="#release">v0.5.0 Fork</a>
         <a href="#snapshot">Snapshot</a>
-        <a href="#release">v0.4.0 Fork</a>
         <a href="#tokenomics">Tokenomics</a>
         <a href="#live">Live Stats</a>
-        <a href="#tech">Technology</a>
         <a href="masternodes.html">Masternodes</a>
-        <a href="#status">Status</a>
         <a href="#links">Links</a>
       </nav>
     </div>
@@ -59,92 +58,158 @@
     <section id="top" class="hero">
       <div class="container hero-grid">
         <div class="hero-copy" data-reveal>
-          <p class="eyebrow">Smartiecoin Core v0.4.0 is live</p>
-          <h1>The SMT economics fork is ready.</h1>
+          <p class="eyebrow">Smartiecoin Core v0.5.0 &mdash; &ldquo;Korsh L3&rdquo; is here</p>
+          <h1>Mining gets <span class="hl">25&ndash;30&times; faster</span> per CPU core.</h1>
           <p class="lead">
-            Smartiecoin (SMT) is preparing the approved v0.4.0 network fork at block 172,800:
-            a 2-minute block target, lower daily emission, healthier masternode economics,
-            and refreshed cross-platform wallet builds for the next era of the network.
+            The v0.5.0 &ldquo;Korsh L3&rdquo; upgrade moves SMT proof-of-work to
+            Yespower <strong>N=256, r=8</strong> &mdash; the same algorithm, now small enough to run
+            entirely inside the CPU&rsquo;s L2 cache. It activates by block timestamp on
+            <strong>Sunday, September 27, 2026, 17:00 UTC</strong>. Same chain. Same wallets. No reset.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.4.0" target="_blank" rel="noopener">Download v0.4.0</a>
-            <a class="btn btn-soft" href="#release">See What Changed</a>
+            <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.5.0" target="_blank" rel="noopener">Download v0.5.0</a>
+            <a class="btn btn-soft" href="#korsh">What is Korsh L3?</a>
             <a class="btn btn-soft" href="masternodes.html">Masternode Dashboard</a>
           </div>
           <div class="hero-update-strip" data-reveal>
-            <span class="update-pill">Mandatory</span>
-            <strong>v0.4.0</strong>
-            <span>Fork block 172,800</span>
-            <span>2-minute blocks</span>
+            <span class="update-pill">Mandatory for miners</span>
+            <strong>v0.5.0</strong>
+            <span>Fork Sep 27 &middot; 17:00 UTC</span>
+            <span>~25&ndash;30&times; faster</span>
             <span>Windows, Linux, macOS</span>
           </div>
         </div>
 
-        <aside class="fork-panel" data-reveal aria-label="Smartiecoin v0.4.0 fork details">
+        <aside class="fork-panel" data-reveal aria-label="Smartiecoin v0.5.0 Korsh L3 fork details">
           <div class="fork-panel-top">
-            <span class="fork-kicker">Approved Fork</span>
-            <strong>v0.4.0</strong>
+            <span class="fork-kicker">Korsh L3 Fork</span>
+            <strong>v0.5.0</strong>
           </div>
           <div class="fork-metric fork-metric-main">
-            <span>Activation Block</span>
-            <strong>172,800</strong>
+            <span>Activation (by timestamp)</span>
+            <strong>Sep 27 &middot; 17:00 UTC</strong>
           </div>
           <div class="fork-metric-grid">
             <div class="fork-metric">
-              <span>Target Block Time</span>
-              <strong>2 min</strong>
+              <span>Speedup per core</span>
+              <strong>25&ndash;30&times;</strong>
             </div>
             <div class="fork-metric">
-              <span>Daily Emission</span>
-              <strong>-50%</strong>
+              <span>Working set</span>
+              <strong>256 KB</strong>
             </div>
             <div class="fork-metric">
-              <span>InstantSend</span>
-              <strong>Active</strong>
+              <span>Cache level</span>
+              <strong>L2</strong>
             </div>
             <div class="fork-metric">
-              <span>Shielded TX</span>
-              <strong>Supported</strong>
+              <span>Fork in</span>
+              <strong id="fork-countdown" data-fork-ts="1790528400">calculating...</strong>
             </div>
           </div>
           <p>
-            No coin swap. No chain reset. Existing SMT stays on the same chain while upgraded nodes enforce the new rules at activation.
+            No coin swap. No chain reset. Old miners stop working at activation &mdash; update every miner before the fork.
           </p>
         </aside>
       </div>
     </section>
 
-    <section id="release" class="section release-section">
+    <section id="korsh" class="section korsh-section">
       <div class="container">
         <div class="section-head" data-reveal>
-          <p class="eyebrow release-eyebrow">Mandatory release spotlight</p>
-          <h2>Smartiecoin Core v0.4.0</h2>
+          <p class="eyebrow korsh-eyebrow">Deep dive</p>
+          <h2>What is &ldquo;Korsh L3&rdquo;?</h2>
           <p>
-            A protocol-level economics update: 2-minute blocks, lower daily emission, long-term tail emission,
-            refreshed binaries, and safer startup behavior for the public node infrastructure.
+            Yespower hashes over a working set of <strong>128 &times; N &times; r bytes</strong>.
+            The old parameters (N=2048, r=32) produced a <strong>~8 MB</strong> dataset &mdash; far larger than any
+            CPU core&rsquo;s private <strong>L2 cache</strong>, so every hash had to be served from the slower, shared
+            L3 cache or main memory. The new parameters (N=256, r=8) shrink it to <strong>~256 KB</strong>,
+            small enough to live right next to the core in L2.
+          </p>
+          <p class="korsh-tagline">Same algorithm, dramatically better cache behavior &mdash; that is the whole trick.</p>
+        </div>
+
+        <div class="korsh-compare" data-reveal>
+          <div class="korsh-col korsh-col-old">
+            <span class="korsh-tag">Before</span>
+            <strong>N=2048 &middot; r=32</strong>
+            <div class="korsh-bar korsh-bar-8mb"><span>8 MB working set</span></div>
+            <ul>
+              <li>Hashed out of <strong>L3 / RAM</strong></li>
+              <li>~0.32 kH/s per core (Apple Silicon)</li>
+              <li>~0.16 kH/s per core (AMD EPYC)</li>
+            </ul>
+          </div>
+          <div class="korsh-vs" aria-hidden="true">&rarr;</div>
+          <div class="korsh-col korsh-col-new">
+            <span class="korsh-tag korsh-tag-new">Korsh L3</span>
+            <strong>N=256 &middot; r=8</strong>
+            <div class="korsh-bar korsh-bar-256kb"><span>256 KB working set</span></div>
+            <ul>
+              <li>Hashed inside <strong>L2 cache</strong></li>
+              <li>~8.0 kH/s per core (Apple Silicon, ~25&times;)</li>
+              <li>~4.9 kH/s per core (AMD EPYC, ~31&times;)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="korsh-notes">
+          <article class="card korsh-note-card" data-reveal>
+            <h3>Named after Korsh</h3>
+            <p>
+              The configuration is the one designed and run by the Korsh project &mdash; the &ldquo;L3&rdquo; in the name
+              refers to the fact that this Yespower profile removes the L3 dependency and fits in L2.
+            </p>
+          </article>
+          <article class="card korsh-note-card" data-reveal>
+            <h3>Measured on real code</h3>
+            <p>
+              Benchmarks use the node&rsquo;s own Yespower consensus code &mdash; same source, same build, one thread:
+              ~0.32 &rarr; ~8.0 kH/s on Apple Silicon (~25&times;) and ~0.16 &rarr; ~4.9 kH/s on AMD EPYC (~31&times;).
+            </p>
+          </article>
+          <article class="card korsh-note-card" data-reveal>
+            <h3>Why it matters for miners</h3>
+            <p>
+              Small working set means hashrate scales with cores: laptops, office PCs and small desktops become
+              viable mining machines again, with less power and heat per hash.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="release" class="section section-alt release-section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow release-eyebrow">Release spotlight</p>
+          <h2>Smartiecoin Core v0.5.0 &mdash; &ldquo;Korsh L3&rdquo;</h2>
+          <p>
+            A proof-of-work upgrade that makes CPU mining ~25&ndash;30&times; faster per core &mdash;
+            rolled out as a scheduled fork, with no chain reset and no coin swap.
           </p>
         </div>
 
         <div class="release-grid">
           <article class="card release-card release-card-featured" data-reveal>
             <span>01</span>
-            <h3>Programmed Fork at Block 172,800</h3>
-            <p>v0.4.0 is a mandatory upgrade. Nodes, masternodes, pools, explorers, wallets, services, and exchanges should update before the activation block.</p>
+            <h3>Programmed Fork &mdash; Sep 27, 2026 &middot; 17:00 UTC</h3>
+            <p>v0.5.0 activates by block timestamp (expected around block 232,480). All miners must update before the fork; nodes, masternodes, exchanges and pools are strongly recommended to update too.</p>
           </article>
           <article class="card release-card" data-reveal>
             <span>02</span>
-            <h3>2-Minute Block Target</h3>
-            <p>The fork changes SMT from 60-second blocks to a 120-second target, slowing emission without resetting the network.</p>
+            <h3>Yespower &ldquo;Korsh L3&rdquo; (N=256, r=8)</h3>
+            <p>Same audited Yespower algorithm, new memory parameters: an ~8 MB working set becomes ~256 KB, small enough to hash entirely inside the CPU&rsquo;s L2 cache.</p>
           </article>
           <article class="card release-card" data-reveal>
             <span>03</span>
-            <h3>Healthier Emission</h3>
-            <p>With half as many blocks per day, daily SMT emission drops roughly 50%, reducing sell pressure and stretching the reward schedule.</p>
+            <h3>~25&ndash;30&times; Faster Per Core</h3>
+            <p>Measured with the consensus code itself: ~25&times; on Apple Silicon and ~31&times; on an AMD EPYC, same hardware, one thread. Hashrate now scales almost linearly with thread count.</p>
           </article>
           <article class="card release-card" data-reveal>
             <span>04</span>
-            <h3>Systems Preserved</h3>
-            <p>Masternodes, InstantSend, ChainLocks, shielded transaction support, legacy PrivateSend, governance, and CPU mining remain part of the same SMT core.</p>
+            <h3>Everything Else Preserved</h3>
+            <p>Masternodes, InstantSend, ChainLocks, shielded transaction support, legacy PrivateSend, governance and emission economics all continue unchanged. Miners ship in one-click kits for Windows and macOS.</p>
           </article>
         </div>
 
@@ -154,7 +219,7 @@
             <span data-release-version>Loading...</span>
             <span class="release-muted">published <span data-release-date>Loading...</span></span>
           </div>
-          <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.4.0" target="_blank" rel="noopener">Open GitHub Release &rarr;</a>
+          <a class="btn btn-primary" href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.5.0" target="_blank" rel="noopener">Open GitHub Release &rarr;</a>
         </div>
       </div>
     </section>
@@ -169,7 +234,7 @@
         <div class="cards cards-3 snapshot-grid">
           <article class="card" data-reveal>
             <h3>CPU Mining Base</h3>
-            <p>The codebase integrates yespower hashing in the PoW path, aligned with a CPU mining approach.</p>
+            <p>Proof-of-work runs Yespower &ldquo;Korsh L3&rdquo; (N=256, r=8) &mdash; an L2-resident profile ~25&ndash;30&times; faster per core than the previous parameters.</p>
           </article>
           <article class="card" data-reveal>
             <h3>Optional Privacy</h3>
@@ -185,7 +250,7 @@
           </article>
           <article class="card" data-reveal>
             <h3>Active Fork Release</h3>
-            <p>Current repo tag: <strong data-release-version>Loading...</strong> (<span data-release-date>Loading...</span>) with fork activation scheduled at block 172,800.</p>
+            <p>Current repo tag: <strong data-release-version>Loading...</strong> (<span data-release-date>Loading...</span>) with the Korsh L3 fork activating by timestamp on September 27, 2026 at 17:00 UTC.</p>
           </article>
         </div>
       </div>
@@ -194,34 +259,34 @@
     <section id="tokenomics" class="section section-alt">
       <div class="container">
         <div class="section-head" data-reveal>
-          <h2>v0.4.0 Tokenomics</h2>
-          <p>How the approved economics fork changes SMT emission timing without a coin swap or chain reset.</p>
+          <h2>Tokenomics</h2>
+          <p>Emission economics set by the v0.4.0 fork &mdash; unchanged by v0.5.0, which upgrades mining only.</p>
         </div>
 
         <div class="tokenomics-grid">
           <article class="card tokenomics-card" data-reveal>
             <h3>Core Parameters</h3>
             <ul class="tokenomics-list">
-              <li><strong>Fork activation:</strong> block 172,800</li>
-              <li><strong>Target block time after fork:</strong> 120 seconds</li>
-              <li><strong>Daily emission effect:</strong> roughly 50% fewer block rewards per day</li>
+              <li><strong>Target block time:</strong> 120 seconds</li>
+              <li><strong>Daily emission effect:</strong> roughly 50% fewer block rewards per day vs 1-minute blocks</li>
               <li><strong>Halving interval:</strong> 1,000,000 blocks</li>
               <li><strong>Tail emission floor:</strong> halvings stop at 1 SMT per block</li>
+              <li><strong>v0.5.0:</strong> does not change emission &mdash; it upgrades proof-of-work to &ldquo;Korsh L3&rdquo;</li>
             </ul>
             <p class="tokenomics-note">
-              v0.4.0 does not reset balances. It changes the future timing of rewards by slowing the block target while preserving the SMT chain and network services.
+              No version of SMT resets balances. Economy changes set future reward timing; v0.5.0 changes how the network hashes, not how it pays.
             </p>
           </article>
 
           <article class="card tokenomics-card" data-reveal>
-            <h3>Why the Fork Matters</h3>
-            <p class="tokenomics-formula"><strong>Same chain, slower emission:</strong></p>
-            <p class="tokenomics-formula">1-minute blocks &rarr; 2-minute blocks</p>
-            <p class="tokenomics-formula">~1,440 blocks/day &rarr; ~720 blocks/day</p>
-            <p class="tokenomics-formula">Same services, fewer new coins per day</p>
-            <p class="tokenomics-formula">Lower ROI pressure over time</p>
+            <h3>Network Tracks</h3>
+            <p class="tokenomics-formula"><strong>Same chain, better mining:</strong></p>
+            <p class="tokenomics-formula">8 MB working set &rarr; 256 KB (L2 cache)</p>
+            <p class="tokenomics-formula">~0.3 kH/s &rarr; ~8 kH/s per core (measured)</p>
+            <p class="tokenomics-formula">Same services, same emission schedule</p>
+            <p class="tokenomics-formula">Less power and heat per hash</p>
             <p class="tokenomics-note">
-              InstantSend keeps user transactions fast while the base chain moves to a more sustainable long-term reward pace.
+              InstantSend keeps user transactions fast while Korsh L3 makes the mining layer dramatically more efficient.
             </p>
           </article>
         </div>
@@ -229,7 +294,7 @@
         <article class="card tokenomics-card tokenomics-table-card" data-reveal>
           <h3>Long-Term Emission Schedule</h3>
           <div class="tokenomics-table-wrap">
-            <table class="tokenomics-table" aria-label="Smartiecoin v0.4.0 long-term emission schedule">
+            <table class="tokenomics-table" aria-label="Smartiecoin long-term emission schedule">
               <thead>
                 <tr>
                   <th>Block Range</th>
@@ -259,36 +324,36 @@
           <p>10% of the block subsidy is reserved for <strong>community governance</strong>. These coins are only created in <strong>superblocks</strong> when funding proposals are approved by masternode vote. <strong>This is not a dev fee.</strong></p>
           <ul class="tokenomics-list">
             <li><strong>Governance reserve:</strong> 10% of every block subsidy</li>
-            <li><strong>Superblock cycle:</strong> 21,600 blocks (~15 days before the fork, ~30 days after 2-minute blocks)</li>
+            <li><strong>Superblock cycle:</strong> 21,600 blocks (~30 days with 2-minute blocks)</li>
             <li><strong>Proposal cost:</strong> 5 SMT (anti-spam)</li>
             <li><strong>No approved proposals?</strong> Coins are never created, reducing effective emission</li>
           </ul>
           <p class="tokenomics-note">
-            Anyone can submit a funding proposal for development, infrastructure, marketing, or community initiatives. Masternode operators vote to approve or reject it. Approved proposals are paid automatically by the network in the next superblock. No individual or team has control over these funds — it is fully decentralized.
+            Anyone can submit a funding proposal for development, infrastructure, marketing, or community initiatives. Masternode operators vote to approve or reject it. Approved proposals are paid automatically by the network in the next superblock. No individual or team has control over these funds &mdash; it is fully decentralized.
           </p>
         </article>
 
         <div class="tokenomics-grid tokenomics-grid-bottom">
           <article class="card tokenomics-card" data-reveal>
             <h3>Why Rewards Change Over Time</h3>
-            <p>SMT now uses three timing layers:</p>
+            <p>SMT uses three timing layers:</p>
             <ul class="tokenomics-list">
-              <li><strong>Fork clock:</strong> v0.4.0 activates the new timing at block 172,800.</li>
-              <li><strong>Block clock:</strong> 2-minute blocks reduce daily emission.</li>
+              <li><strong>Block clock:</strong> 2-minute blocks set the daily emission pace.</li>
               <li><strong>Halving clock:</strong> subsidy continues down toward the 1 SMT tail emission floor.</li>
+              <li><strong>Governance clock:</strong> superblocks release community funds only when proposals pass.</li>
             </ul>
             <p class="tokenomics-note">
-              This keeps SMT alive long-term while reducing daily inflation pressure now.
+              This keeps SMT alive long-term while reducing daily inflation pressure.
             </p>
           </article>
 
           <article class="card tokenomics-card" data-reveal>
-            <h3>Concrete Fork Effects</h3>
+            <h3>Mining Economics After Korsh L3</h3>
             <ul class="tokenomics-list">
-              <li><strong>Before fork:</strong> roughly 1,440 blocks per day at a 60-second target</li>
-              <li><strong>After fork:</strong> roughly 720 blocks per day at a 120-second target</li>
-              <li><strong>Users:</strong> InstantSend still provides fast transaction experience</li>
-              <li><strong>Network:</strong> lower daily emission and healthier masternode ROI pressure</li>
+              <li><strong>Per core:</strong> ~25&ndash;30&times; more hashes per second on the same hardware</li>
+              <li><strong>Scaling:</strong> hashrate scales almost linearly with thread count (each core hashes from its own L2)</li>
+              <li><strong>Energy:</strong> less memory traffic per hash means less power and heat</li>
+              <li><strong>Effect:</strong> mining returns to everyday CPUs &mdash; laptops, desktops, office PCs</li>
             </ul>
             <p class="tokenomics-note">
               Existing wallets, balances, masternodes, and services remain on the same chain. Everyone simply needs to update before activation.
@@ -305,7 +370,7 @@
       </div>
     </section>
 
-    <section id="live" class="section section-alt">
+    <section id="live" class="section">
       <div class="container">
         <div class="section-head" data-reveal>
           <h2>Live Stats</h2>
@@ -379,7 +444,7 @@
       </div>
     </section>
 
-    <section id="tech" class="section">
+    <section id="tech" class="section section-alt">
       <div class="container">
         <div class="section-head" data-reveal>
           <h2>SMT Architecture</h2>
@@ -388,8 +453,8 @@
 
         <div class="cards cards-3">
           <article class="card feature" data-reveal>
-            <h3>1. PoW Layer (Yespower)</h3>
-            <p>CPU-first yespower mining. v0.4.0 moves the network toward 2-minute blocks for lower daily emission and longer-term sustainability.</p>
+            <h3>1. PoW Layer &mdash; Yespower &ldquo;Korsh L3&rdquo;</h3>
+            <p>CPU-first Yespower mining with the Korsh L3 profile (N=256, r=8): an L2-resident working set that makes mining ~25&ndash;30&times; faster per core on the same hardware.</p>
           </article>
           <article class="card feature" data-reveal>
             <h3>2. InstantSend + ChainLocks</h3>
@@ -421,14 +486,15 @@
           <h2>Current Status</h2>
           <p>
             SMT is a secondary coin integrated with the Ethernova ecosystem. The network is active with
-            CPU mining, InstantSend, ChainLocks, shielded transaction tooling, legacy PrivateSend, masternodes,
-            on-chain governance, and the v0.4.0 economics fork.
+            CPU mining on the new &ldquo;Korsh L3&rdquo; profile, InstantSend, ChainLocks, shielded transaction tooling,
+            legacy PrivateSend, masternodes, and on-chain governance.
           </p>
         </div>
         <ul class="status-list">
           <li><span class="status-dot"></span> Core running on release <strong class="release-inline" data-release-version>Loading...</strong></li>
-          <li><span class="status-dot"></span> Mandatory fork activation at block <strong>172,800</strong></li>
-          <li><span class="status-dot"></span> 2-minute block target with lower daily emission</li>
+          <li><span class="status-dot"></span> Korsh L3 fork activates <strong>Sep 27, 2026 &middot; 17:00 UTC</strong> (by timestamp)</li>
+          <li><span class="status-dot"></span> Yespower N=256, r=8 &mdash; ~25&ndash;30&times; faster per core, L2-resident</li>
+          <li><span class="status-dot"></span> Miners must update before activation; old builds produce invalid blocks</li>
           <li><span class="status-dot"></span> Shielded transaction support active on mainnet</li>
           <li><span class="status-dot"></span> InstantSend &amp; ChainLocks active via LLMQ quorums</li>
           <li><span class="status-dot"></span> Legacy PrivateSend (CoinJoin) mixing available</li>
@@ -449,6 +515,10 @@
           <a class="card link-card" data-reveal href="https://github.com/SmartiesCoin/Smartiecoin" target="_blank" rel="noopener">
             <h3>Smartiecoin Core Repository</h3>
             <p>Primary source code and active development.</p>
+          </a>
+          <a class="card link-card" data-reveal href="https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.5.0" target="_blank" rel="noopener">
+            <h3>v0.5.0 &ldquo;Korsh L3&rdquo; Release</h3>
+            <p>Wallets, node builds and one-click miner kits + full Korsh L3 release notes.</p>
           </a>
           <a class="card link-card" data-reveal href="https://github.com/SmartiesCoin/Smartiecoin/releases" target="_blank" rel="noopener">
             <h3>SMT Releases</h3>

@@ -589,4 +589,24 @@
   updateReleaseData();
   updateExplorerStats();
   setInterval(updateExplorerStats, 60000);
+
+  // Korsh L3 fork countdown (v0.5.0 activates by block timestamp)
+  const forkCountdownEl = document.querySelector('#fork-countdown');
+  if (forkCountdownEl) {
+    const forkTs = Number(forkCountdownEl.dataset.forkTs || 0) * 1000;
+    const tickFork = () => {
+      const diff = forkTs - Date.now();
+      if (diff <= 0) {
+        forkCountdownEl.textContent = 'Korsh L3 live \u2713';
+        return;
+      }
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      const label = days > 0 ? `${days}d ${hours}h ${mins}m` : `${hours}h ${mins}m`;
+      forkCountdownEl.textContent = label;
+    };
+    tickFork();
+    setInterval(tickFork, 60000);
+  }
 })();
