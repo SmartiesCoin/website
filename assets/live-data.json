@@ -1,20 +1,20 @@
 {
-  "fetched_at": "2026-09-27T20:28:36Z",
+  "fetched_at": "2026-09-27T23:20:47Z",
   "summary": {
-    "difficulty": 0.004851351079252577,
+    "difficulty": 0.01812877112187868,
     "difficultyHybrid": "",
-    "supply": 11222757,
-    "hashrate": "191258.0807",
-    "lastPrice": 0.00044009,
-    "lastUSDPrice": 0.00044009,
-    "connections": 106,
-    "blockcount": 233130,
+    "supply": 11227032,
+    "hashrate": "433118.6226",
+    "lastPrice": 0.00044105,
+    "lastUSDPrice": 0.00044105,
+    "connections": 105,
+    "blockcount": 233225,
     "masternodeCountOnline": 118,
     "masternodeCountOffline": 8
   },
   "current_price": {
     "last_price_btc": null,
-    "last_price_usd": 0.00044009
+    "last_price_usd": 0.00044105
   },
   "masternode_stats": {
     "counts": {
@@ -32,8 +32,8 @@
       "evo_smt": 6975000,
       "total_smt": 7470000,
       "source": "protx_list_registered",
-      "supply_smt": 11222757,
-      "percent_of_supply": 66.56118456454149,
+      "supply_smt": 11227032,
+      "percent_of_supply": 66.53583957006624,
       "regular_online": 30,
       "evo_online": 88,
       "network_weight": 470
@@ -47,29 +47,29 @@
       "evo_weight": 5
     },
     "rewards": {
-      "network_reward_per_block": 36.00000229398958,
-      "network_reward_per_day": 24658.53493398485,
-      "regular_reward_per_day": 52.46496794464862,
-      "evo_reward_per_day": 262.3248397232431,
+      "network_reward_per_block": 36.00000199765972,
+      "network_reward_per_day": 24827.202246825673,
+      "regular_reward_per_day": 52.8238345677142,
+      "evo_reward_per_day": 264.119172838571,
       "source": "measured_window",
       "chart_reference_day": null,
       "chart_reference_payments": 0
     },
     "roi": {
-      "regular_annual_percent": 127.6647553319783,
-      "evo_annual_percent": 127.6647553319783
+      "regular_annual_percent": 128.53799744810453,
+      "evo_annual_percent": 128.53799744810453
     },
     "lookback": {
-      "since_block": 230249,
-      "current_block": 233129,
+      "since_block": 230344,
+      "current_block": 233224,
       "payment_count": 2880,
-      "total_reward": 103680.00660669
+      "total_reward": 103680.00575326
     }
   },
   "release": {
-    "tag_name": "v0.5.0",
-    "name": "Smartiecoin Core v0.5.0 — Korsh L3",
-    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.5.0",
-    "published_at": "2026-09-24T15:49:12Z"
+    "tag_name": "v0.5.1",
+    "name": "Smartiecoin Core v0.5.1",
+    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.5.1",
+    "published_at": "2026-09-27T22:08:49Z"
   }
 }
