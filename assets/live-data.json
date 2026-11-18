@@ -1,26 +1,26 @@
 {
-  "fetched_at": "2026-11-17T12:51:34Z",
+  "fetched_at": "2026-11-18T11:30:47Z",
   "summary": {
-    "difficulty": "0.02109258529727559",
+    "difficulty": "0.01752756375556036",
     "difficultyHybrid": "",
-    "supply": "12784662",
-    "hashrate": "0.5378",
-    "lastPrice": "0.00024338",
-    "lastUSDPrice": "0.00024319357092",
-    "connections": 12,
-    "blockcount": 267838,
-    "masternodeCountOnline": 86,
-    "masternodeCountOffline": 20
+    "supply": "12813462",
+    "hashrate": "0.4241",
+    "lastPrice": "0.00024522",
+    "lastUSDPrice": "0.00024499758546",
+    "connections": 11,
+    "blockcount": 268478,
+    "masternodeCountOnline": 85,
+    "masternodeCountOffline": 21
   },
   "current_price": {
     "last_price_btc": null,
-    "last_price_usd": "0.00024319357092"
+    "last_price_usd": "0.00024499758546"
   },
   "masternode_stats": null,
   "release": {
-    "tag_name": "v0.5.3",
-    "name": "Smartiecoin Core v0.5.3",
-    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.5.3",
-    "published_at": "2026-10-08T02:47:53Z"
+    "tag_name": "v0.5.3.1",
+    "name": "Smartiecoin Core v0.5.3.1 — listening-node DoS hotfix",
+    "html_url": "https://github.com/SmartiesCoin/Smartiecoin/releases/tag/v0.5.3.1",
+    "published_at": "2026-11-17T22:53:24Z"
   }
 }
